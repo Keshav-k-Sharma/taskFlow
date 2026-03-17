@@ -9,17 +9,27 @@ const taskSchema = new mongoose.Schema({
         type :String ,
         required : true 
     },
-    assignedto :{
-        type:mongoose.Schema.ObjectId,
+    assignedTo :{
+        type:mongoose.Schema.Types.ObjectId,
         ref:'Member',
         required: true ,
     },
     status:{
         type: String ,
+        enum:["pending","completed"],
+        default :"pending",
         required : true ,
+    },
+    createdBy:{
+        required:true ,
+        type :mongoose.Schema.Types.ObjectId,
+        ref: "user",
+    },
+    deadline:{
+        type:Date,
     },
 
 
-});
+},{timestamps: true });
 
-model.exports= mongoose.model('tasks',taskSchema);
+module.exports= mongoose.model('tasks',taskSchema);
