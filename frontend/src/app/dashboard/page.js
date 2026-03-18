@@ -6,41 +6,67 @@ import TaskList from "@/components/TaskList";
 import api from "@/lib/api";
 
 export default function DashboardPage() {
-    const [members, setMembers] = useState([]);
+    const [projects, setProjects] = useState([]);
     const [tasks, setTasks] = useState([]);
+    const [user, setUser] = useState(null);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const fetchData = async () => {
-        const [membersRes, tasksRes] = await Promise.all([
-            api.get("/api/members"),
-            api.get("/api/tasks")
-        ]);
-        setMembers(membersRes.data);
-        setTasks(tasksRes.data);
+        try {
+            const [projectsRes, tasksRes] = await Promise.all([
+                api.get("/api/projects"),
+                api.get("/api/tasks")
+            ]);
+            setProjects(projectsRes.data);
+            setTasks(tasksRes.data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    useEffect(() => { fetchData(); }, []);
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        setUser(storedUser);
+        setIsAdmin(storedUser?.role === "admin");
+        fetchData();
+    }, []);
 
-    
-    const grouped = members.reduce((acc, member) => {
-        if (!acc[member.role]) acc[member.role] = [];
-        acc[member.role].push(member);
-        return acc;
-    }, {});
+    const completed = tasks.filter(t => t.status === "completed").length;
+    const pending = tasks.filter(t => t.status === "pending").length;
+    const totalMembers = [...new Set(projects.flatMap(p => p.members.map(m => m._id)))].length;
+
+    const cardStyle = { backgroundColor: "#111", padding: "1.25rem", borderRadius: "8px", border: "1px solid #2a2a2a" };
 
     return (
-        <div>
+        <div style={{ minHeight: "100vh", backgroundColor: "#0a0a0a" }}>
             <Navbar />
-            <div style={{ padding: "2rem", backgroundColor: "#f1f5f9", minHeight: "100vh" }}>
-                <h1 style={{ color: "#1e293b" }}>Dashboard</h1>
+            <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+                <h1 style={{ color: "#e2e8f0", marginBottom: "0.25rem" }}>Dashboard</h1>
+                <p style={{ color: "#555", marginBottom: "2rem", fontSize: "0.875rem" }}>Welcome back, {user?.name}</p>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginBottom: "2rem" }}>
+                    {[
+                        { label: "Total Members", value: totalMembers, color: "#f5e642" },
+                        { label: "Pending Tasks", value: pending, color: "#f5e642" },
+                        { label: "Completed Tasks", value: completed, color: "#4ade80" },
+                    ].map(({ label, value, color }) => (
+                        <div key={label} style={cardStyle}>
+                            <p style={{ color: "#555", fontSize: "0.875rem", marginBottom: "0.5rem" }}>{label}</p>
+                            <p style={{ color, fontSize: "2rem", fontWeight: "700" }}>{value}</p>
+                        </div>
+                    ))}
+                </div>
+
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
-                    <div>
-                        <h2>Members by Role</h2>
-                        {Object.entries(grouped).map(([role, members]) => (
-                            <MemberGroup key={role} role={role} members={members} />
+                    <div style={cardStyle}>
+                        <h2 style={{ color: "#e2e8f0", marginBottom: "1.5rem", fontSize: "0.875rem", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Members by Project</h2>
+                        {projects.map((project) => (
+                            <MemberGroup key={project._id} projectName={project.name} members={project.members} isAdmin={isAdmin} onUpdate={fetchData} />
                         ))}
+                        {projects.length === 0 && <p style={{ color: "#555", textAlign: "center", padding: "2rem", border: "1px dashed #2a2a2a", borderRadius: "6px" }}>No projects yet.</p>}
                     </div>
-                    <div>
-                        <h2>All Tasks</h2>
+                    <div style={cardStyle}>
+                        <h2 style={{ color: "#e2e8f0", marginBottom: "1.5rem", fontSize: "0.875rem", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>All Tasks</h2>
                         <TaskList tasks={tasks} onStatusChange={fetchData} />
                     </div>
                 </div>
