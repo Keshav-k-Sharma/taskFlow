@@ -19,7 +19,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  "https://task-flow-frontend.vercel.app", 
+  "https://task-flow-gmi4.vercel.app", 
   "http://localhost:3000"                  
 ];
 
@@ -33,7 +33,7 @@ app.use(cors({
     return callback(null, true);
   },
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 

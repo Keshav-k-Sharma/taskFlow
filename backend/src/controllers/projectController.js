@@ -1,5 +1,5 @@
 const Project = require("../models/project");
-const Member = require("../models/member");
+const member = require("../models/member");
 
 const getAllProjects = async (req, res) => {
     try {

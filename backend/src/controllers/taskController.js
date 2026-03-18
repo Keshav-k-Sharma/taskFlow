@@ -1,21 +1,11 @@
 const task = require("../models/task");
 
 
-const Member = require("../models/member"); 
-
 const getAlltasks = async (req, res) => {
     try {
-        let query = {};
-        if (req.user.role !== "admin") {
-            
-            const member = await member.findOne({ email: req.user.email });
-            if (member) query.assignedTo = member._id;
-        }
-        // 
-        const tasks = await task.find(query)
+        const tasks = await task.find()
             .populate("assignedTo", "name email")
             .populate("project", "name");
-            
         res.status(200).json(tasks);
     } catch (error) {
         return res.status(500).json({ message: error.message });

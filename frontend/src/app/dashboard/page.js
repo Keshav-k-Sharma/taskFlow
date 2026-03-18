@@ -33,7 +33,7 @@ export default function DashboardPage() {
 
     const completed = tasks.filter(t => t.status === "completed").length;
     const pending = tasks.filter(t => t.status === "pending").length;
-    const totalMembers = [...new Set(projects.flatMap(p => p.members.map(m => m._id)))].length;
+    const totalMembers = [...new Set(projects.flatMap(p => p.members.map(m => m.member?._id?.toString())))].filter(Boolean).length;
 
     const cardStyle = { backgroundColor: "#111", padding: "1.25rem", borderRadius: "8px", border: "1px solid #2a2a2a" };
 

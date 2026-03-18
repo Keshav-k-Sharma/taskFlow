@@ -1,7 +1,7 @@
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Member = require("../models/member");
+const member = require("../models/member");
 
 
 
@@ -20,7 +20,7 @@ const register = async (req, res) => {
         const newuser = await user.create({name , email ,password:hashedPassword,role})
 
         if (role !== "admin") {
-            await Member.create({
+            await member.create({
             name: newuser.name,
             email: newuser.email,
             position: "Unassigned",
@@ -57,11 +57,17 @@ try{
         return res.status(400).json({message: "invalid Credentials "});
 
     }
-    const token =jwt.sign(
-            {id: foundUser._id ,role:foundUser.role},
-            process.env.JWT_SECRET,
-            {expiresIn: "7d"}
-        );
+    let memberId = null;
+    if (foundUser.role !== "admin") {
+        const memberRecord = await member.findOne({ email: foundUser.email });
+        if (memberRecord) memberId = memberRecord._id;
+    }
+
+    const token = jwt.sign(
+        { id: foundUser._id, role: foundUser.role, memberId },
+        process.env.JWT_SECRET,
+        { expiresIn: "7d" }
+    );
     
     res.status(200).json({token, user :  {name :foundUser.name ,email:foundUser.email ,role: foundUser.role}});
     }catch(error){
