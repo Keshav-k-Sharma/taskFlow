@@ -8,7 +8,7 @@ const getAlltasks = async (req, res) => {
         let query = {};
         if (req.user.role !== "admin") {
             
-            const member = await Member.findOne({ email: req.user.email });
+            const member = await member.findOne({ email: req.user.email });
             if (member) query.assignedTo = member._id;
         }
         // 
