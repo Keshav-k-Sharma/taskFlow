@@ -38,7 +38,7 @@ try{
 
     const foundUser= await user.findOne({email});
     if(!foundUser){
-        return res.status(400).json({message: "invalid Credientials"});
+        return res.status(404).json({message: "User not found "});
     }
 
     const verifyPass=await bcrypt.compare(password,foundUser.password);
