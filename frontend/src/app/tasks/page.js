@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import TaskList from "@/components/TaskList";
+import Navbar from "@/components/navbar";
+import TaskList from "@/components/taskList";
 import Link from "next/link";
 import api from "@/lib/api";
 

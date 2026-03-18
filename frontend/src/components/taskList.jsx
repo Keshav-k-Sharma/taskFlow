@@ -1,4 +1,4 @@
-import TaskCard from "./TaskCard";
+import TaskCard from "./taskCard";
 
 export default function TaskList({ tasks, onStatusChange }) {
     if (tasks.length === 0) {

@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import MemberGroup from "@/components/MemberGroup";
-import TaskList from "@/components/TaskList";
+import Navbar from "@/components/navbar";
+import MemberGroup from "@/components/memberGroup";
+import TaskList from "@/components/taskList";
 import api from "@/lib/api";
 
 export default function DashboardPage() {
@@ -12,17 +12,17 @@ export default function DashboardPage() {
     const [isAdmin, setIsAdmin] = useState(false);
 
     const fetchData = async () => {
-        try {
-            const [projectsRes, tasksRes] = await Promise.all([
-                api.get("/api/projects"),
-                api.get("/api/tasks")
-            ]);
-            setProjects(projectsRes.data);
-            setTasks(tasksRes.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    try {
+        const [projectsRes, tasksRes] = await Promise.all([
+            api.get("/api/projects"),
+            api.get("/api/tasks")
+        ]);
+        setProjects(projectsRes.data);
+        setTasks(tasksRes.data);
+    } catch (error) {
+        console.error("Fetch error:", error.response?.data);
+    }
+};
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -61,7 +61,14 @@ export default function DashboardPage() {
                     <div style={cardStyle}>
                         <h2 style={{ color: "#e2e8f0", marginBottom: "1.5rem", fontSize: "0.875rem", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Members by Project</h2>
                         {projects.map((project) => (
-                            <MemberGroup key={project._id} projectName={project.name} members={project.members} isAdmin={isAdmin} onUpdate={fetchData} />
+                            <MemberGroup 
+                                key={project._id} 
+                                projectName={project.name} 
+                                members={project.members.filter(m => m && m.member)} 
+                                isAdmin={isAdmin} 
+                                onUpdate={fetchData} 
+                                projectId={project._id}
+                            />
                         ))}
                         {projects.length === 0 && <p style={{ color: "#555", textAlign: "center", padding: "2rem", border: "1px dashed #2a2a2a", borderRadius: "6px" }}>No projects yet.</p>}
                     </div>
