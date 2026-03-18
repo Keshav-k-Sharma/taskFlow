@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import api from "@/lib/api";
+import Link from "next/link";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -36,6 +37,9 @@ export default function LoginPage() {
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: "100%", padding: "0.5rem", marginTop: "0.25rem", border: "1px solid #e2e8f0", borderRadius: "4px" }} />
                     </div>
                     <button type="submit" style={{ width: "100%", padding: "0.75rem", backgroundColor: "#1e293b", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "1rem" }}>Login</button>
+                    <p style={{ textAlign: "center", marginTop: "1rem" }}>
+                            Don't have an account? <Link href="/register" style={{ color: "#1e293b", fontWeight: "bold" }}>Register</Link>
+                    </p>
                 </form>
             </div>
         </div>
