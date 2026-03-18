@@ -8,6 +8,7 @@ const memberSchema = new mongoose.Schema({
     email:{
         type:String,
         required:true,
+        unique: true,
     },
     position:{
         type:String,
@@ -16,4 +17,4 @@ const memberSchema = new mongoose.Schema({
 },{timestamps:true})
 
 
-module.exports= mongoose.model("Member",memberSchema);
+module.exports= mongoose.model("member",memberSchema);

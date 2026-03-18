@@ -2,10 +2,18 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const authroutes= require("./routes/authRoutes");
+
+
 
 
 dotenv.config();
+
+
+require("./models/user");
+require("./models/member");
+require("./models/task");
+require("./models/project");
+
 connectDB();
 
 const app = express();
@@ -15,8 +23,11 @@ app.use(express.json());
 
 const memberRoutes = require("./routes/memberRoutes");
 const taskRoutes = require("./routes/taskRoutes");
+const authroutes= require("./routes/authRoutes");
+const projectRoutes = require("./routes/projectRoutes");
 
 app.use("/api/auth",authroutes);
+app.use("/api/projects", projectRoutes);
 app.use("/api/members", memberRoutes);
 app.use("/api/tasks", taskRoutes);
 
