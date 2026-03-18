@@ -28,6 +28,10 @@ const taskSchema = new mongoose.Schema({
     deadline:{
         type:Date,
     },
+    project: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Project",
+    }
 
 
 },{timestamps: true });

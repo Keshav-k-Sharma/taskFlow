@@ -19,9 +19,9 @@ const getAllmembers = async(req,res) => {
 const CreateMember =  async(req,res) => {
     try
     {
-        const {name ,email ,role } =req.body;
+        const {name ,email ,position } =req.body;
 
-        const newMember = await member.create({name ,email ,role ,user : req.user._id});
+        const newMember = await member.create({name ,email ,position});
          res.status(201).json(newMember);
 
 
@@ -30,4 +30,20 @@ const CreateMember =  async(req,res) => {
     }
 }
 
-module.exports ={ getAllmembers ,CreateMember};
+const updateMember = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { position } = req.body;
+        const updated = await Member.findByIdAndUpdate(
+            id,
+            { position },
+            { new: true }
+        );
+        if (!updated) return res.status(404).json({ message: "Member not found" });
+        res.status(200).json(updated);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports ={ getAllmembers ,CreateMember, updateMember}
