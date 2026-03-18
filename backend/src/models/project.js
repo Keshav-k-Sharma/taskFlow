@@ -9,10 +9,17 @@ const projectSchema = new mongoose.Schema({
         type: String,
     },
     members: [
-        {
+         {
+        member: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "member",
+            required: true,
+        },
+        position: {
+            type: String,
+            default: "Unassigned",
         }
+    }
     ],
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

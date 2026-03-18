@@ -1,20 +1,26 @@
 const task = require("../models/task");
 
 
-const getAlltasks= async (req,res) => {
-    try
-    {
-        const tasks = await task.find().populate("assignedTo","name email");
-        if(!tasks)
-        {
-            return res.status(404).json({message: "tasks not found "});
-        }
-        res.status(200).json(tasks);
+const Member = require("../models/member"); 
 
-    }catch(error){
-        return res.status(500).json({message:error.message});
+const getAlltasks = async (req, res) => {
+    try {
+        let query = {};
+        if (req.user.role !== "admin") {
+            
+            const member = await Member.findOne({ email: req.user.email });
+            if (member) query.assignedTo = member._id;
+        }
+        // 
+        const tasks = await task.find(query)
+            .populate("assignedTo", "name email")
+            .populate("project", "name");
+            
+        res.status(200).json(tasks);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
-}
+};
 
 const CreateTask= async (req,res) => {
     try

@@ -3,7 +3,7 @@ const member = require("../models/member");
 const getAllmembers = async(req,res) => {
     try
     {
-        const members =await  member.find().populate("user","-password");
+        const members =await  member.find();
         if(!members){
             return res.status(404).json({message: "no members found "});
         }
@@ -34,7 +34,7 @@ const updateMember = async (req, res) => {
     try {
         const { id } = req.params;
         const { position } = req.body;
-        const updated = await Member.findByIdAndUpdate(
+        const updated = await member.findByIdAndUpdate(
             id,
             { position },
             { new: true }

@@ -1,6 +1,9 @@
 const user = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Member = require("../models/member");
+
+
 
 const register = async (req, res) => {
     try
@@ -15,6 +18,14 @@ const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password,10);
 
         const newuser = await user.create({name , email ,password:hashedPassword,role})
+
+        if (role !== "admin") {
+            await Member.create({
+            name: newuser.name,
+            email: newuser.email,
+            position: "Unassigned",
+        });
+        }
 
         const token =jwt.sign(
             {id: newuser._id, role : newuser.role },
