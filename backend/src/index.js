@@ -18,7 +18,10 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://task-flow-gmi4.vercel.app", "http://localhost:3000"],
+  credentials: true
+}));
 app.use(express.json());
 
 const memberRoutes = require("./routes/memberRoutes");
