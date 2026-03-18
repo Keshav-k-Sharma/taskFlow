@@ -13,14 +13,20 @@ export default function DashboardPage() {
 
     const fetchData = async () => {
     try {
-        const [projectsRes, tasksRes] = await Promise.all([
-            api.get("/api/projects"),
-            api.get("/api/tasks")
-        ]);
+        const projectsRes = await api.get("/api/projects");
+        console.log("Tasks fetched:", projectsRes.data);
         setProjects(projectsRes.data);
+    } catch (error) {
+        console.error("Projects error:", error.response?.data);
+        setProjects([]);
+    }
+
+    try {
+        const tasksRes = await api.get("/api/tasks");
         setTasks(tasksRes.data);
     } catch (error) {
-        console.error("Fetch error:", error.response?.data);
+        console.error("Tasks error:", error.response?.data);
+        setTasks([]);
     }
 };
 
