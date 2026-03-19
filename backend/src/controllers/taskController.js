@@ -1,8 +1,8 @@
-const task = require("../models/task");
+const Task = require("../models/task");
 
 const getAlltasks = async (req, res) => {
     try {
-        const tasks = await task.find()
+        const tasks = await Task.find()
             .populate("assignedTo", "name email")
             .populate("project", "name");
         res.status(200).json(tasks);
@@ -14,7 +14,7 @@ const getAlltasks = async (req, res) => {
 const CreateTask = async (req, res) => {
     try {
         const { title, description, assignedTo, deadline, status } = req.body;
-        const newtask = await task.create({
+        const newtask = await Task.create({
             title, description, assignedTo, deadline, status,
             createdBy: req.user._id
         });
@@ -28,7 +28,7 @@ const UpdateStatus = async (req, res) => {
     try {
         const { id } = req.params;
         const { status } = req.body;
-        const updatedtask = await task.findByIdAndUpdate(
+        const updatedtask = await Task.findByIdAndUpdate(
             id,
             { status },
             { new: true }
