@@ -6,18 +6,17 @@ import TaskList from "@/components/taskList";
 import api from "@/lib/api";
 
 export default function DashboardPage() {
-    const [projects, setProjects] = useState([]);
-    const [tasks, setTasks] = useState([]);
-    const [user, setUser] = useState(null);
-    const [isAdmin, setIsAdmin] = useState(false);
+const [projects, setProjects] = useState([]);
+const [tasks, setTasks] = useState([]);
+const [members, setMembers] = useState([]);
+const [user, setUser] = useState(null);
+const [isAdmin, setIsAdmin] = useState(false);
 
-    const fetchData = async () => {
+const fetchData = async () => {
     try {
         const projectsRes = await api.get("/api/projects");
-        console.log("Tasks fetched:", projectsRes.data);
         setProjects(projectsRes.data);
     } catch (error) {
-        console.error("Projects error:", error.response?.data);
         setProjects([]);
     }
 
@@ -25,8 +24,14 @@ export default function DashboardPage() {
         const tasksRes = await api.get("/api/tasks");
         setTasks(tasksRes.data);
     } catch (error) {
-        console.error("Tasks error:", error.response?.data);
         setTasks([]);
+    }
+
+    try {
+        const membersRes = await api.get("/api/members");
+        setMembers(membersRes.data);
+    } catch (error) {
+        setMembers([]);
     }
 };
 
@@ -39,7 +44,7 @@ export default function DashboardPage() {
 
     const completed = tasks.filter(t => t.status === "completed").length;
     const pending = tasks.filter(t => t.status === "pending").length;
-    const totalMembers = [...new Set(projects.flatMap(p => p.members.map(m => m.member?._id?.toString())))].filter(Boolean).length;
+    const totalMembers = members.length;
 
     const cardStyle = { backgroundColor: "#111", padding: "1.25rem", borderRadius: "8px", border: "1px solid #2a2a2a" };
 
