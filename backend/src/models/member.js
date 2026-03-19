@@ -17,4 +17,4 @@ const memberSchema = new mongoose.Schema({
 },{timestamps:true})
 
 
-module.exports= mongoose.model("member",memberSchema);
+module.exports= mongoose.model("Member",memberSchema);

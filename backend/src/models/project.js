@@ -12,7 +12,7 @@ const projectSchema = new mongoose.Schema({
          {
         member: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "member",
+            ref: "Member",
             required: true,
         },
         position: {
