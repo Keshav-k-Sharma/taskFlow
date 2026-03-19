@@ -15,7 +15,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  "https://task-flow-gmi4.vercel.app", 
+  "https://taskflow26.vercel.app", 
   "http://localhost:3000"                  
 ];
 
