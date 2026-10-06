@@ -173,7 +173,7 @@
 ---
 
 ## Bonus 🟢 (in suggested order)
-- [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` (added 2026-10-06)
+- [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` *(Assigned to User to learn and do manually)* (added 2026-10-06)
 - [ ] B2 — Integration tests complete (covered by Phase 4) + unit tests for services/utils (added 2026-10-06)
 - [ ] B3 — Pagination + sorting on `/projects` and `/tasks` (`page`, `limit`, `sort`, `order`) (added 2026-10-06)
 - [ ] B4 — GitHub Actions CI: lint + test with Postgres service (added 2026-10-06)
