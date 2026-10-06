@@ -1,4 +1,5 @@
 "use client";
+import {Loader2, loader2} from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -9,9 +10,11 @@ export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
+    const [loading ,setloading] = useState(false);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setloading(true);
         try {
             const res = await api.post("/api/auth/login", { email, password });
             localStorage.setItem("token", res.data.token);
@@ -19,6 +22,7 @@ export default function LoginPage() {
             router.push("/dashboard");
         } catch (error) {
             setError(error.response?.data?.message || "Login failed");
+        }finally{ setloading(false);
         }
     };
 
@@ -44,6 +48,9 @@ export default function LoginPage() {
                     </div>
                     <button type="submit" style={{ width: "100%", padding: "0.75rem", backgroundColor: "#f5e642", color: "#111", border: "none", borderRadius: "6px", fontWeight: "700", fontSize: "1rem" }}>
                         Sign In
+                        {loading ? (
+                            <Loader2 className="animate-spin" aria-hidden />)  : undefined                   
+                        }
                     </button>
                 </form>
                 <p style={{ textAlign: "center", marginTop: "1.5rem", color: "#555", fontSize: "0.875rem" }}>

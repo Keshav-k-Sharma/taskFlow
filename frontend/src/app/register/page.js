@@ -11,7 +11,7 @@ export default function RegisterPage() {
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("member");
     const [error, setError] = useState("");
-
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
