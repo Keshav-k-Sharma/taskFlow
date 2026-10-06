@@ -31,11 +31,11 @@
 
 ## Phase 1 — Database Migration (MongoDB → PostgreSQL) 🔴
 > Authorizes removal of Mongoose and Members code (see PLANNING §2.5).
-- [ ] 1.1 Provision local Postgres via Docker; confirm `DATABASE_URL` works (added 2026-10-06)
+- [x] 1.1 Provision Postgres (using Neon) and confirm `DATABASE_URL` works (done 2026-10-06)
 - [x] 1.2 Install Prisma (`prisma`, `@prisma/client`); `prisma init` in `backend/` (done 2026-10-06)
 - [x] 1.3 Write `schema.prisma`: `User`, `Project`, `Task`, `RevokedToken` + enums (`ProjectStatus`, `TaskStatus`, `Priority`) per PLANNING §6 (done 2026-10-06)
-- [ ] 1.4 Add FKs, `ON DELETE CASCADE`, indexes, unique email, `end_date >= start_date` check (raw SQL in migration) (added 2026-10-06)
-- [ ] 1.5 Run first migration; commit `prisma/migrations/` (added 2026-10-06)
+- [x] 1.4 Add FKs, `ON DELETE CASCADE`, indexes, unique email, `end_date >= start_date` check (raw SQL in migration) (done 2026-10-06)
+- [x] 1.5 Run first migration; commit `prisma/migrations/` (done 2026-10-06)
 - [x] 1.6 Create `src/db/prisma.js` singleton client (done 2026-10-06)
 - [x] 1.7 Write `prisma/seed.js` with **test-only** users, projects and tasks (done 2026-10-06)
 - [x] 1.8 Remove Mongoose dependency, `models/*.js`, `config/db.js` and the DNS hack (done 2026-10-06)

@@ -9,3 +9,4 @@ erDiagram
   TASKS { uuid id PK  uuid project_id FK  string name  text description  enum priority  enum status  date due_date  timestamptz created_at }
   REVOKED_TOKENS { uuid jti PK  timestamptz expires_at }
 ```
+
