@@ -44,21 +44,21 @@
 ---
 
 ## Phase 2 — Backend Foundation & Auth 🔴
-- [ ] 2.1 Split `index.js` into `app.js` (export) and `server.js` (listen) (added 2026-10-06)
-- [ ] 2.2 `config/env.js`: load and validate env with Zod; fail fast if `JWT_SECRET`/`DATABASE_URL` missing or weak (added 2026-10-06)
-- [ ] 2.3 Logging: `pino` + `pino-http`, redact `authorization`/`password` (added 2026-10-06)
-- [ ] 2.4 Middleware: `helmet`, env-driven CORS allowlist, `express.json({limit})`, `trust proxy` (added 2026-10-06)
-- [ ] 2.5 `utils/AppError` + central `errorHandler` + `notFound` returning the standard error shape (added 2026-10-06)
-- [ ] 2.6 `middleware/validate.js` (Zod body/query/params) + `validators/auth.schema.js` (added 2026-10-06)
-- [ ] 2.7 `auth.service`: register (lowercase email, bcrypt cost 12, **ignore any `role`**), login (generic error), me (added 2026-10-06)
-- [ ] 2.8 `POST /api/auth/register` → 201 `{token,user}`; 409 on duplicate email (added 2026-10-06)
-- [ ] 2.9 `POST /api/auth/login` → `{token,user}`; 401 generic message (added 2026-10-06)
-- [ ] 2.10 JWT with `sub`, `jti`, env `JWT_EXPIRES_IN`; `authenticate` middleware (401 `UNAUTHENTICATED` / `TOKEN_EXPIRED`, never 500) (added 2026-10-06)
-- [ ] 2.11 `POST /api/auth/logout` → insert `jti` into `revoked_tokens`; middleware rejects revoked tokens (added 2026-10-06)
-- [ ] 2.12 `GET /api/auth/me` (added 2026-10-06)
-- [ ] 2.13 Rate limiting on login/register (+ light global limiter), return 429 `RATE_LIMITED` (added 2026-10-06)
-- [ ] 2.14 Scheduled cleanup of expired `revoked_tokens` (on boot + interval) (added 2026-10-06)
-- [ ] 2.15 `GET /api/health` kept (added 2026-10-06)
+- [x] 2.1 Split `index.js` into `app.js` (export) and `server.js` (listen) (done 2026-10-06)
+- [x] 2.2 `config/env.js`: load and validate env with Zod; fail fast if `JWT_SECRET`/`DATABASE_URL` missing or weak (done 2026-10-06)
+- [x] 2.3 Logging: `pino` + `pino-http`, redact `authorization`/`password` (done 2026-10-06)
+- [x] 2.4 Middleware: `helmet`, env-driven CORS allowlist, `express.json({limit})`, `trust proxy` (done 2026-10-06)
+- [x] 2.5 `utils/AppError` + central `errorHandler` + `notFound` returning the standard error shape (done 2026-10-06)
+- [x] 2.6 `middleware/validate.js` (Zod body/query/params) + `validators/auth.schema.js` (done 2026-10-06)
+- [x] 2.7 `auth.service`: register (lowercase email, bcrypt cost 12, **ignore any `role`**), login (generic error), me (done 2026-10-06)
+- [x] 2.8 `POST /api/auth/register` → 201 `{token,user}`; 409 on duplicate email (done 2026-10-06)
+- [x] 2.9 `POST /api/auth/login` → `{token,user}`; 401 generic message (done 2026-10-06)
+- [x] 2.10 JWT with `sub`, `jti`, env `JWT_EXPIRES_IN`; `authenticate` middleware (401 `UNAUTHENTICATED` / `TOKEN_EXPIRED`, never 500) (done 2026-10-06)
+- [x] 2.11 `POST /api/auth/logout` → insert `jti` into `revoked_tokens`; middleware rejects revoked tokens (done 2026-10-06)
+- [x] 2.12 `GET /api/auth/me` (done 2026-10-06)
+- [x] 2.13 Rate limiting on login/register (+ light global limiter), return 429 `RATE_LIMITED` (done 2026-10-06)
+- [x] 2.14 Scheduled cleanup of expired `revoked_tokens` (on boot + interval) (done 2026-10-06)
+- [x] 2.15 `GET /api/health` kept (done 2026-10-06)
 
 ---
 
