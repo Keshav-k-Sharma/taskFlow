@@ -59,3 +59,4 @@ async function authenticate(req, _res, next) {
 }
 
 module.exports = authenticate;
+

@@ -1,14 +1,33 @@
-const express = require("express");
-const { getAllProjects, createProject, addMemberToProject, updateProjectStatus ,removeMemberFromProject, updateMemberPosition} = require("../controllers/projectController");
-const { protect, adminonly } = require("../middleware/authMiddleware");
+const { Router } = require("express");
+const {
+  listProjects,
+  getProject,
+  createProject,
+  updateProject,
+  deleteProject,
+} = require("../controllers/projectController");
+const authenticate = require("../middleware/authenticate");
+const validate = require("../middleware/validate");
+const {
+  createProjectSchema,
+  updateProjectSchema,
+  listProjectsSchema,
+  uuidParamSchema,
+} = require("../validators/project.schema");
 
-const router = express.Router();
+const router = Router();
 
-router.get("/", protect, getAllProjects);
-router.post("/", protect, adminonly, createProject);
-router.patch("/:id/members", protect, adminonly, addMemberToProject);
-router.patch("/:id/status", protect, adminonly, updateProjectStatus);
-router.patch("/:id/removeMember", protect, adminonly, removeMemberFromProject);
-router.patch("/:id/memberPosition", protect, adminonly, updateMemberPosition);
+// All project routes require authentication
+router.use(authenticate);
+
+router.get("/", validate({ query: listProjectsSchema }), listProjects);
+router.get("/:id", validate({ params: uuidParamSchema }), getProject);
+router.post("/", validate({ body: createProjectSchema }), createProject);
+router.put(
+  "/:id",
+  validate({ params: uuidParamSchema, body: updateProjectSchema }),
+  updateProject
+);
+router.delete("/:id", validate({ params: uuidParamSchema }), deleteProject);
 
 module.exports = router;

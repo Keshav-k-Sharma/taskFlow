@@ -63,21 +63,21 @@
 ---
 
 ## Phase 3 — Projects & Tasks API 🔴
-- [ ] 3.1 `validators/project.schema.js` (name required/non-empty, status enum, ISO dates, end ≥ start, strict keys) (added 2026-10-06)
-- [ ] 3.2 `project.service` — all queries scoped by `ownerId` (added 2026-10-06)
-- [ ] 3.3 `GET /api/projects` with `search` (name, case-insensitive) and `status` filters (added 2026-10-06)
-- [ ] 3.4 `GET /api/projects/:id` (includes tasks); 404 if not owner (added 2026-10-06)
-- [ ] 3.5 `POST /api/projects` (owner from token, never body) (added 2026-10-06)
-- [ ] 3.6 `PUT /api/projects/:id` (added 2026-10-06)
-- [ ] 3.7 `DELETE /api/projects/:id` (cascade) (added 2026-10-06)
-- [ ] 3.8 `validators/task.schema.js` (name, priority, status, dueDate, `projectId` UUID) (added 2026-10-06)
-- [ ] 3.9 `task.service` — scope via `project.ownerId`; verify `projectId` ownership on create/move (added 2026-10-06)
-- [ ] 3.10 `GET /api/tasks` with `projectId`, `search`, `status`, `priority` filters (added 2026-10-06)
-- [ ] 3.11 `GET /api/tasks/:id`, `POST /api/tasks`, `PUT /api/tasks/:id`, `DELETE /api/tasks/:id` (added 2026-10-06)
-- [ ] 3.12 "Mark completed" works via `PUT` `{status:"COMPLETED"}` (document in API docs) (added 2026-10-06)
-- [ ] 3.13 `GET /api/dashboard` using aggregate queries (`count`/`groupBy`), scoped to user (added 2026-10-06)
-- [ ] 3.14 Remove `members` routes/controllers, `adminonly`, old `PATCH` routes (added 2026-10-06)
-- [ ] 3.15 Serializers: whitelist response fields; confirm `passwordHash` can't leak (added 2026-10-06)
+- [x] 3.1 `validators/project.schema.js` (name required/non-empty, status enum, ISO dates, end ≥ start, strict keys) (done 2026-10-06)
+- [x] 3.2 `project.service` — all queries scoped by `ownerId` (done 2026-10-06)
+- [x] 3.3 `GET /api/projects` with `search` (name, case-insensitive) and `status` filters (done 2026-10-06)
+- [x] 3.4 `GET /api/projects/:id` (includes tasks); 404 if not owner (done 2026-10-06)
+- [x] 3.5 `POST /api/projects` (owner from token, never body) (done 2026-10-06)
+- [x] 3.6 `PUT /api/projects/:id` (done 2026-10-06)
+- [x] 3.7 `DELETE /api/projects/:id` (cascade) (done 2026-10-06)
+- [x] 3.8 `validators/task.schema.js` (name, priority, status, dueDate, `projectId` UUID) (done 2026-10-06)
+- [x] 3.9 `task.service` — scope via `project.ownerId`; verify `projectId` ownership on create/move (done 2026-10-06)
+- [x] 3.10 `GET /api/tasks` with `projectId`, `search`, `status`, `priority` filters (done 2026-10-06)
+- [x] 3.11 `GET /api/tasks/:id`, `POST /api/tasks`, `PUT /api/tasks/:id`, `DELETE /api/tasks/:id` (done 2026-10-06)
+- [x] 3.12 "Mark completed" works via `PUT` `{status:"COMPLETED"}` (document in API docs) (done 2026-10-06)
+- [x] 3.13 `GET /api/dashboard` using aggregate queries (`count`/`groupBy`), scoped to user (done 2026-10-06)
+- [x] 3.14 Remove `members` routes/controllers, `adminonly`, old `PATCH` routes (done 2026-10-06)
+- [x] 3.15 Serializers: whitelist response fields; confirm `passwordHash` can't leak (done 2026-10-06)
 
 ---
 

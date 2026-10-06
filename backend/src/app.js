@@ -11,6 +11,9 @@ const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
 const authRoutes = require("./routes/authRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const taskRoutes = require("./routes/taskRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -52,9 +55,13 @@ app.get("/api/health", (_req, res) => {
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/tasks", taskRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // 404 + central error handler (must be last)
 app.use(notFound);
 app.use(errorHandler);
 
 module.exports = app;
+

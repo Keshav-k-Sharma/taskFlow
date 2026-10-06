@@ -24,3 +24,4 @@ app.listen(PORT, async () => {
   await purgeExpiredTokens();
   setInterval(purgeExpiredTokens, 60 * 60 * 1000); // every hour
 });
+

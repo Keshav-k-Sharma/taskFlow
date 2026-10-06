@@ -100,3 +100,4 @@ function me(user) {
 }
 
 module.exports = { register, login, logout, me };
+

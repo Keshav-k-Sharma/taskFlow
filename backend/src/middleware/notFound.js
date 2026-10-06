@@ -10,3 +10,4 @@ function notFound(req, _res, next) {
 }
 
 module.exports = notFound;
+
