@@ -138,6 +138,8 @@
 - [ ] 6.17 Configure `eas.json` `preview` profile → build `.apk` (added 2026-10-06)
 - [ ] 6.18 Upload APK / publish Expo link; add to README (added 2026-10-06)
 
+Phase 6 checkpoint (2026-10-08): EAS build `5188b0a3-d75f-4128-973d-dd5a6f5f71cf` is queued and linked in README. All 30 mobile tests and lint pass. User has an Android phone; no local Android SDK/emulator is installed. Device acceptance checklist is in docs/MOBILE.md; 6.16–6.18 remain pending until actual verification/build completion.
+
 ---
 
 ## Phase 7 — Deployment 🔴

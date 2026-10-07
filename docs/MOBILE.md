@@ -90,3 +90,21 @@ See the official [APK build guide](https://docs.expo.dev/build-reference/apk/) a
 Android preview build submitted on 2026-10-08:
 [EAS build status](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/5188b0a3-d75f-4128-973d-dd5a6f5f71cf).
 The build is queued; an installable APK has not yet been verified.
+
+## Device acceptance checklist
+
+Once the build finishes, open its EAS page on an Android phone, download the APK,
+and allow installation from that browser when Android prompts. Run these checks
+against the deployed backend:
+
+1. Register a test account, log out, and log in again.
+2. Create a project and a task; verify the dashboard counts update.
+3. Edit task priority, status, and due date; search/filter tasks and mark one completed.
+4. Pull to refresh and confirm a change made on the web appears on the phone.
+5. Close and reopen the app; confirm the session restores.
+6. Enable airplane mode; confirm the offline message, then reconnect and retry.
+7. Delete the test task with confirmation, log out, and confirm protected screens are inaccessible.
+
+Record results and any failures in `TASK.md`. Repeat these checks on an Android
+emulator before closing task 6.16. The user has an Android phone; this workspace
+does not currently have Android Studio or an Android SDK (checked 2026-10-08).

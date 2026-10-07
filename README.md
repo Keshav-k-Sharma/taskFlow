@@ -416,4 +416,5 @@ pull-to-refresh, and an offline banner with retry. Tokens use expo-secure-store 
 
 See [mobile setup, verification, and APK build instructions](docs/MOBILE.md).
 The implementation has 30 passing tests and an Android bundle export.
-Device verification and EAS APK build/distribution are still pending; no APK link exists yet.
+The Android APK build is submitted: [EAS build status and download](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/5188b0a3-d75f-4128-973d-dd5a6f5f71cf).
+The build is currently queued; the APK and device verification remain pending.
