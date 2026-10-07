@@ -2,7 +2,13 @@
 
 > Source of truth for architecture, goals, style and constraints.
 > Read this at the start of every new conversation. Work items live in `TASK.md`. Agent rules live in `AGENTS.md`.
-> Last updated: 2026-10-06
+> Last updated: 2026-10-08
+
+Implementation checkpoint (2026-10-08): the PostgreSQL migration, shared API,
+Next.js client and Expo client are implemented. Render serves the current API;
+the EAS Android build and actual device checks remain pending. Phase 8 documents
+the implemented contract, with public Swagger UI at /api/docs/ on dev. Section 2
+below preserves the original pre-migration audit, not the current deployed state.
 
 ---
 

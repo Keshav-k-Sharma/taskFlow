@@ -1,0 +1,1155 @@
+openapi: 3.0.3
+info:
+  title: TaskFlow API
+  version: 1.0.0
+  description: Shared web and Android REST API. Owner IDs come from authentication. Input dates use
+    YYYY-MM-DD; response dates are UTC date-time strings. Unknown input fields are currently
+    stripped, never assigned; strict/calendar-date validation is tracked as D8.
+servers:
+  - url: /api
+    description: Same API host
+  - url: http://localhost:5000/api
+    description: Local development
+  - url: https://taskflow-1sh2.onrender.com/api
+    description: Render deployment
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+  - name: Project
+  - name: Task
+  - name: Dashboard
+  - name: System
+paths:
+  /health:
+    get:
+      tags:
+        - System
+      summary: Process liveness (does not check the database)
+      security: []
+      responses:
+        "200":
+          description: API process is running
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - UP
+        "429":
+          description: Rate limited
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register a user
+      responses:
+        "201":
+          description: Registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: Email already registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Register"
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Log in (generic failure message)
+      responses:
+        "200":
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Login"
+  /auth/me:
+    get:
+      tags:
+        - Auth
+      summary: Get the authenticated user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - user
+                properties:
+                  user:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /auth/logout:
+    post:
+      tags:
+        - Auth
+      summary: Revoke the current token
+      responses:
+        "204":
+          description: Logged out; empty response body
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /dashboard:
+    get:
+      tags:
+        - Dashboard
+      summary: Get owner-scoped counts; pending means PENDING only
+      responses:
+        "200":
+          description: Five dashboard counts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dashboard"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /projects:
+    get:
+      tags:
+        - Project
+      summary: List own projects, newest first (no pagination)
+      responses:
+        "200":
+          description: Matching resources
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - projects
+                properties:
+                  projects:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Project"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      parameters:
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+            description: Case-insensitive name substring
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - NOT_STARTED
+              - IN_PROGRESS
+              - COMPLETED
+    post:
+      tags:
+        - Project
+      summary: Create project
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - project
+                properties:
+                  project:
+                    $ref: "#/components/schemas/Project"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectCreate"
+  /projects/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags:
+        - Project
+      summary: Get own project with brief tasks
+      responses:
+        "200":
+          description: Resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - project
+                properties:
+                  project:
+                    $ref: "#/components/schemas/ProjectDetail"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      tags:
+        - Project
+      summary: Update supplied project fields
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - project
+                properties:
+                  project:
+                    $ref: "#/components/schemas/Project"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectUpdate"
+    delete:
+      tags:
+        - Project
+      summary: Delete own project and cascade its tasks
+      responses:
+        "204":
+          description: Deleted; empty response body
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /tasks:
+    get:
+      tags:
+        - Task
+      summary: List own tasks, newest first (no pagination)
+      responses:
+        "200":
+          description: Matching resources
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - tasks
+                properties:
+                  tasks:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Task"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      parameters:
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+            description: Case-insensitive name substring
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - PENDING
+              - IN_PROGRESS
+              - COMPLETED
+        - name: projectId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: priority
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - LOW
+              - MEDIUM
+              - HIGH
+    post:
+      tags:
+        - Task
+      summary: Create task
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - task
+                properties:
+                  task:
+                    $ref: "#/components/schemas/Task"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskCreate"
+  /tasks/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags:
+        - Task
+      summary: Get own task
+      responses:
+        "200":
+          description: Resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - task
+                properties:
+                  task:
+                    $ref: "#/components/schemas/Task"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      tags:
+        - Task
+      summary: Update supplied task fields
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - task
+                properties:
+                  task:
+                    $ref: "#/components/schemas/Task"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskUpdate"
+    delete:
+      tags:
+        - Task
+      summary: Delete own task
+      responses:
+        "204":
+          description: Deleted; empty response body
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Request rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - fullName
+        - email
+        - createdAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        fullName:
+          type: string
+        email:
+          type: string
+          format: email
+        createdAt:
+          type: string
+          format: date-time
+    AuthResult:
+      type: object
+      required:
+        - token
+        - user
+      properties:
+        token:
+          type: string
+          description: JWT access token. Never log or commit it.
+        user:
+          $ref: "#/components/schemas/User"
+    Register:
+      type: object
+      required:
+        - fullName
+        - email
+        - password
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+          format: password
+          writeOnly: true
+    Login:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 1
+          format: password
+          writeOnly: true
+    Project:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - status
+        - startDate
+        - endDate
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - NOT_STARTED
+            - IN_PROGRESS
+            - COMPLETED
+        startDate:
+          type: string
+          format: date-time
+          nullable: true
+          example: 2026-10-08T00:00:00.000Z
+        endDate:
+          type: string
+          format: date-time
+          nullable: true
+          example: 2026-10-08T00:00:00.000Z
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ProjectDetail:
+      allOf:
+        - $ref: "#/components/schemas/Project"
+        - type: object
+          required:
+            - tasks
+          properties:
+            tasks:
+              type: array
+              items:
+                $ref: "#/components/schemas/TaskBrief"
+    ProjectCreate:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - NOT_STARTED
+            - IN_PROGRESS
+            - COMPLETED
+          default: NOT_STARTED
+        startDate:
+          type: string
+          nullable: true
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 2026-10-08
+        endDate:
+          type: string
+          nullable: true
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 2026-10-08
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - NOT_STARTED
+            - IN_PROGRESS
+            - COMPLETED
+        startDate:
+          type: string
+          nullable: true
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 2026-10-08
+        endDate:
+          type: string
+          nullable: true
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 2026-10-08
+    Task:
+      type: object
+      required:
+        - id
+        - projectId
+        - name
+        - description
+        - priority
+        - status
+        - dueDate
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        projectId:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          nullable: true
+        priority:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+        status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROGRESS
+            - COMPLETED
+        dueDate:
+          type: string
+          format: date-time
+          nullable: true
+          example: 2026-10-08T00:00:00.000Z
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    TaskBrief:
+      type: object
+      required:
+        - id
+        - name
+        - priority
+        - status
+        - dueDate
+        - createdAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        priority:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+        status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROGRESS
+            - COMPLETED
+        dueDate:
+          type: string
+          format: date-time
+          nullable: true
+          example: 2026-10-08T00:00:00.000Z
+        createdAt:
+          type: string
+          format: date-time
+    TaskCreate:
+      type: object
+      required:
+        - projectId
+        - name
+      properties:
+        projectId:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          nullable: true
+        priority:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+          default: MEDIUM
+        status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROGRESS
+            - COMPLETED
+          default: PENDING
+        dueDate:
+          type: string
+          nullable: true
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 2026-10-08
+    TaskUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          nullable: true
+        priority:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+        status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROGRESS
+            - COMPLETED
+        dueDate:
+          type: string
+          nullable: true
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 2026-10-08
+    Dashboard:
+      type: object
+      required:
+        - totalProjects
+        - totalTasks
+        - completedTasks
+        - pendingTasks
+        - projectsInProgress
+      properties:
+        totalProjects:
+          type: integer
+          minimum: 0
+        totalTasks:
+          type: integer
+          minimum: 0
+        completedTasks:
+          type: integer
+          minimum: 0
+        pendingTasks:
+          type: integer
+          minimum: 0
+        projectsInProgress:
+          type: integer
+          minimum: 0
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              enum:
+                - VALIDATION_ERROR
+                - UNAUTHENTICATED
+                - TOKEN_EXPIRED
+                - INVALID_CREDENTIALS
+                - NOT_FOUND
+                - EMAIL_TAKEN
+                - RATE_LIMITED
+                - INTERNAL
+            message:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+                required:
+                  - field
+                  - message
+                properties:
+                  field:
+                    type: string
+                  message:
+                    type: string

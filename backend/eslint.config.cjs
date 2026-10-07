@@ -6,7 +6,7 @@ module.exports = [
       ecmaVersion: "latest",
       sourceType: "commonjs",
       globals: {
-        process: "readonly", console: "readonly", Buffer: "readonly", URL: "readonly",
+        process: "readonly", console: "readonly", Buffer: "readonly", URL: "readonly", __dirname: "readonly",
         setInterval: "readonly", clearInterval: "readonly",
         describe: "readonly", test: "readonly", expect: "readonly",
         beforeAll: "readonly", afterAll: "readonly", beforeEach: "readonly", jest: "readonly",

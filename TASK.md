@@ -155,16 +155,20 @@ Phase 7 API smoke verification (2026-10-08): register/login, authenticated me, p
 ---
 
 ## Phase 8 — Documentation 🔴
-- [ ] 8.1 Rewrite `README.md` accurately (remove false claims: TypeScript, `/api/users/*`, `tailwind.config.js`, etc.) (added 2026-10-06)
-- [ ] 8.2 README: setup for backend, web, mobile (step by step, copy-pasteable) (added 2026-10-06)
-- [ ] 8.3 README: environment variable tables per app (added 2026-10-06)
-- [ ] 8.4 README: database setup (Docker, migrate, seed) (added 2026-10-06)
-- [ ] 8.5 README: **how to run the mobile app against the deployed backend** (added 2026-10-06)
-- [ ] 8.6 `docs/openapi.yaml` + Swagger UI at `/api/docs` (added 2026-10-06)
-- [ ] 8.7 `docs/API.md` with request/response examples and error codes (added 2026-10-06)
-- [ ] 8.8 ER diagram committed (`docs/ER_DIAGRAM.md` + PNG) (added 2026-10-06)
+- [x] 8.1 Rewrite README accurately around the implemented JavaScript/PostgreSQL stack (done 2026-10-08)
+- [x] 8.2 Document backend, web and mobile setup commands (done 2026-10-08)
+- [x] 8.3 Document environment variables per app, including reserved/unused pooled example (done 2026-10-08)
+- [x] 8.4 Document existing DB-only Compose services, migrations and optional one-time test seed; Docker packaging remains last (done 2026-10-08)
+- [x] 8.5 Document mobile setup against Render and EAS preview environment (done 2026-10-08)
+- [x] 8.6 Add generated OpenAPI contract and public Swagger UI at /api/docs/; route tests and browser render pass (done 2026-10-08)
+- [x] 8.7 Add API examples, schemas, response wrappers, filters and actual error codes (done 2026-10-08)
+- [x] 8.8 Update ER diagram and export SVG/PNG matching the Prisma schema (done 2026-10-08)
 - [ ] 8.9 Add architecture diagram + screenshots (web + mobile) to README (added 2026-10-06)
-- [ ] 8.10 Prepare short "design decisions" notes for the review session (why Postgres/Prisma, 404 vs 403, JWT revocation, ownership via project join, rate limiting) (added 2026-10-06)
+- [x] 8.10 Add docs/DESIGN_DECISIONS.md covering architecture, security, dates and delivery limits (done 2026-10-08)
+
+Phase 8 checkpoint (2026-10-08): architecture diagram and actual web/Swagger screenshots added. Task 8.9 still needs native Android screenshots after APK installation. Documentation route changes stay on dev until a deployment merge is requested.
+
+Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, npm 10 clean-install dry run, and 10 docs/middleware tests pass. Headless Chrome verified reviewer login, dashboard/projects and all 16 Swagger operations. Full database integration tests were not rerun; the docs changes require no schema/data changes.
 
 ---
 
@@ -197,6 +201,8 @@ Phase 7 API smoke verification (2026-10-08): register/login, authenticated me, p
 
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
+
+- [ ] D13 — Map malformed/oversized JSON and disallowed CORS origins to deliberate client error responses; current handler maps them to INTERNAL. Docs describe current behavior (added 2026-10-08).
 
 - [x] D12 — Reproduce Render's remaining @emnapi 1.11.3 lockfile failure with npm 10 and regenerate the lockfile using that version; npm 10 clean-install dry run, lint, and five middleware tests pass (done 2026-10-08).
 

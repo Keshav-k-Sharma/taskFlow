@@ -14,6 +14,7 @@ const authRoutes = require("./routes/authRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const docsRoutes = require("./routes/docsRoutes");
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/docs", docsRoutes);
 
 // 404 + central error handler (must be last)
 app.use(notFound);
