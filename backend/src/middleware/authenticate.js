@@ -1,4 +1,3 @@
-const jwt = require("jsonwebtoken");
 const prisma = require("../db/prisma");
 const AppError = require("../utils/AppError");
 const { verifyToken } = require("../utils/token");

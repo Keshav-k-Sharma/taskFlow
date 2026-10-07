@@ -1,10 +1,10 @@
-# TASK.md — TaskFlow Work Tracker
+﻿# TASK.md — TaskFlow Work Tracker
 
 > Check this file before starting any work. If a task isn't listed, add it with a one-line description and today's date.
 > Mark tasks `[x]` immediately after finishing and add the completion date.
 > Architecture and decisions: `PLANNING.md`. Rules for agents: `AGENTS.md`.
 > Format: `- [ ] ID — description (added YYYY-MM-DD)` → `- [x] ID — description (done YYYY-MM-DD)`
-> Last updated: 2026-10-06
+> Last updated: 2026-10-07
 
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
@@ -82,17 +82,17 @@
 ---
 
 ## Phase 4 — Backend Tests 🔴/🟡
-- [ ] 4.1 Install Jest + Supertest; `npm test` script; test DB setup/teardown (added 2026-10-06)
-- [ ] 4.2 Auth tests: register OK / duplicate email 409 / invalid email 400 / short password 400 (added 2026-10-06)
-- [ ] 4.3 Auth tests: login OK / wrong password 401 / unknown email 401 (same message) (added 2026-10-06)
-- [ ] 4.4 Auth tests: `/me` without token 401, expired token `TOKEN_EXPIRED`, revoked token after logout (added 2026-10-06)
-- [ ] 4.5 Rate-limit test: N+1 login attempts → 429 (added 2026-10-06)
-- [ ] 4.6 Project CRUD tests (expected, edge: empty name / bad dates, failure: bad UUID) (added 2026-10-06)
-- [ ] 4.7 Task CRUD tests (expected, edge: no due date, failure: invalid enum) (added 2026-10-06)
-- [ ] 4.8 **Authorization tests:** user B gets 404 on user A's project/task for GET/PUT/DELETE; B can't create task in A's project (added 2026-10-06)
-- [ ] 4.9 Filter/search tests for projects and tasks (added 2026-10-06)
-- [ ] 4.10 Dashboard test: counts correct and scoped per user (added 2026-10-06)
-- [ ] 4.11 Response-shape test: no `passwordHash` in any response (added 2026-10-06)
+- [x] 4.1 Install Jest + Supertest; `npm test` script; test DB setup/teardown (done 2026-10-07)
+- [x] 4.2 Auth tests: register OK / duplicate email 409 / invalid email 400 / short password 400 (done 2026-10-07)
+- [x] 4.3 Auth tests: login OK / wrong password 401 / unknown email 401 (same message) (done 2026-10-07)
+- [x] 4.4 Auth tests: `/me` without token 401, expired token `TOKEN_EXPIRED`, revoked token after logout (done 2026-10-07)
+- [x] 4.5 Rate-limit test: N+1 login attempts → 429 (done 2026-10-07)
+- [x] 4.6 Project CRUD tests (expected, edge: empty name / bad dates, failure: bad UUID) (done 2026-10-07)
+- [x] 4.7 Task CRUD tests (expected, edge: no due date, failure: invalid enum) (done 2026-10-07)
+- [x] 4.8 **Authorization tests:** user B gets 404 on user A's project/task for GET/PUT/DELETE; B can't create task in A's project (done 2026-10-07)
+- [x] 4.9 Filter/search tests for projects and tasks (done 2026-10-07)
+- [x] 4.10 Dashboard test: counts correct and scoped per user (done 2026-10-07)
+- [x] 4.11 Response-shape test: no `passwordHash` in any response (done 2026-10-07)
 
 ---
 
@@ -189,6 +189,11 @@
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D5 — Fix Zod 4 validation errors and Express 5 parsed-query assignment; add middleware regression tests (done 2026-10-07).
+- [x] D6 — Replace ESM-only UUID token import with Node crypto.randomUUID for CommonJS compatibility (done 2026-10-07).
+- [x] D7 — Phase 4 verified: 53 tests across six suites passed against the current database with explicit user authorization; backend lint passed. Dedicated database guard restored afterward (done 2026-10-07).
+- [ ] D8 — Reconcile strict input schemas and calendar-date validation with AGENTS.md; current schemas strip unknown fields and only regex-check dates (added 2026-10-07).
+
 - [ ] D1 — `authMiddleware` returns 500 on JWT verification failure; must be 401 (covered by 2.10) (added 2026-10-06)
 - [ ] D2 — `register` accepts `role` from request body → privilege escalation (covered by 2.7) (added 2026-10-06)
 - [ ] D3 — `GET /projects` and `GET /tasks` return all users' data → authorization hole (covered by 3.2, 3.9) (added 2026-10-06)
@@ -200,3 +205,5 @@
 > Move finished items here with the completion date if this file gets long.
 
 _(empty)_
+
+

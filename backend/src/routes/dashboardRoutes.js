@@ -7,3 +7,4 @@ const router = Router();
 router.get("/", authenticate, getDashboard);
 
 module.exports = router;
+

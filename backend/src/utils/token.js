@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { v4: uuidv4 } = require("uuid");
+const { randomUUID } = require("node:crypto");
 const env = require("../config/env");
 
 /**
@@ -10,7 +10,7 @@ const env = require("../config/env");
  * @returns {{ token: string, jti: string }} The signed token and its jti.
  */
 function signToken(user) {
-  const jti = uuidv4();
+  const jti = randomUUID();
   const token = jwt.sign({ sub: user.id, jti }, env.JWT_SECRET, {
     expiresIn: env.JWT_EXPIRES_IN,
   });

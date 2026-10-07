@@ -15,12 +15,18 @@ function validate(schemas) {
     for (const [key, schema] of Object.entries(schemas)) {
       const result = schema.safeParse(req[key]);
       if (!result.success) {
-        result.error.errors.forEach((e) => {
+        result.error.issues.forEach((e) => {
           errors.push({ field: e.path.join("."), message: e.message });
         });
       } else {
         // Replace with the parsed (coerced/trimmed) value
-        req[key] = result.data;
+        // Reason: Express 5 exposes query through a getter without a setter.
+        Object.defineProperty(req, key, {
+          value: result.data,
+          writable: true,
+          configurable: true,
+          enumerable: true,
+        });
       }
     }
 

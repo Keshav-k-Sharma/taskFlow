@@ -7,7 +7,6 @@ const logger = require("../config/logger");
  *
  * @type {import('express').ErrorRequestHandler}
  */
-// eslint-disable-next-line no-unused-vars
 function errorHandler(err, req, res, _next) {
   // Operational errors: AppError instances
   if (err.isOperational) {

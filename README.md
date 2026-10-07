@@ -1,4 +1,4 @@
-# 🚀 TaskFlow
+﻿# 🚀 TaskFlow
 
 **A streamlined, role-based project management platform for secure task tracking, team management, and real-time analytics.**
 
@@ -345,3 +345,32 @@ Ensure your `NODE_ENV` is set to `production` in the backend's `.env` file for o
 
 
 
+
+## Backend test suite (2026-10-07)
+
+The migrated backend uses Jest and Supertest with a separate PostgreSQL database.
+From the repository root, start only the test database:
+
+```powershell
+docker compose up -d db_test
+cd backend
+$env:DATABASE_URL = 'postgresql://user:password@localhost:5433/taskflow_test'
+npx prisma migrate deploy
+npm test
+npm run lint
+```
+
+Tests select `TEST_DATABASE_URL` independently of the development `.env`.
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `TEST_DATABASE_URL` | `postgresql://user:password@localhost:5433/taskflow_test` | Dedicated disposable PostgreSQL test database; name must end in `_test`. |
+
+Do not point tests at development or production data. Tests delete their fixture data.
+Without PostgreSQL, run database-independent checks with
+`npm test -- --testPathPatterns middleware tokenExpiry`.
+The integration suite covers auth, projects, tasks, ownership, filters, and dashboard counts.
+The web migration and mobile app remain tracked in TASK.md.
+
+
+Phase 4 verification (2026-10-07): 53 tests across six suites passed; backend lint passed. This run used the current Neon database with explicit user authorization because it contained no production data. The temporary exception was removed afterward; normal test runs still require a dedicated test database.
