@@ -1,96 +1,54 @@
-const Project = require("../models/project");
+const projectService = require("../services/project.service");
 
-const getAllProjects = async (req, res) => {
-    try {
-        const projects = await Project.find()
-        .populate("members.member", "name email")
-        .populate("createdBy", "name");
+/**
+ * GET /api/projects
+ * @type {import('express').RequestHandler}
+ */
+async function listProjects(req, res) {
+  const projects = await projectService.listProjects(req.user.id, req.query);
+  res.json({ projects });
+}
 
-        res.status(200).json(projects);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+/**
+ * GET /api/projects/:id
+ * @type {import('express').RequestHandler}
+ */
+async function getProject(req, res) {
+  const project = await projectService.getProject(req.params.id, req.user.id);
+  res.json({ project });
+}
+
+/**
+ * POST /api/projects
+ * @type {import('express').RequestHandler}
+ */
+async function createProject(req, res) {
+  const project = await projectService.createProject(req.user.id, req.body);
+  res.status(201).json({ project });
+}
+
+/**
+ * PUT /api/projects/:id
+ * @type {import('express').RequestHandler}
+ */
+async function updateProject(req, res) {
+  const project = await projectService.updateProject(req.params.id, req.user.id, req.body);
+  res.json({ project });
+}
+
+/**
+ * DELETE /api/projects/:id
+ * @type {import('express').RequestHandler}
+ */
+async function deleteProject(req, res) {
+  await projectService.deleteProject(req.params.id, req.user.id);
+  res.status(204).send();
+}
+
+module.exports = {
+  listProjects,
+  getProject,
+  createProject,
+  updateProject,
+  deleteProject,
 };
-
-const createProject = async (req, res) => {
-    try {
-        const { name, description, deadline } = req.body;
-        const project = await Project.create({
-            name,
-            description,
-            deadline,
-            createdBy: req.user._id,
-        });
-        res.status(201).json(project);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const addMemberToProject = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { memberId, position } = req.body;
-        const updated = await Project.findByIdAndUpdate(
-            id,
-            { $push: { members: { member: memberId, position: position || "Unassigned" } } },
-            { new: true }
-        ).populate("members.member", "name email");
-        if (!updated) return res.status(404).json({ message: "Project not found" });
-        res.status(200).json(updated);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const updateProjectStatus = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { status } = req.body;
-        const updated = await Project.findByIdAndUpdate(
-            id,
-            { status },
-            { new: true }
-        );
-        if (!updated) return res.status(404).json({ message: "Project not found" });
-        res.status(200).json(updated);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const removeMemberFromProject = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { memberId } = req.body;
-    
-        const updated = await Project.findByIdAndUpdate(
-            id,
-            { $pull: { members: { _id: memberId } } },
-            { new: true }
-        ).populate("members.member", "name email");
-        if (!updated) return res.status(404).json({ message: "Project not found" });
-        res.status(200).json(updated);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const updateMemberPosition = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { entryId, position } = req.body;
-        const updated = await Project.findOneAndUpdate(
-            { _id: id, "members._id": entryId },
-            { $set: { "members.$.position": position } },
-            { new: true }
-        ).populate("members.member", "name email");
-        if (!updated) return res.status(404).json({ message: "Project not found" });
-        res.status(200).json(updated);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-
-module.exports = { getAllProjects, createProject, addMemberToProject, updateProjectStatus ,removeMemberFromProject,updateMemberPosition};

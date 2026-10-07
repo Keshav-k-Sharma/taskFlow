@@ -1,45 +1,48 @@
-const Task = require("../models/task");
+const taskService = require("../services/task.service");
 
-const getAlltasks = async (req, res) => {
-    try {
-        const tasks = await Task.find()
-            .populate("assignedTo", "name email")
-            .populate("project", "name");
-        res.status(200).json(tasks);
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
+/**
+ * GET /api/tasks
+ * @type {import('express').RequestHandler}
+ */
+async function listTasks(req, res) {
+  const tasks = await taskService.listTasks(req.user.id, req.query);
+  res.json({ tasks });
+}
 
-const CreateTask = async (req, res) => {
-    try {
-        const { title, description, assignedTo, deadline, status } = req.body;
-        const newtask = await Task.create({
-            title, description, assignedTo, deadline, status,
-            createdBy: req.user._id
-        });
-        res.status(201).json(newtask);
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
+/**
+ * GET /api/tasks/:id
+ * @type {import('express').RequestHandler}
+ */
+async function getTask(req, res) {
+  const task = await taskService.getTask(req.params.id, req.user.id);
+  res.json({ task });
+}
 
-const UpdateStatus = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { status } = req.body;
-        const updatedtask = await Task.findByIdAndUpdate(
-            id,
-            { status },
-            { new: true }
-        );
-        if (!updatedtask) {
-            return res.status(404).json({ message: "Task not found" });
-        }
-        res.status(200).json(updatedtask);
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
+/**
+ * POST /api/tasks
+ * @type {import('express').RequestHandler}
+ */
+async function createTask(req, res) {
+  const task = await taskService.createTask(req.user.id, req.body);
+  res.status(201).json({ task });
+}
 
-module.exports = { CreateTask, UpdateStatus, getAlltasks };
+/**
+ * PUT /api/tasks/:id
+ * @type {import('express').RequestHandler}
+ */
+async function updateTask(req, res) {
+  const task = await taskService.updateTask(req.params.id, req.user.id, req.body);
+  res.json({ task });
+}
+
+/**
+ * DELETE /api/tasks/:id
+ * @type {import('express').RequestHandler}
+ */
+async function deleteTask(req, res) {
+  await taskService.deleteTask(req.params.id, req.user.id);
+  res.status(204).send();
+}
+
+module.exports = { listTasks, getTask, createTask, updateTask, deleteTask };
