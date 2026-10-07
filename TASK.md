@@ -194,6 +194,8 @@
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D12 — Reproduce Render's remaining @emnapi 1.11.3 lockfile failure with npm 10 and regenerate the lockfile using that version; npm 10 clean-install dry run, lint, and five middleware tests pass (done 2026-10-08).
+
 - [x] D11 — Repair incomplete backend npm lockfile (@emnapi nested dependencies) causing Render npm ci EUSAGE; clean-install dry run and backend lint pass (done 2026-10-08).
 
 - [ ] D10 — Existing Vercel web (`https://taskflow26.vercel.app`) points to Render (`https://taskflow-1sh2.onrender.com`). Render health returns 200, but `/api/auth/me` returns 404 instead of the current API's 401; deploy the current backend before building the mobile APK (verified 2026-10-08).
