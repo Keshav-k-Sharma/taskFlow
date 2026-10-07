@@ -16,8 +16,8 @@ Copy-Item .env.example .env
 npm start
 ```
 
-| Variable | Example | Purpose |
-| --- | --- | --- |
+| Variable              | Example                    | Purpose                                                                |
+| --------------------- | -------------------------- | ---------------------------------------------------------------------- |
 | `EXPO_PUBLIC_API_URL` | `http://10.0.2.2:5000/api` | Public API base embedded in the mobile bundle. Never put secrets here. |
 
 For an Android emulator, `10.0.2.2` reaches the host computer. For a physical
@@ -89,7 +89,14 @@ See the official [APK build guide](https://docs.expo.dev/build-reference/apk/) a
 
 Android preview build submitted on 2026-10-08:
 [EAS build status](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/5188b0a3-d75f-4128-973d-dd5a6f5f71cf).
-The build is queued; an installable APK has not yet been verified.
+This original build failed during dependency installation. Phase 9 repaired the
+lockfile and verified a full npm 10 clean install.
+An installable APK has not yet been verified.
+
+Replacement build submitted on 2026-10-08 after 30 mobile tests, lint and Android
+bundle export passed:
+[Latest EAS build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/44704206-7eda-4ff1-9173-33cb1638f8b3).
+Its latest observed status is IN_QUEUE. Use this page instead of the failed build.
 
 ## Device acceptance checklist
 

@@ -176,7 +176,7 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 - [ ] 9.1 Manual security checklist: other user's IDs → 404 on web **and** mobile; no token → 401; password never in responses; SQLi strings in search; oversized/invalid payloads (added 2026-10-06)
 - [ ] 9.2 Manual UX checklist: validation errors, loading, empty states, expired-session message, airplane-mode message (added 2026-10-06)
 - [ ] 9.3 Cross-platform sync check: change on one platform appears on the other after refresh / pull-to-refresh (added 2026-10-06)
-- [ ] 9.4 Repo is public and viewable without login; no secrets committed (scan history) (added 2026-10-06)
+- [x] 9.4 Verify public GitHub access; targeted history credential-pattern scan of 693 reachable objects finds no matches or committed environment files (done 2026-10-08)
 - [ ] 9.5 Record the **5-minute demo**: same account on web + mobile → create task on one → show on the other (+ brief security/expiry/offline demo if time) (added 2026-10-06)
 - [ ] 9.6 Assemble submission: repo link, ER diagram, API docs, README, deployment URLs, APK/Expo link, recording (added 2026-10-06)
 
@@ -184,6 +184,11 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 
 ## Phase 5 browser checks (Phase 9 follow-up)
 - [ ] 9.7 Verify keyboard focus/Escape in dialogs, mobile navigation at 360px, responsive card grids, and create/edit/delete flows against the live API (added 2026-10-07).
+
+- [x] 9.7a Local production web/browser QA with actual API/Neon fixtures: CRUD, modal focus/Escape/restoration, 360px navigation, empty states, offline retry and session clearing pass; deployed recheck remains in 9.7 (done 2026-10-08).
+- [x] 9.6a Prepare docs/SUBMISSION.md, docs/QA_REPORT.md and five-minute docs/DEMO_SCRIPT.md; verified APK/device/recording links remain pending (done 2026-10-08).
+
+Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mobile tests and all package lint checks pass; web production build, Android bundle export and OpenAPI validation pass. Actual local API/Neon ownership checks and browser CRUD/keyboard/360px/offline/session checks pass. Full backend DB suite still needs a dedicated test database. Fixes remain on dev and await deployment. Original APK failed dependency installation; repaired mobile lockfile passes full npm 10 clean install, and replacement EAS build 44704206-7eda-4ff1-9173-33cb1638f8b3 is queued. Android/emulator QA, screenshots, cross-platform sync and recording remain pending.
 
 ## Bonus 🟢 (in suggested order)
 - [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` *(Assigned to User to learn and do manually)* (added 2026-10-06)
@@ -202,7 +207,10 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
-- [ ] D13 — Map malformed/oversized JSON and disallowed CORS origins to deliberate client error responses; current handler maps them to INTERNAL. Docs describe current behavior (added 2026-10-08).
+- [x] D13 — Malformed JSON maps to 400 VALIDATION_ERROR, oversized JSON to 413 PAYLOAD_TOO_LARGE and disallowed origins to 403 CORS_NOT_ALLOWED; tests and contract updated (done 2026-10-08).
+
+- [x] D14 — Repair mobile ajv/@emnapi lockfile mismatch after failed EAS dependency install; full npm 10 clean install succeeds (done 2026-10-08).
+- [x] D15 — Fix web task creation placeholder being treated as edit mode and restore dialog opener focus; regression tests and actual browser CRUD/keyboard checks pass (done 2026-10-08).
 
 - [x] D12 — Reproduce Render's remaining @emnapi 1.11.3 lockfile failure with npm 10 and regenerate the lockfile using that version; npm 10 clean-install dry run, lint, and five middleware tests pass (done 2026-10-08).
 
@@ -213,7 +221,7 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 - [x] D5 — Fix Zod 4 validation errors and Express 5 parsed-query assignment; add middleware regression tests (done 2026-10-07).
 - [x] D6 — Replace ESM-only UUID token import with Node crypto.randomUUID for CommonJS compatibility (done 2026-10-07).
 - [x] D7 — Phase 4 verified: 53 tests across six suites passed against the current database with explicit user authorization; backend lint passed. Dedicated database guard restored afterward (done 2026-10-07).
-- [ ] D8 — Reconcile strict input schemas and calendar-date validation with AGENTS.md; current schemas strip unknown fields and only regex-check dates (added 2026-10-07).
+- [x] D8 — Apply strict body/query/param schemas and actual calendar-date validation; test leap dates, invalid dates and mass assignment, and verify web/mobile payload compatibility (done 2026-10-08).
 
 - [ ] D1 — `authMiddleware` returns 500 on JWT verification failure; must be 401 (covered by 2.10) (added 2026-10-06)
 - [ ] D2 — `register` accepts `role` from request body → privilege escalation (covered by 2.7) (added 2026-10-06)

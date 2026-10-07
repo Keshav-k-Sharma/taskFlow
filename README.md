@@ -1,4 +1,4 @@
-﻿# TaskFlow
+# TaskFlow
 
 TaskFlow is a project and task manager with a Next.js web app and an Expo Android
 app. Both use one Express API and one PostgreSQL database. Each user can access
@@ -10,13 +10,14 @@ only their own projects and the tasks within them.
 | API                            | https://taskflow-1sh2.onrender.com/api                                                                                   |
 | API reference                  | [docs/API.md](docs/API.md)                                                                                               |
 | OpenAPI contract               | [docs/openapi.yaml](docs/openapi.yaml)                                                                                   |
-| Android build                  | [EAS build page](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/5188b0a3-d75f-4128-973d-dd5a6f5f71cf) |
+| Android build                  | [EAS build page](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/44704206-7eda-4ff1-9173-33cb1638f8b3) |
 | Mobile setup and device checks | [docs/MOBILE.md](docs/MOBILE.md)                                                                                         |
 | Database model                 | [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md)                                                                                 |
 | Review notes                   | [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md)                                                                     |
 
-Deployment checks passed on 2026-10-08. The Android build was last observed queued;
-an APK and physical/emulator testing have not yet been verified. See [TASK.md](TASK.md)
+Deployment checks passed on 2026-10-08. The initial Android build failed dependency
+installation; the lockfile is repaired and a replacement build is queued.
+An APK and physical/emulator testing have not yet been verified. See [TASK.md](TASK.md)
 for completion status. Swagger UI is available locally at /api/docs/ after setup;
 its deployment requires merging the Phase 8 changes from dev into main.
 
@@ -258,9 +259,9 @@ Web tokens are stored in localStorage, which is accessible to scripts: XSS would
 expose a token. Mobile tokens use SecureStore exclusively. JWT revocation is
 server-side, but other sessions stay valid until their own expiry/logout.
 
-Known work: unknown input fields are currently stripped rather than rejected,
-calendar-date checks are regex-based (D8), some malformed-body/CORS errors are
-mapped to INTERNAL, and rate limits use process-local memory. Lists are unpaginated.
+Strict schemas reject unknown request fields and impossible calendar dates.
+Malformed JSON returns 400, oversized JSON returns 413, and disallowed CORS
+origins return 403. Rate limits use process-local memory. Lists are unpaginated.
 See TASK.md rather than assuming every planned feature is finished.
 
 ## Screenshots and submission
@@ -271,3 +272,7 @@ See [screenshots and capture checklist](docs/SCREENSHOTS.md). Android screenshot
 and the five-minute cross-platform recording require the APK and device testing.
 The submission also needs the repo, deployment URLs, API docs, ER diagram and
 verified APK sharing link. No demo recording is available yet.
+
+See [QA evidence](docs/QA_REPORT.md), [submission checklist](docs/SUBMISSION.md),
+and [five-minute demo script](docs/DEMO_SCRIPT.md). Phase 9 fixes are currently on
+dev; the deployed main branch does not yet include them.
