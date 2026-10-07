@@ -31,6 +31,9 @@ and date-picker dependencies.
 
 ## Deployed backend
 
+The deployed backend is `https://taskflow-1sh2.onrender.com/api`.
+The EAS `preview` environment is configured with this URL (2026-10-08).
+
 Set `EXPO_PUBLIC_API_URL=https://your-backend.example/api` in `mobile/.env` before
 starting Metro or building an APK. Use the same backend URL configured for web.
 For a cloud EAS build, configure the variable in the Expo project's EAS
@@ -83,3 +86,7 @@ link in the README once the build succeeds; no distribution link is available ye
 
 See the official [APK build guide](https://docs.expo.dev/build-reference/apk/) and
 [Expo Router authentication guide](https://docs.expo.dev/router/advanced/authentication/).
+
+Android preview build submitted on 2026-10-08:
+[EAS build status](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/5188b0a3-d75f-4128-973d-dd5a6f5f71cf).
+The build is queued; an installable APK has not yet been verified.

@@ -142,7 +142,7 @@
 
 ## Phase 7 — Deployment 🔴
 - [ ] 7.1 Create a **Neon** project and database; copy the connection string into `DATABASE_URL`; run `prisma migrate deploy` (added 2026-10-06)
-- [ ] 7.2 Deploy backend (Render/Railway/Vercel); set env vars (`DATABASE_URL`, `JWT_SECRET`, `CORS_ORIGINS`, …) (added 2026-10-06)
+- [x] 7.2 Deploy backend on Render; environment configured and live health/protected endpoint checks passed (done 2026-10-08)
 - [ ] 7.3 Point existing Vercel web project at the new backend URL (`NEXT_PUBLIC_API_URL`) (added 2026-10-06)
 - [ ] 7.4 Add deployed web origin to `CORS_ORIGINS`; verify preflight (added 2026-10-06)
 - [ ] 7.5 Smoke test the deployed stack end-to-end (register on web → login on mobile) (added 2026-10-06)
@@ -198,7 +198,7 @@
 
 - [x] D11 — Repair incomplete backend npm lockfile (@emnapi nested dependencies) causing Render npm ci EUSAGE; clean-install dry run and backend lint pass (done 2026-10-08).
 
-- [ ] D10 — Existing Vercel web (`https://taskflow26.vercel.app`) points to Render (`https://taskflow-1sh2.onrender.com`). Render health returns 200, but `/api/auth/me` returns 404 instead of the current API's 401; deploy the current backend before building the mobile APK (verified 2026-10-08).
+- [x] D10 — Deploy current API to Render (`https://taskflow-1sh2.onrender.com`); health returns 200 and `/api/auth/me` and `/api/dashboard` return expected 401 without authentication (done 2026-10-08).
 
 - [x] D5 — Fix Zod 4 validation errors and Express 5 parsed-query assignment; add middleware regression tests (done 2026-10-07).
 - [x] D6 — Replace ESM-only UUID token import with Node crypto.randomUUID for CommonJS compatibility (done 2026-10-07).
