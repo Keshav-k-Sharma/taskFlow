@@ -3,6 +3,11 @@
 **A streamlined, role-based project management platform for secure task tracking, team management, and real-time analytics.**
 
 [Live Demo](https://taskflow26.vercel.app)
+
+Deployed API: `https://taskflow-1sh2.onrender.com/api`.
+The reviewer demo account is `reviewer@taskflow.example`, with a fictional project
+and task. Obtain the demo password from the project author; this account is for
+test data only. API smoke checks pass; cross-platform device checks remain pending.
 <!-- TODO: Add documentation link if external documentation exists -->
 
 </div>

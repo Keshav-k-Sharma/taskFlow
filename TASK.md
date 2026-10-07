@@ -143,12 +143,14 @@ Phase 6 checkpoint (2026-10-08): EAS build `5188b0a3-d75f-4128-973d-dd5a6f5f71cf
 ---
 
 ## Phase 7 — Deployment 🔴
-- [ ] 7.1 Create a **Neon** project and database; copy the connection string into `DATABASE_URL`; run `prisma migrate deploy` (added 2026-10-06)
+- [x] 7.1 Neon PostgreSQL configured; Prisma migration status confirms both committed migrations applied (done 2026-10-08)
 - [x] 7.2 Deploy backend on Render; environment configured and live health/protected endpoint checks passed (done 2026-10-08)
-- [ ] 7.3 Point existing Vercel web project at the new backend URL (`NEXT_PUBLIC_API_URL`) (added 2026-10-06)
-- [ ] 7.4 Add deployed web origin to `CORS_ORIGINS`; verify preflight (added 2026-10-06)
+- [x] 7.3 Verify deployed Vercel login bundle points to the Render backend (done 2026-10-08)
+- [x] 7.4 Configure deployed web origin in CORS_ORIGINS; preflight returns 204 with matching allow-origin (done 2026-10-08)
 - [ ] 7.5 Smoke test the deployed stack end-to-end (register on web → login on mobile) (added 2026-10-06)
-- [ ] 7.6 Create seeded demo account (**test data only**) for reviewers (added 2026-10-06)
+- [x] 7.6 Create reviewer@taskflow.example demo account, fictional project and task through the deployed API (done 2026-10-08)
+
+Phase 7 API smoke verification (2026-10-08): register/login, authenticated me, projects/tasks, dashboard, logout and revoked-token rejection pass. Task 7.5 still requires actual web-to-mobile device verification after the queued APK is available.
 
 ---
 
