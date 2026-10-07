@@ -1,4 +1,4 @@
-﻿# TASK.md — TaskFlow Work Tracker
+# TASK.md — TaskFlow Work Tracker
 
 > Check this file before starting any work. If a task isn't listed, add it with a one-line description and today's date.
 > Mark tasks `[x]` immediately after finishing and add the completion date.
@@ -97,22 +97,22 @@
 ---
 
 ## Phase 5 — Web Frontend (Next.js) 🔴
-- [ ] 5.1 Create `.env.example`; reconcile `NEXT_PUBLIC_API_URL` usage with README (added 2026-10-06)
-- [ ] 5.2 Build UI kit in `components/ui/`: Button, Input, Select, Modal, Spinner, Badge, EmptyState, Toast (Tailwind; replace inline styles) (added 2026-10-06)
-- [ ] 5.3 `lib/api.js`: base URL, auth header, **401 interceptor** → clear storage → `/login?expired=1` (added 2026-10-06)
-- [ ] 5.4 `AuthContext` / `useAuth` + route guard for protected pages (added 2026-10-06)
-- [ ] 5.5 Login & Register: `react-hook-form` + Zod, inline errors, loading state, server error display, "session expired" banner (added 2026-10-06)
-- [ ] 5.6 Logout: call `POST /auth/logout` then clear storage (added 2026-10-06)
-- [ ] 5.7 Dashboard: 5 stat cards (Total Projects, Total Tasks, Completed, Pending, Projects In Progress) from `GET /dashboard` (added 2026-10-06)
-- [ ] 5.8 Projects page: list as cards, search by name, status filter, create/edit modal, delete confirm (added 2026-10-06)
-- [ ] 5.9 Project detail `/projects/[id]`: project info + task list (added 2026-10-06)
-- [ ] 5.10 Task create/edit form (name, description, priority, status, due date), delete, **mark complete** toggle (added 2026-10-06)
-- [ ] 5.11 Task search + status filter + priority filter (server-side query params, debounced search) (added 2026-10-06)
-- [ ] 5.12 Tasks page (all tasks across projects) with the same filters (added 2026-10-06)
-- [ ] 5.13 Loading skeletons, empty states, error banners on every data view (added 2026-10-06)
-- [ ] 5.14 Responsive pass: navbar collapses to a menu on small screens; grids adapt (added 2026-10-06)
-- [ ] 5.15 Remove Members page/components and nav link (added 2026-10-06)
-- [ ] 5.16 Update navbar/branding for new nav: Dashboard · Projects · Tasks (added 2026-10-06)
+- [x] 5.1 Create `.env.example`; reconcile `NEXT_PUBLIC_API_URL` usage with README (done 2026-10-07)
+- [x] 5.2 Build UI kit in `components/ui/`: Button, Input, Select, Modal, Spinner, Badge, EmptyState, Toast (Tailwind; replace inline styles) (done 2026-10-07)
+- [x] 5.3 `lib/api.js`: base URL, auth header, **401 interceptor** → clear storage → `/login?expired=1` (done 2026-10-07)
+- [x] 5.4 `AuthContext` / `useAuth` + route guard for protected pages (done 2026-10-07)
+- [x] 5.5 Login & Register: `react-hook-form` + Zod, inline errors, loading state, server error display, "session expired" banner (done 2026-10-07)
+- [x] 5.6 Logout: call `POST /auth/logout` then clear storage (done 2026-10-07)
+- [x] 5.7 Dashboard: 5 stat cards (Total Projects, Total Tasks, Completed, Pending, Projects In Progress) from `GET /dashboard` (done 2026-10-07)
+- [x] 5.8 Projects page: list as cards, search by name, status filter, create/edit modal, delete confirm (done 2026-10-07)
+- [x] 5.9 Project detail `/projects/[id]`: project info + task list (done 2026-10-07)
+- [x] 5.10 Task create/edit form (name, description, priority, status, due date), delete, **mark complete** toggle (done 2026-10-07)
+- [x] 5.11 Task search + status filter + priority filter (server-side query params, debounced search) (done 2026-10-07)
+- [x] 5.12 Tasks page (all tasks across projects) with the same filters (done 2026-10-07)
+- [x] 5.13 Loading skeletons, empty states, error banners on every data view (done 2026-10-07)
+- [x] 5.14 Responsive pass: navbar collapses to a menu on small screens; grids adapt (done 2026-10-07)
+- [x] 5.15 Remove Members page/components and nav link (done 2026-10-07)
+- [x] 5.16 Update navbar/branding for new nav: Dashboard · Projects · Tasks (done 2026-10-07)
 
 ---
 
@@ -172,6 +172,9 @@
 
 ---
 
+## Phase 5 browser checks (Phase 9 follow-up)
+- [ ] 9.7 Verify keyboard focus/Escape in dialogs, mobile navigation at 360px, responsive card grids, and create/edit/delete flows against the live API (added 2026-10-07).
+
 ## Bonus 🟢 (in suggested order)
 - [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` *(Assigned to User to learn and do manually)* (added 2026-10-06)
 - [ ] B2 — Integration tests complete (covered by Phase 4) + unit tests for services/utils (added 2026-10-06)
@@ -197,7 +200,7 @@
 - [ ] D1 — `authMiddleware` returns 500 on JWT verification failure; must be 401 (covered by 2.10) (added 2026-10-06)
 - [ ] D2 — `register` accepts `role` from request body → privilege escalation (covered by 2.7) (added 2026-10-06)
 - [ ] D3 — `GET /projects` and `GET /tasks` return all users' data → authorization hole (covered by 3.2, 3.9) (added 2026-10-06)
-- [ ] D4 — README documents `NEXT_PUBLIC_API_BASE_URL`, code uses `NEXT_PUBLIC_API_URL` (covered by 5.1, 8.1) (added 2026-10-06)
+- [x] D4 — Web API URL reconciled with README and tracked .env.example (done 2026-10-07).
 
 ---
 
@@ -207,3 +210,5 @@
 _(empty)_
 
 
+
+Phase 5 automated verification (2026-10-07): 22 frontend tests across eight suites, lint, and production build passed. Browser/device checks remain in Phase 9.

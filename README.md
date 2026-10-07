@@ -1,8 +1,8 @@
-﻿# 🚀 TaskFlow
+# 🚀 TaskFlow
 
 **A streamlined, role-based project management platform for secure task tracking, team management, and real-time analytics.**
 
-[Live Demo](https://task-flow-gmi4.vercel.app) 
+[Live Demo](https://task-flow-gmi4.vercel.app)
 <!-- TODO: Add documentation link if external documentation exists -->
 
 </div>
@@ -192,7 +192,7 @@ Follow these steps to get TaskFlow up and running on your local machine.
 
     *   **Frontend (`frontend/.env`):**
         ```ini
-        NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api # Must match your backend API URL
+        NEXT_PUBLIC_API_URL=http://localhost:5000/api # Must match your backend API URL
         # Add any other frontend specific environment variables
         ```
 
@@ -247,7 +247,7 @@ Both the frontend and backend applications rely on environment variables for sen
 
 |-------------------------|----------------------------------------------------|---------------------|----------|
 
-| `NEXT_PUBLIC_API_BASE_URL` | Base URL for the backend API calls.             | `http://localhost:5000/api` | Yes      |
+| `NEXT_PUBLIC_API_URL` | Base URL for the backend API calls.             | `http://localhost:5000/api` | Yes      |
 
 | `NEXT_PUBLIC_APP_NAME`     | Publicly exposed application name.                 | `TaskFlow`          | No       |
 
@@ -374,3 +374,31 @@ The web migration and mobile app remain tracked in TASK.md.
 
 
 Phase 4 verification (2026-10-07): 53 tests across six suites passed; backend lint passed. This run used the current Neon database with explicit user authorization because it contained no production data. The temporary exception was removed afterward; normal test runs still require a dedicated test database.
+
+## Web frontend (Phase 5)
+
+The migrated web app includes validated login/register forms, session guards,
+server-backed logout, five dashboard stats, project CRUD dialogs, project details,
+and task CRUD with server-side search/status/priority filters. Status and priority
+labels match the backend. The responsive dark UI uses Tailwind v4.
+
+```powershell
+cd frontend
+npm install
+Copy-Item .env.example .env.local
+npm run dev
+```
+
+Set `NEXT_PUBLIC_API_URL` to the backend API base, for example
+`http://localhost:5000/api` locally or `https://your-backend.example/api` when deployed.
+Restart Next.js after changing it. The client also accepts a base without `/api`.
+Backend `CORS_ORIGINS` must include the web origin (`http://localhost:3000` locally).
+
+The web stores access tokens in localStorage. This allows browser sessions to persist,
+but an XSS vulnerability could expose the token. Expired/rejected sessions clear local
+storage and redirect to login with a session-expired message; invalid login credentials
+remain on the form. Logout revokes the token on the server before clearing storage.
+
+Validation/form dependencies: react-hook-form, zod, @hookform/resolvers.
+Frontend verification: `npm test`, `npm run lint`, and `npm run build`.
+Tests use Jest, Testing Library, and jsdom with mocked API calls; they do not alter the database.
