@@ -194,6 +194,8 @@
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D11 — Repair incomplete backend npm lockfile (@emnapi nested dependencies) causing Render npm ci EUSAGE; clean-install dry run and backend lint pass (done 2026-10-08).
+
 - [ ] D10 — Existing Vercel web (`https://taskflow26.vercel.app`) points to Render (`https://taskflow-1sh2.onrender.com`). Render health returns 200, but `/api/auth/me` returns 404 instead of the current API's 401; deploy the current backend before building the mobile APK (verified 2026-10-08).
 
 - [x] D5 — Fix Zod 4 validation errors and Express 5 parsed-query assignment; add middleware regression tests (done 2026-10-07).
