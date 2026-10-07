@@ -402,3 +402,18 @@ remain on the form. Logout revokes the token on the server before clearing stora
 Validation/form dependencies: react-hook-form, zod, @hookform/resolvers.
 Frontend verification: `npm test`, `npm run lint`, and `npm run build`.
 Tests use Jest, Testing Library, and jsdom with mocked API calls; they do not alter the database.
+
+## Android mobile app (Phase 6 implementation)
+
+The Expo SDK 57 JavaScript app includes secure login/register, session expiry,
+five dashboard stats, project browsing/detail, task create/edit/delete, native due-date
+selection, completion and quick status/priority changes, server search/filter,
+pull-to-refresh, and an offline banner with retry. Tokens use expo-secure-store only.
+
+| Variable | Example | Purpose |
+| --- | --- | --- |
+| EXPO_PUBLIC_API_URL | http://10.0.2.2:5000/api | Shared backend API base for the emulator; use the computer LAN IP on a phone and HTTPS for deployment. |
+
+See [mobile setup, verification, and APK build instructions](docs/MOBILE.md).
+The implementation has 30 passing tests and an Android bundle export.
+Device verification and EAS APK build/distribution are still pending; no APK link exists yet.

@@ -4,7 +4,7 @@
 > Mark tasks `[x]` immediately after finishing and add the completion date.
 > Architecture and decisions: `PLANNING.md`. Rules for agents: `AGENTS.md`.
 > Format: `- [ ] ID — description (added YYYY-MM-DD)` → `- [x] ID — description (done YYYY-MM-DD)`
-> Last updated: 2026-10-07
+> Last updated: 2026-10-08
 
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
@@ -117,22 +117,23 @@
 ---
 
 ## Phase 6 — Mobile App (Expo / React Native, Android) 🔴
-- [ ] 6.1 `npx create-expo-app mobile`; set up `expo-router`, `.env.example` (`EXPO_PUBLIC_API_URL`) (added 2026-10-06)
-- [ ] 6.2 Install `expo-secure-store`, `axios`, `@react-native-community/netinfo`, `react-hook-form`, `zod` (added 2026-10-06)
-- [ ] 6.3 `src/storage/token.js`: get/set/clear token via **SecureStore only** (added 2026-10-06)
-- [ ] 6.4 `src/api/client.js`: axios instance, bearer header, 401 `TOKEN_EXPIRED` handler → clear token → navigate to login with message (added 2026-10-06)
-- [ ] 6.5 No-network handling: NetInfo banner + `ERR_NETWORK` mapping → "No internet connection" + Retry (added 2026-10-06)
-- [ ] 6.6 Auth context + startup flow (token → `/auth/me` → route) (added 2026-10-06)
-- [ ] 6.7 Screens: Login, Register (validation, loading, errors) (added 2026-10-06)
-- [ ] 6.8 Dashboard screen with 5 stats + pull-to-refresh (added 2026-10-06)
-- [ ] 6.9 Projects list screen (+ search/status filter optional) with pull-to-refresh (added 2026-10-06)
-- [ ] 6.10 Project detail screen: tasks under the project (added 2026-10-06)
-- [ ] 6.11 Task create/edit screen (name, description, priority, status, due date picker) (added 2026-10-06)
-- [ ] 6.12 Delete task (confirm), mark completed, quick change of status and priority (added 2026-10-06)
-- [ ] 6.13 Task search + filter by status and priority (added 2026-10-06)
-- [ ] 6.14 Logout (server call + clear SecureStore) (added 2026-10-06)
-- [ ] 6.15 Phone UX polish: safe areas, keyboard avoidance, touch target sizes, empty/loading states (added 2026-10-06)
+- [x] 6.1 `npx create-expo-app mobile`; set up `expo-router`, `.env.example` (`EXPO_PUBLIC_API_URL`) (done 2026-10-08)
+- [x] 6.2 Install `expo-secure-store`, `axios`, `@react-native-community/netinfo`, `react-hook-form`, `zod` (done 2026-10-08)
+- [x] 6.3 `src/storage/token.js`: get/set/clear token via **SecureStore only** (done 2026-10-08)
+- [x] 6.4 `src/api/client.js`: axios instance, bearer header, 401 `TOKEN_EXPIRED` handler → clear token → navigate to login with message (done 2026-10-08)
+- [x] 6.5 No-network handling: NetInfo banner + `ERR_NETWORK` mapping → "No internet connection" + Retry (done 2026-10-08)
+- [x] 6.6 Auth context + startup flow (token → `/auth/me` → route) (done 2026-10-08)
+- [x] 6.7 Screens: Login, Register (validation, loading, errors) (done 2026-10-08)
+- [x] 6.8 Dashboard screen with 5 stats + pull-to-refresh (done 2026-10-08)
+- [x] 6.9 Projects list screen (+ search/status filter optional) with pull-to-refresh (done 2026-10-08)
+- [x] 6.10 Project detail screen: tasks under the project (done 2026-10-08)
+- [x] 6.11 Task create/edit screen (name, description, priority, status, due date picker) (done 2026-10-08)
+- [x] 6.12 Delete task (confirm), mark completed, quick change of status and priority (done 2026-10-08)
+- [x] 6.13 Task search + filter by status and priority (done 2026-10-08)
+- [x] 6.14 Logout (server call + clear SecureStore) (done 2026-10-08)
+- [x] 6.15 Phone UX polish: safe areas, keyboard avoidance, touch target sizes, empty/loading states (done 2026-10-08)
 - [ ] 6.16 Test on Android emulator (`10.0.2.2`) **and** a physical device against the deployed backend (added 2026-10-06)
+- [x] 6.17a Configure eas.json preview profile for internal Android APK distribution (done 2026-10-08)
 - [ ] 6.17 Configure `eas.json` `preview` profile → build `.apk` (added 2026-10-06)
 - [ ] 6.18 Upload APK / publish Expo link; add to README (added 2026-10-06)
 
@@ -204,6 +205,8 @@
 
 ---
 
+- [ ] D9 — Mobile device verification and APK distribution require Android emulator/physical device, Expo/EAS login, and the deployed HTTPS backend; app implementation passes automated checks (added 2026-10-08).
+
 ## ✔️ Completed Log
 > Move finished items here with the completion date if this file gets long.
 
@@ -212,3 +215,5 @@ _(empty)_
 
 
 Phase 5 automated verification (2026-10-07): 22 frontend tests across eight suites, lint, and production build passed. Browser/device checks remain in Phase 9.
+
+Phase 6 implementation verification (2026-10-08): 30 mobile tests across nine suites passed; Android Metro export passed; Expo Doctor passed all 21 checks. Device testing, APK build, and sharing remain pending (6.16–6.18).
