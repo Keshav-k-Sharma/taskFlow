@@ -133,6 +133,7 @@
 - [x] 6.14 Logout (server call + clear SecureStore) (done 2026-10-08)
 - [x] 6.15 Phone UX polish: safe areas, keyboard avoidance, touch target sizes, empty/loading states (done 2026-10-08)
 - [ ] 6.16 Test on Android emulator (`10.0.2.2`) **and** a physical device against the deployed backend (added 2026-10-06)
+- [x] 6.17b Link mobile app to @keshavkss-team/taskflow (project df4037fe-88cc-4bb8-a5b9-399b0307991d); verify authenticated EAS access (done 2026-10-08)
 - [x] 6.17a Configure eas.json preview profile for internal Android APK distribution (done 2026-10-08)
 - [ ] 6.17 Configure `eas.json` `preview` profile → build `.apk` (added 2026-10-06)
 - [ ] 6.18 Upload APK / publish Expo link; add to README (added 2026-10-06)
@@ -192,6 +193,8 @@
 
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
+
+- [ ] D10 — Existing Vercel web (`https://taskflow26.vercel.app`) points to Render (`https://taskflow-1sh2.onrender.com`). Render health returns 200, but `/api/auth/me` returns 404 instead of the current API's 401; deploy the current backend before building the mobile APK (verified 2026-10-08).
 
 - [x] D5 — Fix Zod 4 validation errors and Express 5 parsed-query assignment; add middleware regression tests (done 2026-10-07).
 - [x] D6 — Replace ESM-only UUID token import with Node crypto.randomUUID for CommonJS compatibility (done 2026-10-07).
