@@ -31,9 +31,9 @@ separate CSRF/session decisions and is not silently implemented here.
 
 Routes wire middleware/controllers; controllers shape HTTP; services own database
 access and business rules. Zod validates bodies, queries and UUIDs. Prisma and
-database constraints provide a second boundary. Strict unknown-field rejection
-and real calendar-date validation are outstanding D8 work: current schemas strip
-unknown fields and check date patterns. Explain the current behavior accurately.
+database constraints provide a second boundary. Strict schemas reject unknown
+fields and validate real calendar dates, including leap years. Malformed JSON
+returns 400, oversized JSON 413, and disallowed CORS origins 403.
 
 Date inputs are calendar strings; response dates are UTC timestamps. Clients
 must preserve the intended calendar day when displaying/editing them.

@@ -19,15 +19,15 @@ token returns 401 `TOKEN_EXPIRED`.
 
 Projects belong to the authenticated user. Task ownership comes from their
 project. Missing or foreign resources both return 404. Do not submit `ownerId`,
-`id`, `createdAt`, `role`, or `passwordHash`. The current validators strip unknown
-fields and services whitelist writable fields; strict rejection is pending D8.
+`id`, `createdAt`, `role`, or `passwordHash`. Strict validators reject unknown
+body, query and parameter fields; services whitelist writable fields as well.
 
 Names are trimmed and limited to 150 characters; fullName is limited to 100.
 Emails are trimmed/lowercased. Registration passwords need at least 8 characters.
 Enum strings are case-sensitive. Date inputs use `YYYY-MM-DD` or null; response
 dates serialize as UTC date-time strings such as `2026-10-08T00:00:00.000Z`.
-Current input validation checks the date pattern; real calendar-date validation
-is pending D8. Create/update checks endDate >= startDate when both are supplied.
+Input validation rejects impossible calendar dates (including non-leap February 29).
+Create/update checks endDate >= startDate when both are supplied.
 
 Lists return all matches, newest first. Search is a case-insensitive substring of
 the name. Pagination and sorting parameters are not implemented. No matches
@@ -36,9 +36,9 @@ returns an empty array, including tasks filtered to an unavailable project.
 The global limit is 200 requests/minute/IP. Login and registration share an
 additional configurable limit, default 5 requests/15 minutes/IP. A 429 uses
 `RATE_LIMITED`; observe Retry-After and rate-limit headers before retrying.
-JSON request bodies are limited to 10 KB. Current malformed/oversized JSON and
-disallowed-origin errors can be mapped to `INTERNAL`; correcting that behavior
-is tracked for follow-up rather than advertised as a 400/413 contract.
+JSON request bodies are limited to 10 KB. Malformed JSON returns 400
+VALIDATION_ERROR; oversized bodies return 413 PAYLOAD_TOO_LARGE. A disallowed
+browser origin returns 403 CORS_NOT_ALLOWED (ownership failures still return 404).
 
 ## Endpoints
 
@@ -228,6 +228,8 @@ stack traces; production unexpected errors use a generic message.
 | 409  | EMAIL_TAKEN         | Duplicate email                                    |
 | 429  | RATE_LIMITED        | Per-IP request limit                               |
 | 500  | INTERNAL            | Unexpected server failure                          |
+| 413  | PAYLOAD_TOO_LARGE   | JSON body exceeds 10 KB                            |
+| 403  | CORS_NOT_ALLOWED    | Browser origin is absent from the allowlist        |
 
 Clients clear protected sessions on 401. Login/register form failures do not
 clear an unrelated session. Mobile offline messages are client-side network

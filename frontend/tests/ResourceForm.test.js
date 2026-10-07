@@ -21,12 +21,16 @@ test("creates a task inside a fixed project with nullable due date", async () =>
   render(
     <ResourceForm
       resource="tasks"
+      item={{}}
       projectId={project.id}
       projects={[project]}
       onClose={jest.fn()}
       onSaved={onSaved}
     />,
   );
+  expect(
+    screen.getByRole("heading", { name: "Create task" }),
+  ).toBeInTheDocument();
   fireEvent.change(screen.getByLabelText("Name"), {
     target: { value: "New task" },
   });
@@ -45,6 +49,19 @@ test("creates a task inside a fixed project with nullable due date", async () =>
     undefined,
   );
 });
+test("new task placeholder keeps project selection enabled", () => {
+  render(
+    <ResourceForm
+      resource="tasks"
+      item={{}}
+      projects={[project]}
+      onClose={jest.fn()}
+      onSaved={jest.fn()}
+    />,
+  );
+  expect(screen.getByLabelText("Project")).not.toBeDisabled();
+});
+
 test("editing a task sends no projectId and preserves its status", async () => {
   const item = {
     id: "task-id",

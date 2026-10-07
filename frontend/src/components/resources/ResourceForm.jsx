@@ -55,7 +55,7 @@ export default function ResourceForm({
     setError("");
     const data = formPayload(values);
     // Reason: Updating tasks cannot move them; the update API accepts no projectId.
-    if (isTask && item) delete data.projectId;
+    if (isTask && item?.id) delete data.projectId;
     try {
       await saveResource(resource, data, item?.id);
       onSaved();
@@ -65,7 +65,7 @@ export default function ResourceForm({
   }
   return (
     <Modal
-      title={`${item ? "Edit" : "Create"} ${isTask ? "task" : "project"}`}
+      title={`${item?.id ? "Edit" : "Create"} ${isTask ? "task" : "project"}`}
       onClose={onClose}
       busy={isSubmitting}
     >
@@ -90,7 +90,7 @@ export default function ResourceForm({
               label="Project"
               error={errors.projectId?.message}
               {...register("projectId")}
-              disabled={!!item || !!projectId}
+              disabled={!!item?.id || !!projectId}
             >
               <option value="">Choose a project</option>
               {projects.map((project) => (

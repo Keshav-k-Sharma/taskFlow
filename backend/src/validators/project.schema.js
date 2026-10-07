@@ -1,8 +1,7 @@
 const { z } = require("zod");
 
-const isoDate = z
-  .string()
-  .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be a valid date (YYYY-MM-DD)")
+const isoDate = z.iso
+  .date("Must be a valid calendar date (YYYY-MM-DD)")
   .optional()
   .nullable();
 
@@ -23,6 +22,7 @@ const createProjectSchema = z
     startDate: isoDate,
     endDate: isoDate,
   })
+  .strict()
   .refine(
     (d) => {
       if (d.startDate && d.endDate) return d.endDate >= d.startDate;
@@ -42,6 +42,7 @@ const updateProjectSchema = z
     startDate: isoDate,
     endDate: isoDate,
   })
+  .strict()
   .refine(
     (d) => {
       if (d.startDate && d.endDate) return d.endDate >= d.startDate;
@@ -53,17 +54,21 @@ const updateProjectSchema = z
 /**
  * Zod schema for GET /api/projects query params.
  */
-const listProjectsSchema = z.object({
-  search: z.string().trim().optional(),
-  status: z.enum(["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]).optional(),
-});
+const listProjectsSchema = z
+  .object({
+    search: z.string().trim().optional(),
+    status: z.enum(["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]).optional(),
+  })
+  .strict();
 
 /**
  * UUID param schema.
  */
-const uuidParamSchema = z.object({
-  id: z.string().uuid("Invalid project ID"),
-});
+const uuidParamSchema = z
+  .object({
+    id: z.string().uuid("Invalid project ID"),
+  })
+  .strict();
 
 module.exports = {
   createProjectSchema,
@@ -71,4 +76,3 @@ module.exports = {
   listProjectsSchema,
   uuidParamSchema,
 };
-

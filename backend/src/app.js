@@ -9,6 +9,7 @@ const logger = require("./config/logger");
 const { globalLimiter } = require("./middleware/rateLimiter");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
+const AppError = require("./utils/AppError");
 
 const authRoutes = require("./routes/authRoutes");
 const projectRoutes = require("./routes/projectRoutes");
@@ -32,7 +33,7 @@ app.use(
       // Allow requests with no Origin (mobile apps, curl)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
-      callback(new Error("CORS policy violation"));
+      callback(new AppError("CORS_NOT_ALLOWED", "Origin is not allowed", 403));
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
@@ -66,4 +67,3 @@ app.use(notFound);
 app.use(errorHandler);
 
 module.exports = app;
-

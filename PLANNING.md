@@ -431,3 +431,5 @@ Dashboard definitions: `pendingTasks` = tasks with status `PENDING`; `projectsIn
 - **Imports:** relative within a package; `@/` alias in Next.js (already configured in `jsconfig.json`).
 - **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `test:`, `chore:`).
 - **Branching:** small feature branches merged to `main`.
+
+Phase 9 contract update (2026-10-08): strict schemas reject unknown request fields and validate actual calendar dates. Malformed JSON maps to VALIDATION_ERROR (400), oversized JSON to PAYLOAD_TOO_LARGE (413), and disallowed browser origins to CORS_NOT_ALLOWED (403); ownership failures remain NOT_FOUND (404).

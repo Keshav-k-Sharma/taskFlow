@@ -2,9 +2,9 @@ openapi: 3.0.3
 info:
   title: TaskFlow API
   version: 1.0.0
-  description: Shared web and Android REST API. Owner IDs come from authentication. Input dates use
-    YYYY-MM-DD; response dates are UTC date-time strings. Unknown input fields are currently
-    stripped, never assigned; strict/calendar-date validation is tracked as D8.
+  description: Shared web and Android REST API. Owner IDs come from authentication. Input dates must
+    be valid YYYY-MM-DD calendar dates; response dates are UTC date-time strings. Unknown request
+    fields are rejected.
 servers:
   - url: /api
     description: Same API host
@@ -71,8 +71,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "409":
           description: Email already registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -116,6 +128,18 @@ paths:
                 $ref: "#/components/schemas/Error"
         "401":
           description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -168,6 +192,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "429":
           description: Request rate limit exceeded
           content:
@@ -196,6 +232,18 @@ paths:
                 $ref: "#/components/schemas/Error"
         "401":
           description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -232,6 +280,18 @@ paths:
                 $ref: "#/components/schemas/Error"
         "401":
           description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -275,6 +335,18 @@ paths:
                 $ref: "#/components/schemas/Error"
         "401":
           description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -335,6 +407,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "429":
           description: Request rate limit exceeded
           content:
@@ -389,8 +473,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -435,8 +531,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -478,8 +586,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -523,6 +643,18 @@ paths:
                 $ref: "#/components/schemas/Error"
         "401":
           description: Missing, expired, invalid or revoked token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -598,8 +730,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -658,8 +802,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -704,8 +860,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -747,8 +915,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "403":
+          description: Browser origin is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         "404":
           description: Missing resource or resource owned by another user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "413":
+          description: JSON request body exceeds 10 KB
           content:
             application/json:
               schema:
@@ -821,6 +1001,7 @@ components:
           minLength: 8
           format: password
           writeOnly: true
+      additionalProperties: false
     Login:
       type: object
       required:
@@ -835,6 +1016,7 @@ components:
           minLength: 1
           format: password
           writeOnly: true
+      additionalProperties: false
     Project:
       type: object
       required:
@@ -911,14 +1093,17 @@ components:
           default: NOT_STARTED
         startDate:
           type: string
+          format: date
           nullable: true
           pattern: ^\d{4}-\d{2}-\d{2}$
           example: 2026-10-08
         endDate:
           type: string
+          format: date
           nullable: true
           pattern: ^\d{4}-\d{2}-\d{2}$
           example: 2026-10-08
+      additionalProperties: false
     ProjectUpdate:
       type: object
       properties:
@@ -937,14 +1122,17 @@ components:
             - COMPLETED
         startDate:
           type: string
+          format: date
           nullable: true
           pattern: ^\d{4}-\d{2}-\d{2}$
           example: 2026-10-08
         endDate:
           type: string
+          format: date
           nullable: true
           pattern: ^\d{4}-\d{2}-\d{2}$
           example: 2026-10-08
+      additionalProperties: false
     Task:
       type: object
       required:
@@ -1063,9 +1251,11 @@ components:
           default: PENDING
         dueDate:
           type: string
+          format: date
           nullable: true
           pattern: ^\d{4}-\d{2}-\d{2}$
           example: 2026-10-08
+      additionalProperties: false
     TaskUpdate:
       type: object
       properties:
@@ -1090,9 +1280,11 @@ components:
             - COMPLETED
         dueDate:
           type: string
+          format: date
           nullable: true
           pattern: ^\d{4}-\d{2}-\d{2}$
           example: 2026-10-08
+      additionalProperties: false
     Dashboard:
       type: object
       required:
@@ -1138,6 +1330,8 @@ components:
                 - NOT_FOUND
                 - EMAIL_TAKEN
                 - RATE_LIMITED
+                - PAYLOAD_TOO_LARGE
+                - CORS_NOT_ALLOWED
                 - INTERNAL
             message:
               type: string

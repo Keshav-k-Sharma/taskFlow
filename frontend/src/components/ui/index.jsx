@@ -135,8 +135,13 @@ export function Modal({ title, onClose, children, busy = false }) {
   const titleId = useId();
   useEffect(() => {
     const element = dialog.current;
+    const previouslyFocused = document.activeElement;
     element.showModal();
-    return () => element.close();
+    return () => {
+      element.close();
+      // Reason: React unmounts the dialog before native focus restoration completes.
+      if (previouslyFocused?.isConnected) previouslyFocused.focus?.();
+    };
   }, []);
   return (
     <dialog

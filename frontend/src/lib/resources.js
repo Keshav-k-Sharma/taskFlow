@@ -6,9 +6,16 @@ export async function fetchResource(path, params, signal) {
 }
 /** Creates or updates a project or task. */
 export async function saveResource(resource, data, id) {
+  // Reason: A task's project is immutable; strict update schemas reject projectId.
+  const payload =
+    id && resource === "tasks"
+      ? Object.fromEntries(
+          Object.entries(data).filter(([key]) => key !== "projectId"),
+        )
+      : data;
   return id
-    ? api.put(`/${resource}/${id}`, data)
-    : api.post(`/${resource}`, data);
+    ? api.put(`/${resource}/${id}`, payload)
+    : api.post(`/${resource}`, payload);
 }
 /** Deletes a project or task. */
 export async function deleteResource(resource, id) {

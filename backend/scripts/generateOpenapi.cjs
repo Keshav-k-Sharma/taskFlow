@@ -66,6 +66,8 @@ function operation(tag, summary, success, options = {}) {
       ...success,
       400: response("Invalid input", ref("Error")),
       401: response("Missing, expired, invalid or revoked token", ref("Error")),
+      403: response("Browser origin is not allowed", ref("Error")),
+      413: response("JSON request body exceeds 10 KB", ref("Error")),
       429: response("Request rate limit exceeded", ref("Error")),
       500: response("Unexpected server error", ref("Error")),
     },
@@ -78,6 +80,7 @@ const timestamp = { type: "string", format: "date-time" };
 const nullableText = { type: "string", nullable: true };
 const inputDate = {
   type: "string",
+  format: "date",
   nullable: true,
   pattern: "^\\d{4}-\\d{2}-\\d{2}$",
   example: "2026-10-08",
@@ -272,6 +275,8 @@ const schemas = {
               "NOT_FOUND",
               "EMAIL_TAKEN",
               "RATE_LIMITED",
+              "PAYLOAD_TOO_LARGE",
+              "CORS_NOT_ALLOWED",
               "INTERNAL",
             ],
           },
@@ -292,6 +297,16 @@ const schemas = {
     },
   },
 };
+for (const key of [
+  "Register",
+  "Login",
+  "ProjectCreate",
+  "ProjectUpdate",
+  "TaskCreate",
+  "TaskUpdate",
+]) {
+  schemas[key].additionalProperties = false;
+}
 const paths = {
   "/health": {
     get: {
@@ -415,7 +430,7 @@ const specification = {
     title: "TaskFlow API",
     version: "1.0.0",
     description:
-      "Shared web and Android REST API. Owner IDs come from authentication. Input dates use YYYY-MM-DD; response dates are UTC date-time strings. Unknown input fields are currently stripped, never assigned; strict/calendar-date validation is tracked as D8.",
+      "Shared web and Android REST API. Owner IDs come from authentication. Input dates must be valid YYYY-MM-DD calendar dates; response dates are UTC date-time strings. Unknown request fields are rejected.",
   },
   servers: [
     { url: "/api", description: "Same API host" },

@@ -8,6 +8,19 @@ const logger = require("../config/logger");
  * @type {import('express').ErrorRequestHandler}
  */
 function errorHandler(err, req, res, _next) {
+  if (err.type === "entity.parse.failed") {
+    return res.status(400).json({
+      error: { code: "VALIDATION_ERROR", message: "Invalid JSON request body" },
+    });
+  }
+  if (err.type === "entity.too.large") {
+    return res.status(413).json({
+      error: {
+        code: "PAYLOAD_TOO_LARGE",
+        message: "Request body exceeds 10 KB",
+      },
+    });
+  }
   // Operational errors: AppError instances
   if (err.isOperational) {
     return res.status(err.statusCode).json({
@@ -27,7 +40,10 @@ function errorHandler(err, req, res, _next) {
   }
 
   // Unknown / programmer errors
-  logger.error({ err, req: { method: req.method, url: req.url } }, "Unhandled error");
+  logger.error(
+    { err, req: { method: req.method, url: req.url } },
+    "Unhandled error"
+  );
 
   const isProd = process.env.NODE_ENV === "production";
   return res.status(500).json({
@@ -39,4 +55,3 @@ function errorHandler(err, req, res, _next) {
 }
 
 module.exports = errorHandler;
-

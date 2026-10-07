@@ -86,7 +86,7 @@ describe("POST /api/auth/register", () => {
     expect(res.body.error.code).toBe("VALIDATION_ERROR");
   });
 
-  test("4.2e â€” ignores `role` field in request body (no privilege escalation)", async () => {
+  test("4.2e â€” rejects `role` field in request body (no privilege escalation)", async () => {
     const res = await request(app).post(`${BASE}/register`).send({
       fullName: "Eve",
       email: "eve@example.com",
@@ -94,9 +94,8 @@ describe("POST /api/auth/register", () => {
       role: "admin",
     });
 
-    // Should still succeed â€” role is silently ignored
-    expect(res.status).toBe(201);
-    expect(res.body.user).not.toHaveProperty("role");
+    expect(res.status).toBe(400);
+    expect(res.body.error.code).toBe("VALIDATION_ERROR");
   });
 });
 
