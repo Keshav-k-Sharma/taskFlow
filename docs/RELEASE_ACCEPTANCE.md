@@ -4,7 +4,7 @@ Updated 2026-10-08. Automated checks and deployed website acceptance are recorde
 
 ## Android phone
 
-Open [professional-theme APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7). Wait for Finished, then install version 1.0.3 over the earlier APK. Earlier builds contain superseded dark or peach designs.
+Open [expressive-theme APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/38921ae0-d88b-4831-b761-e7af1eee7b9a). Wait for Finished, then install version 1.0.4 over the earlier APK. Earlier builds contain superseded dark or peach designs.
 
 1. Register a fictional account on https://taskflow26.vercel.app, then log into Android with that account.
 2. Confirm Dashboard, Projects, Tasks and Account symbols appear; verify Create project is available.

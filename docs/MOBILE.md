@@ -100,9 +100,9 @@ The user confirmed this APK completed, installed, and login works on the Android
 
 ## Device acceptance checklist
 
-Current professional-theme build (2026-10-08), version 1.0.3/versionCode 4:
-[Latest Android APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7).
-This supersedes the peach version below; install this build for the requested stone/navy/teal appearance. Phone verification remains pending.
+Current expressive-theme build (2026-10-08), version 1.0.4/versionCode 5:
+[Latest Android APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/38921ae0-d88b-4831-b761-e7af1eee7b9a).
+This supersedes prior subdued and peach versions; install this build for vivid blue accents and richer dashboard cards. Phone verification remains pending.
 
 Latest warm-theme build submitted on 2026-10-08 (version 1.0.2, Android version code 3):
 [Warm-theme APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/0cbeb6a0-0194-414e-81a7-d738fd6ebcc2).

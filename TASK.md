@@ -6,11 +6,11 @@
 > Format: `- [ ] ID — description (added YYYY-MM-DD)` → `- [x] ID — description (done YYYY-MM-DD)`
 > Last updated: 2026-10-08
 
-Current expressive design checkpoint (2026-10-08): both clients now use vivid blue accents, a bold dashboard hero, tinted summary cards and warm light surfaces. Mobile version 1.0.4/versionCode 5 prepared; physical-phone acceptance remains pending.
+Current expressive design checkpoint (2026-10-08): both clients now use vivid blue accents, a bold dashboard hero, tinted summary cards and warm light surfaces. Website commit 1ecb075 is live; deployed canvas and reduced-motion behavior verified. Mobile version 1.0.4/versionCode 5 submitted: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/38921ae0-d88b-4831-b761-e7af1eee7b9a; physical-phone acceptance remains pending.
 
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
-Current palette correction (2026-10-08): professional stone/ivory/navy/teal replaces the peach theme on both clients. Deployed website color and reduced-motion behavior verified at b7b4f64. 68 client tests, lint, web build and Android export pass. Mobile version 1.0.3/versionCode 4 submitted: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7. Use this latest build rather than superseded design builds. Phone verification remains pending.
+Current palette correction (2026-10-08): professional stone/ivory/navy/teal replaces the peach theme on both clients. Deployed website color and reduced-motion behavior verified at b7b4f64. 68 client tests, lint, web build and Android export pass. Mobile version 1.0.3/versionCode 4 submitted: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7. Historical release; superseded by the expressive version above. Phone verification remains pending.
 
 Latest design/release checkpoint (2026-10-08): warm light website and mobile design replaces the earlier dark theme. Commit 29596f5 is deployed; actual Vercel canvas and reduced-motion behavior verified. Current client verification: web 30 tests, mobile 38 tests, lint, production web build and Android export pass. Warm-theme APK version 1.0.2/versionCode 3 submitted at https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/0cbeb6a0-0194-414e-81a7-d738fd6ebcc2; use it instead of older design builds. Phone/emulator/sync/screenshot/recording checks remain pending.
 

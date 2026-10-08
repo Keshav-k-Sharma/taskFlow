@@ -10,7 +10,7 @@ only their own projects and the tasks within them.
 | API                            | https://taskflow-1sh2.onrender.com/api                                                                                   |
 | API reference                  | [docs/API.md](docs/API.md)                                                                                               |
 | OpenAPI contract               | [docs/openapi.yaml](docs/openapi.yaml)                                                                                   |
-| Android build                  | [Professional-theme APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7) |
+| Android build                  | [Expressive-theme APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/38921ae0-d88b-4831-b761-e7af1eee7b9a) |
 | Mobile setup and device checks | [docs/MOBILE.md](docs/MOBILE.md)                                                                                         |
 | Database model                 | [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md)                                                                                 |
 | Review notes                   | [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md)                                                                     |
