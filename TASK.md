@@ -207,6 +207,10 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D19 — Validate dedicated Neon taskflow_test database, apply both committed migrations and rerun full backend suite: 70 tests across eight suites and backend lint pass; primary DATABASE_URL preserved (done 2026-10-08).
+
+Phase 9 backend verification (2026-10-08): full backend integration suite now passes against the separate test database. Combined automated coverage: 70 backend, 30 web and 35 mobile tests (135 total). Latest APK build 22403d8c-18ca-46af-b769-503ed0a94263 is IN_QUEUE. Device/emulator, deployed browser checks, sync, screenshots and recording remain pending.
+
 - [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
 - [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
