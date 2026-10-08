@@ -96,7 +96,7 @@ An installable APK has not yet been verified.
 Replacement build submitted on 2026-10-08 after 30 mobile tests, lint and Android
 bundle export passed:
 [Latest EAS build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/44704206-7eda-4ff1-9173-33cb1638f8b3).
-Its latest observed status is IN_QUEUE. Use this page instead of the failed build.
+The user confirmed this APK completed, installed, and login works on the Android phone (2026-10-08). Subsequent project creation, native tab icons and Kanban styling require a replacement APK; full device acceptance remains pending.
 
 ## Device acceptance checklist
 

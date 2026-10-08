@@ -54,7 +54,7 @@ export default function ProjectsView() {
             {data.projects.map((project) => (
               <article
                 key={project.id}
-                className="flex flex-col gap-4 rounded-xl border border-zinc-800 bg-zinc-900 p-5"
+                className="flex flex-col gap-4 rounded-2xl border border-zinc-700/60 border-t-yellow-300/60 bg-zinc-900 p-6 shadow-lg shadow-black/10"
               >
                 <Badge value={project.status} />
                 <Link

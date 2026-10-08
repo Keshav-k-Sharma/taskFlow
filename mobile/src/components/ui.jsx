@@ -13,13 +13,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
 
 export const colors = {
-  background: "#09090b",
-  surface: "#18181b",
-  border: "#3f3f46",
+  background: "#0b1020",
+  surface: "#161e32",
+  border: "#2b3650",
   text: "#fafafa",
   muted: "#a1a1aa",
   accent: "#fde047",
   danger: "#fca5a5",
+  success: "#86efac",
+  warning: "#fcd34d",
+  info: "#7dd3fc",
 };
 export const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
@@ -28,9 +31,10 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: 12,
+    borderRadius: 20,
     padding: 16,
     gap: 12,
+    marginBottom: 12,
   },
   title: { color: colors.text, fontSize: 28, fontWeight: "700" },
   heading: { color: colors.text, fontSize: 20, fontWeight: "600" },
@@ -47,7 +51,7 @@ export const styles = StyleSheet.create({
     minHeight: 48,
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: 8,
+    borderRadius: 12,
     color: colors.text,
     backgroundColor: colors.background,
     paddingHorizontal: 12,
@@ -67,6 +71,27 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
+  },
+  successButton: {
+    backgroundColor: "#123b32",
+    borderColor: "#27634e",
+    borderWidth: 1,
+  },
+  dangerButton: {
+    backgroundColor: "#421f2a",
+    borderColor: "#713344",
+    borderWidth: 1,
+  },
+  warningButton: {
+    backgroundColor: "#3d321e",
+    borderColor: "#6c562a",
+    borderWidth: 1,
+  },
+  pill: {
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    backgroundColor: "#243047",
   },
   disabled: { opacity: 0.5 },
   buttonText: { color: colors.background, fontSize: 15, fontWeight: "700" },
@@ -104,6 +129,8 @@ export function Button({
   disabled = false,
   secondary = false,
   danger = false,
+  success = false,
+  warning = false,
 }) {
   return (
     <Pressable
@@ -114,6 +141,9 @@ export function Button({
       style={[
         styles.button,
         secondary && styles.secondary,
+        success && styles.successButton,
+        warning && styles.warningButton,
+        danger && styles.dangerButton,
         disabled && styles.disabled,
       ]}
     >
@@ -122,6 +152,8 @@ export function Button({
           styles.buttonText,
           secondary && styles.secondaryText,
           danger && styles.error,
+          success && { color: colors.success },
+          warning && { color: colors.warning },
         ]}
       >
         {title}

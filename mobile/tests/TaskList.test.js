@@ -44,6 +44,20 @@ test("mark complete sends only the status field and refreshes the list", async (
   );
   expect(refresh).toHaveBeenCalled();
 });
+
+test("board status tabs apply server-side status filtering", async () => {
+  await render(<TaskList />);
+  await fireEvent.press(screen.getByRole("button", { name: "In Progress" }));
+  await waitFor(() =>
+    expect(useResource).toHaveBeenLastCalledWith("/tasks", {
+      status: "IN_PROGRESS",
+    }),
+  );
+  await fireEvent.press(screen.getByRole("button", { name: "All tasks" }));
+  await waitFor(() =>
+    expect(useResource).toHaveBeenLastCalledWith("/tasks", {}),
+  );
+});
 test("deletion requires the destructive confirmation", async () => {
   const alert = jest.spyOn(Alert, "alert").mockImplementation(() => {});
   deleteTask.mockResolvedValue({});

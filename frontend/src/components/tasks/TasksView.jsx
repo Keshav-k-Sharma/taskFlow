@@ -16,6 +16,7 @@ import {
 import ResourceForm from "@/components/resources/ResourceForm";
 import DeleteDialog from "@/components/resources/DeleteDialog";
 import Filters from "@/components/resources/Filters";
+import KanbanBoard from "./KanbanBoard";
 
 /** Lists all owned tasks or one project's tasks using the same filters. */
 export default function TasksView({ projectId }) {
@@ -97,11 +98,12 @@ export default function TasksView({ projectId }) {
       ) : (
         !tasks.error &&
         (tasks.data?.tasks.length ? (
-          <div className="space-y-3">
-            {tasks.data.tasks.map((task) => (
+          <KanbanBoard
+            tasks={tasks.data.tasks}
+            renderTask={(task) => (
               <article
                 key={task.id}
-                className="flex flex-col justify-between gap-5 rounded-xl border border-zinc-800 bg-zinc-900 p-5 sm:flex-row"
+                className="flex flex-col gap-4 rounded-xl border border-zinc-700/60 bg-zinc-900 p-4 shadow-lg shadow-black/10"
               >
                 <div className="min-w-0 space-y-3">
                   <div className="flex flex-wrap gap-2">
@@ -132,9 +134,11 @@ export default function TasksView({ projectId }) {
                     )}
                   </p>
                 </div>
-                <div className="flex flex-wrap items-start gap-2 sm:max-w-xs sm:justify-end">
+                <div className="flex flex-wrap items-start gap-2">
                   <Button
-                    variant="secondary"
+                    variant={
+                      task.status === "COMPLETED" ? "warning" : "success"
+                    }
                     disabled={!!busyId}
                     onClick={() => complete(task)}
                   >
@@ -160,8 +164,8 @@ export default function TasksView({ projectId }) {
                   </Button>
                 </div>
               </article>
-            ))}
-          </div>
+            )}
+          />
         ) : (
           <EmptyState
             title={

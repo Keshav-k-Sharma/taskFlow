@@ -4,6 +4,8 @@
 > Read this at the start of every new conversation. Work items live in `TASK.md`. Agent rules live in `AGENTS.md`.
 > Last updated: 2026-10-08
 
+UI decision (2026-10-08): use Jira-inspired web Kanban columns and phone-friendly mobile status tabs. Preserve the dark/yellow identity, existing enum values and single-user ownership. Drag-and-drop and admin/member roles are outside this redesign. Both clients continue using the existing shared API.
+
 Implementation checkpoint (2026-10-08): the PostgreSQL migration, shared API,
 Next.js client and Expo client are implemented. Render serves the current API;
 the EAS Android build and actual device checks remain pending. Phase 8 documents

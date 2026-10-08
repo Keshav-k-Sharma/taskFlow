@@ -71,3 +71,7 @@ Do not point the test cleanup at the shared reviewer database.
 
 See [SUBMISSION.md](SUBMISSION.md) and [DEMO_SCRIPT.md](DEMO_SCRIPT.md). These pending
 items are not marked complete in TASK.md.
+# Kanban redesign checkpoint — 2026-10-08
+
+Web sidebar and three status columns, mobile status tabs and dashboard grid, colored task badges and action colors implemented on dev. Web: 30 tests, lint and production build pass. Mobile: 35 tests, lint and Android bundle export pass. Native tab icons were previously bundle-verified. Automated checks do not establish visual/device acceptance. Live deployment, updated Android APK acceptance, responsive keyboard checks, cross-platform sync, screenshots and recording remain pending. The user confirmed the previous APK installed and login works. Full backend integration rerun requires a dedicated test database.
+

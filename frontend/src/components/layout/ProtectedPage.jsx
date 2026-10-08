@@ -28,7 +28,7 @@ export default function ProtectedPage({ children }) {
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-6xl space-y-6 px-5 py-8 md:py-12">
+      <main className="space-y-6 px-5 py-8 md:ml-60 md:px-8 md:py-10">
         {children}
       </main>
     </>

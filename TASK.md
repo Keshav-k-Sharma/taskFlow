@@ -135,7 +135,7 @@
 - [ ] 6.16 Test on Android emulator (`10.0.2.2`) **and** a physical device against the deployed backend (added 2026-10-06)
 - [x] 6.17b Link mobile app to @keshavkss-team/taskflow (project df4037fe-88cc-4bb8-a5b9-399b0307991d); verify authenticated EAS access (done 2026-10-08)
 - [x] 6.17a Configure eas.json preview profile for internal Android APK distribution (done 2026-10-08)
-- [ ] 6.17 Configure `eas.json` `preview` profile → build `.apk` (added 2026-10-06)
+- [x] 6.17 Configure preview profile and build APK; user confirmed the replacement build completed, installed and login works (done 2026-10-08). A new build is required for subsequent project creation, icons and redesign changes.
 - [ ] 6.18 Upload APK / publish Expo link; add to README (added 2026-10-06)
 
 Phase 6 checkpoint (2026-10-08): EAS build `5188b0a3-d75f-4128-973d-dd5a6f5f71cf` is queued and linked in README. All 30 mobile tests and lint pass. User has an Android phone; no local Android SDK/emulator is installed. Device acceptance checklist is in docs/MOBILE.md; 6.16–6.18 remain pending until actual verification/build completion.
@@ -211,11 +211,11 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
 - [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
 - [ ] D18 — Redesign both website and mobile with a Jira-inspired Kanban interface while keeping TaskFlow's dark theme and yellow brand accent (requested 2026-10-08).
-- [ ] D18a — Web: add sidebar navigation and clear project headers; display task boards in Pending, In Progress and Completed columns using the existing task statuses (added 2026-10-08).
-- [ ] D18b — Mobile: use the same visual language with status tabs or swipeable board columns suited to phone screens; retain labelled Dashboard, Projects, Tasks and Account icons (added 2026-10-08).
+- [x] D18a — Web sidebar and Pending, In Progress, Completed Kanban columns implemented; column grouping regression test passes (done 2026-10-08). Visual/live acceptance remains in D18f.
+- [x] D18b — Mobile status tabs, colored status/priority badges and dashboard grid implemented; labelled tab icons retained and filtering test passes (done 2026-10-08). Phone acceptance remains in D18f.
 - [ ] D18c — Both clients: improve task/project cards, rounded corners, spacing, typography, subtle borders and consistent icons; show readable priority badges and due dates (added 2026-10-08).
-- [ ] D18d — Both clients: distinguish completion actions in green, pending/reopen actions in amber and delete actions in red; preserve clear labels, disabled states and delete confirmation (added 2026-10-08).
-- [ ] D18e — Preserve the current single-account ownership model: each user manages only their own projects/tasks; do not introduce admin/member roles or project member assignment (constraint confirmed 2026-10-08).
+- [x] D18d — Green completion, amber reopen and red delete actions implemented on both clients; labels, disabled states and delete confirmations preserved (done 2026-10-08).
+- [x] D18e — Single-account ownership and shared endpoints preserved; no roles/member assignment introduced (verified 2026-10-08).
 - [ ] D18f — Verify redesigned web/mobile create, edit, delete and status-change flows, responsive layouts and accessibility; run tests/lint/build checks and document actual device checks (added 2026-10-08).
 - [ ] D18g — After the mobile redesign, build a replacement APK containing project creation, tab icons and the new design; update the distribution link and verify it on the user's Android phone (added 2026-10-08).
 

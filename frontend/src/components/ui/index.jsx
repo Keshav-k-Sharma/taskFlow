@@ -12,9 +12,13 @@ export function Button({
   const colors =
     variant === "danger"
       ? "border-red-700 bg-red-950 text-red-200"
-      : variant === "secondary"
-        ? "border-zinc-700 bg-zinc-900 text-zinc-100"
-        : "border-yellow-300 bg-yellow-300 text-zinc-950";
+      : variant === "success"
+        ? "border-emerald-700 bg-emerald-950 text-emerald-200"
+        : variant === "warning"
+          ? "border-amber-700 bg-amber-950 text-amber-200"
+          : variant === "secondary"
+            ? "border-zinc-700 bg-zinc-900 text-zinc-100"
+            : "border-yellow-300 bg-yellow-300 text-zinc-950";
   return (
     <button
       className={`min-h-11 rounded-lg border px-4 py-2 text-sm font-semibold transition hover:brightness-110 disabled:opacity-50 ${colors} ${className}`}

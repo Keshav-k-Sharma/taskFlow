@@ -97,6 +97,17 @@ export default function TaskList({ projectId, header }) {
         <View style={styles.field}>
           {header}
           <Text style={styles.title}>Tasks</Text>
+          <Text style={styles.muted}>Your board · one step at a time</Text>
+          <View style={styles.row}>
+            {["", ...TASK_STATUSES].map((value) => (
+              <Button
+                key={value}
+                title={value ? label(value) : "All tasks"}
+                secondary={status !== value}
+                onPress={() => setStatus(value)}
+              />
+            ))}
+          </View>
           <Button
             title="Create task"
             disabled={busy}
@@ -153,6 +164,33 @@ export default function TaskList({ projectId, header }) {
       }
       renderItem={({ item }) => (
         <View style={styles.card}>
+          <View style={styles.row}>
+            <Text
+              style={[
+                styles.pill,
+                {
+                  color:
+                    item.status === "COMPLETED"
+                      ? colors.success
+                      : item.status === "IN_PROGRESS"
+                        ? colors.info
+                        : colors.warning,
+                },
+              ]}
+            >
+              {label(item.status)}
+            </Text>
+            <Text
+              style={[
+                styles.pill,
+                {
+                  color: item.priority === "HIGH" ? colors.danger : colors.text,
+                },
+              ]}
+            >
+              {label(item.priority)} priority
+            </Text>
+          </View>
           <Text style={styles.heading}>{item.name}</Text>
           <Text style={styles.muted}>
             {item.description || "No description"}
@@ -182,6 +220,8 @@ export default function TaskList({ projectId, header }) {
           />
           <Button
             secondary
+            success={item.status !== "COMPLETED"}
+            warning={item.status === "COMPLETED"}
             disabled={busy}
             title={
               item.status === "COMPLETED" ? "Mark pending" : "Mark complete"

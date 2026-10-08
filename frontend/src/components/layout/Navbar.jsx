@@ -28,8 +28,8 @@ export default function Navbar() {
     }
   }
   return (
-    <header className="sticky top-0 z-20 border-b border-zinc-800 bg-zinc-950/95">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4">
+    <header className="sticky top-0 z-20 border-b border-zinc-800 bg-zinc-950/95 md:fixed md:bottom-0 md:left-0 md:w-60 md:border-r md:border-b-0">
+      <div className="flex flex-wrap items-center justify-between gap-4 px-5 py-4 md:h-full md:flex-col md:items-stretch md:justify-start md:gap-8 md:py-8">
         <Link href="/dashboard" className="text-xl font-bold tracking-tight">
           <span className="text-yellow-300">Task</span>Flow
         </Link>
@@ -45,7 +45,7 @@ export default function Navbar() {
         <nav
           id="main-nav"
           aria-label="Main navigation"
-          className={`${open ? "flex" : "hidden"} order-3 w-full flex-col gap-2 md:order-none md:flex md:w-auto md:flex-row md:gap-6`}
+          className={`${open ? "flex" : "hidden"} order-3 w-full flex-col gap-2 md:order-none md:flex`}
         >
           {["dashboard", "projects", "tasks"].map((route) => (
             <Link
@@ -55,13 +55,13 @@ export default function Navbar() {
               aria-current={
                 pathname.startsWith(`/${route}`) ? "page" : undefined
               }
-              className={`rounded-lg px-2 py-2 text-sm capitalize ${pathname.startsWith(`/${route}`) ? "text-yellow-300" : "text-zinc-400 hover:text-zinc-100"}`}
+              className={`rounded-xl px-4 py-3 text-sm font-medium capitalize ${pathname.startsWith(`/${route}`) ? "bg-yellow-300/10 text-yellow-300" : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"}`}
             >
               {route}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 md:mt-auto md:flex-col md:items-stretch">
           <span className="hidden text-sm text-zinc-400 sm:block">
             {user?.fullName}
           </span>
