@@ -210,6 +210,8 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 - [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
 - [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
+- [ ] D17a — Add Dashboard, Projects, Tasks and Account symbols to the mobile bottom tab bar; check Android rendering in the rebuilt APK (added 2026-10-08).
+- [x] D17b — Implement native tab symbols with per-platform names, labels and active highlighting; mobile tests and lint pass (done 2026-10-08).
 
 - [x] D13 — Malformed JSON maps to 400 VALIDATION_ERROR, oversized JSON to 413 PAYLOAD_TOO_LARGE and disallowed origins to 403 CORS_NOT_ALLOWED; tests and contract updated (done 2026-10-08).
 

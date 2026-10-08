@@ -30,6 +30,7 @@ its deployment requires merging the Phase 8 changes from dev into main.
 - Five owner-scoped dashboard counts, responsive web UI, mobile pull to refresh,
   loading/empty/error states, and mobile offline/expired-session handling.
 - Create projects directly in the mobile Projects tab, including status and optional start/end dates.
+- Mobile bottom navigation includes native Dashboard, Projects, Tasks and Account icons via Expo Symbols.
 
 JavaScript throughout: Node.js 22+, Express 5, Prisma 5, PostgreSQL, Zod, bcryptjs,
 JWT, Helmet, Pino, Jest/Supertest, Swagger UI and YAML. Web uses Next.js 16,
