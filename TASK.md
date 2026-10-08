@@ -205,7 +205,7 @@ Latest deployment status (2026-10-08): Render deployment is verified successful.
 Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (135 total); all lint/build checks pass. Local and deployed browser acceptance pass. Vercel redesign and Render Swagger/OpenAPI are verified live. Updated design APK 22403d8c-18ca-46af-b769-503ed0a94263 is IN_PROGRESS. Phone/emulator QA, cross-platform sync, native screenshots and recording remain pending.
 
 ## Bonus 🟢 (in suggested order)
-- [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` *(Assigned to User to learn and do manually)* (added 2026-10-06)
+- [x] B1 ? Backend Dockerfile and Compose runtime verified: backend/db/db_test healthy, non-root backend, both migrations applied, health UP, Swagger 200, 70 backend tests and lint pass (done 2026-10-08).
 - [ ] B2 — Integration tests complete (covered by Phase 4) + unit tests for services/utils (added 2026-10-06)
 - [ ] B3 — Pagination + sorting on `/projects` and `/tasks` (`page`, `limit`, `sort`, `order`) (added 2026-10-06)
 - [ ] B4 — GitHub Actions CI: lint + test with Postgres service (added 2026-10-06)
@@ -292,3 +292,7 @@ Phase 5 automated verification (2026-10-07): 22 frontend tests across eight suit
 Phase 6 implementation verification (2026-10-08): 35 mobile tests, lint and Android export pass; previous APK installed/login confirmed by user. Updated APK is building. Full device/emulator acceptance remains pending.
 
 Final Docker checkpoint (2026-10-08): backend Dockerfile, build exclusions, local Compose database/backend health checks and migration startup implemented. Compose YAML/service wiring and backend lint pass; middleware tests pass (5). Full backend rerun cannot complete because current TEST_DATABASE_URL targets unavailable localhost:5433. Previous Neon suite result is historical. Docker runtime checks require installation. Latest APK 1.0.4/versionCode 5 is IN_QUEUE. Exact user steps: docs/USER_HANDOFF.md. Optional bonuses remain outside core release completion.
+
+Docker runtime verification (2026-10-08): Docker Desktop running; image builds successfully and all three services are healthy. Production migrations are up to date; test migrations applied to isolated localhost:5433/taskflow_test. All 70 backend tests and lint pass. Earlier unavailable-Docker/test-database notes are superseded. Containers left running.
+
+- [ ] D25 ? Review and remediate npm production dependency advisories reported during Docker build: proxy-addr critical, path-to-regexp high, qs moderate and body-parser low; audit reports compatible fixes available (discovered 2026-10-08).

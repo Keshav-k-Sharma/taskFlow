@@ -20,7 +20,7 @@ these steps require your computer, phone or recording account.
 6. Record the five-minute demonstration using [DEMO_SCRIPT.md](DEMO_SCRIPT.md).
    Show the same account on both clients and a task appearing after refresh.
    Upload the recording somewhere the reviewer can open.
-7. Install and start Docker Desktop with Linux containers. Stop any local
+7. Docker is installed and verified; no further Docker setup is required. For future startup, stop any local
    backend using port 5000. From the repository root, run:
 
    ```powershell
@@ -33,7 +33,7 @@ these steps require your computer, phone or recording account.
    Confirm both services are healthy and the health response says UP. Open
    http://localhost:5000/api/docs/. Compose uses local PostgreSQL, independently
    of Neon. Stop it with `docker compose --env-file backend/.env down`.
-   Docker runtime verification is pending because Docker is absent here.
+   Docker runtime verification passed on 2026-10-08; all services are healthy and all 70 backend tests pass.
 8. Add the recording link and mobile screenshots to the prepared
    [submission checklist](SUBMISSION.md), verify the APK/recording links open
    for the reviewer, and submit the repository, web/API URLs and deliverables.

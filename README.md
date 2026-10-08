@@ -104,7 +104,7 @@ Invoke-RestMethod http://localhost:5000/api/health
 
 Stop any existing backend on port 5000 first. Compose reads JWT_SECRET and CORS_ORIGINS from backend/.env; it explicitly uses its local db service, so your Neon database is unchanged. The backend runs as a non-root user, applies committed migrations on startup and serves Swagger at http://localhost:5000/api/docs/. The database keeps its existing named volume. Example database credentials are for local development only.
 
-The optional test profile exposes a separate taskflow_test database on port 5433. To stop containers while preserving local data, use `docker compose --env-file backend/.env down`. Container execution remains unverified on this machine because Docker Desktop is not installed.
+The optional test profile exposes a separate taskflow_test database on port 5433. To stop containers while preserving local data, use `docker compose --env-file backend/.env down`. Docker runtime verified on 2026-10-08: all services healthy, migrations applied, Swagger available, and 70 backend tests plus lint pass.
 
 From backend:
 
