@@ -1,7 +1,7 @@
 # QA evidence and remaining acceptance checks
 
 Date: 2026-10-08. Branch: dev. Checks below apply to the updated local code unless
-explicitly labeled deployed. Changes have not yet been merged to main.
+explicitly labeled deployed. Tested code was fast-forwarded to main at a35675b and pushed; subsequent verification records remain on dev.
 
 ## Observed checks
 
@@ -72,6 +72,8 @@ Do not point the test cleanup at the shared reviewer database.
 See [SUBMISSION.md](SUBMISSION.md) and [DEMO_SCRIPT.md](DEMO_SCRIPT.md). These pending
 items are not marked complete in TASK.md.
 ## Kanban redesign checkpoint — 2026-10-08
+
+Deployed follow-up: Vercel serves the new sidebar and three-column board. Actual Chrome checks against deployed Vercel/Render pass for project/task CRUD, Tab/Escape/focus restoration, 360px navigation and board without horizontal overflow, empty search, offline retry and session clearing. Captured docs/images/web-kanban.png and removed temporary fictional fixtures. Render health is 200 and unauthenticated auth/me is 401, but /api/docs/ still returns 404: new backend rollout is not verified. Updated APK remains IN_QUEUE; native acceptance, cross-platform sync and recording are pending.
 
 Repeated actual headless Chrome acceptance against the redesigned local production web build and a local API connected to `taskflow_test`: project/task create/edit/complete/delete, dialog Tab/Escape/focus restoration, 360px navigation without overflow, empty search, network retry and invalid-session clearing all pass. Test resources were removed by the QA flow. This verifies the local redesign, not the deployed website or physical Android UI.
 

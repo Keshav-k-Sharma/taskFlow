@@ -1,7 +1,7 @@
 # Submission checklist
 
 This is a prepared checklist, not a completed submission. Phase 8/9 updates are
-currently on dev and are not yet deployed from main.
+were fast-forwarded to main at a35675b and pushed. The website redesign is verified live; the latest backend docs rollout and Android design build remain pending.
 
 | Deliverable                  | Link/status                                                                                                                                             |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |

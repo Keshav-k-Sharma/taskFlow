@@ -185,13 +185,13 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 ---
 
 ## Phase 5 browser checks (Phase 9 follow-up)
-- [ ] 9.7 Verify keyboard focus/Escape in dialogs, mobile navigation at 360px, responsive card grids, and create/edit/delete flows against the live API (added 2026-10-07).
+- [x] 9.7 Deployed Vercel/Render browser acceptance passes: project/task CRUD, dialog Tab/Escape/focus restoration, 360px web navigation and Kanban board without overflow, filtered empty states, offline retry and invalid-session clearing. Temporary fictional fixtures removed (done 2026-10-08).
 
 - [x] 9.7a Local production web/browser QA with actual API/Neon fixtures: CRUD, modal focus/Escape/restoration, 360px navigation, empty states, offline retry and session clearing pass; deployed recheck remains in 9.7 (done 2026-10-08).
 - [x] 9.7b Repeat browser acceptance after Kanban/sidebar redesign against separate taskflow_test database: project/task create/edit/complete/delete, dialog Tab/Escape/focus restoration, 360px navigation without overflow, empty search, offline retry and expired-session clearing pass (done 2026-10-08).
 - [x] 9.6a Prepare docs/SUBMISSION.md, docs/QA_REPORT.md and five-minute docs/DEMO_SCRIPT.md; verified APK/device/recording links remain pending (done 2026-10-08).
 
-Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mobile tests and all package lint checks pass; web production build, Android bundle export and OpenAPI validation pass. Actual local API/Neon ownership checks and browser CRUD/keyboard/360px/offline/session checks pass. Full backend DB suite still needs a dedicated test database. Fixes remain on dev and await deployment. Original APK failed dependency installation; repaired mobile lockfile passes full npm 10 clean install, and replacement EAS build 44704206-7eda-4ff1-9173-33cb1638f8b3 is queued. Android/emulator QA, screenshots, cross-platform sync and recording remain pending.
+Phase 9 checkpoint (2026-10-08): all 70 backend tests pass on dedicated Neon taskflow_test; 30 web and 35 mobile tests pass (135 total). All package lint, web production build and Android bundle export pass. Local and deployed browser CRUD/keyboard/360px/offline/session checks pass. Tested code fast-forwarded to main at a35675b and pushed for deployment; work returned to dev. Vercel Kanban redesign is live; Render health/protected responses work, but new Swagger route still returns 404 and latest Render rollout needs verification. Previous APK installed/login confirmed by user; latest version 1.0.1 build 22403d8c-18ca-46af-b769-503ed0a94263 is IN_QUEUE. Android/emulator QA, screenshots, cross-platform sync and recording remain pending.
 
 ## Bonus 🟢 (in suggested order)
 - [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` *(Assigned to User to learn and do manually)* (added 2026-10-06)

@@ -16,6 +16,12 @@ screenshots. No JWTs, backend environment values or passwords are visible.
 
 ![Web projects](images/web-projects.png)
 
+## Jira-inspired Kanban board
+
+Captured from the deployed Vercel website on 2026-10-08 using temporary fictional demo data, removed after verification. Shows the current sidebar and three status columns.
+
+![Web Kanban board](images/web-kanban.png)
+
 ## Swagger UI
 
 ![Swagger UI](images/swagger-ui.png)
