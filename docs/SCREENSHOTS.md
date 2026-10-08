@@ -49,3 +49,11 @@ phone using the same fictional account. Save those PNGs in docs/images, include
 them here and in README, and mark task 8.9 complete after verifying that they show
 the actual app. Do not substitute web screenshots at a phone viewport for native
 Android screenshots. Hide notifications or personal data before sharing.
+
+## Expressive professional light design (2026-10-08)
+
+Actual Chrome captures; native phone screenshots remain pending.
+
+![Dashboard](images/expressive-web-dashboard.png)
+
+![Kanban](images/expressive-web-kanban.png)

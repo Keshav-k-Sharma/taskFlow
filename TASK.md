@@ -6,6 +6,8 @@
 > Format: `- [ ] ID — description (added YYYY-MM-DD)` → `- [x] ID — description (done YYYY-MM-DD)`
 > Last updated: 2026-10-08
 
+Current expressive design checkpoint (2026-10-08): both clients now use vivid blue accents, a bold dashboard hero, tinted summary cards and warm light surfaces. Mobile version 1.0.4/versionCode 5 prepared; physical-phone acceptance remains pending.
+
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
 Current palette correction (2026-10-08): professional stone/ivory/navy/teal replaces the peach theme on both clients. Deployed website color and reduced-motion behavior verified at b7b4f64. 68 client tests, lint, web build and Android export pass. Mobile version 1.0.3/versionCode 4 submitted: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7. Use this latest build rather than superseded design builds. Phone verification remains pending.
@@ -218,6 +220,8 @@ Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (13
 
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
+
+- [ ] D24 — Give both light-themed clients a professional but expressive visual hierarchy: vivid blue/indigo accents, richer dashboard cards, stronger typography and depth while preserving motion, accessibility and existing functionality (done 2026-10-08; 68 client tests, lint, web build, Android export and Chrome layout/reduced-motion checks pass).
 
 - [x] D23a — Replace peach/terracotta appearance with professional stone/ivory/navy/teal palette on both clients; icons, motion and Kanban workflows retained. Web 30/mobile 38 tests, both lint checks, web build and Android export pass; actual Chrome theme/360px/reduced-motion checks pass (done 2026-10-08).
 - [ ] D23b — Verify professional-theme mobile version 1.0.3/versionCode 4 on the phone after its replacement APK finishes (added 2026-10-08).

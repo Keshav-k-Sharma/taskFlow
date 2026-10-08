@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @theme {
-  --color-canvas: #f2f1ed;
-  --color-surface: #fafaf6;
-  --color-sand: #e6e8e3;
-  --color-line: #cdd3d0;
-  --color-ink: #22313f;
-  --color-muted: #596974;
-  --color-accent: #244b63;
-  --color-on-accent: #fafaf6;
+  --color-canvas: #f3f1ea;
+  --color-surface: #fffdf5;
+  --color-sand: #e8eafa;
+  --color-line: #d4d9e7;
+  --color-ink: #1e2943;
+  --color-muted: #56637c;
+  --color-accent: #304ee8;
+  --color-on-accent: #fffdf5;
   --color-sage: #658475;
   --color-dusty-blue: #54868b;
   --color-honey: #a48b51;
@@ -17,7 +17,7 @@
     @apply bg-canvas text-ink antialiased;
     background-image: radial-gradient(
       ellipse at top right,
-      #dce6e380,
+      #dbe3ff90,
       transparent 65%
     );
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
@@ -58,6 +58,70 @@
   }
 }
 @layer components {
+  h1 {
+    letter-spacing: -0.035em;
+  }
+  .workspace-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    padding: 32px;
+    color: #f5f7ff;
+    background: linear-gradient(115deg, #263bbf, #315dec 65%, #397bb9);
+    box-shadow: 0 16px 40px #304ee824;
+  }
+  .workspace-hero::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 38px solid #ffffff12;
+    border-radius: 50%;
+    right: -75px;
+    top: -90px;
+    pointer-events: none;
+  }
+  .workspace-hero h2 {
+    font-size: clamp(1.65rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    font-weight: 750;
+    letter-spacing: -0.035em;
+  }
+  .workspace-hero p {
+    max-width: 38rem;
+    color: #e5ecff;
+  }
+  .workspace-hero a {
+    position: relative;
+    display: inline-flex;
+    margin-top: 22px;
+    border-radius: 12px;
+    background: #fffdf5;
+    color: #263bbf;
+    padding: 12px 18px;
+    font-weight: 650;
+  }
+  .stat-projects {
+    background: linear-gradient(135deg, #e4ecff, #f1f5ff);
+  }
+  .stat-tasks {
+    background: linear-gradient(135deg, #eae5ff, #f7f4ff);
+  }
+  .stat-completed {
+    background: linear-gradient(135deg, #dff2e8, #f1faf4);
+  }
+  .stat-pending {
+    background: linear-gradient(135deg, #ffedc8, #fff8e6);
+  }
+  .stat-progress {
+    background: linear-gradient(135deg, #deeff5, #f2f9fc);
+  }
+  nav a[aria-current="page"] {
+    box-shadow: inset 3px 0 0 var(--color-accent);
+  }
+  article h2 {
+    letter-spacing: -0.015em;
+  }
   main > section,
   main > div,
   main > article {

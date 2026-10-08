@@ -4,7 +4,7 @@
 > Read this at the start of every new conversation. Work items live in `TASK.md`. Agent rules live in `AGENTS.md`.
 > Last updated: 2026-10-08
 
-Latest presentation correction (2026-10-08): user rejected the pink/peach appearance. Use light warm stone backgrounds, ivory surfaces, navy actions and muted teal accents on both clients. Keep restrained animations, reduced-motion support, existing workflows and native tab symbols. This supersedes the terracotta/peach palette below.
+Latest presentation correction (2026-10-08): use warm light backgrounds with vivid blue/indigo accents, a bold dashboard hero, tinted summary cards and stronger typography on both clients. Preserve animations, reduced-motion support, native tab symbols and existing workflows. This supersedes the subdued stone/navy palette.
 
 UI decision (2026-10-08, updated by user request): retain Jira-inspired web Kanban columns and phone-friendly mobile status tabs, but replace the dark/yellow presentation with warm light cream surfaces, terracotta accents and sage completion colors. Add restrained entrance/interaction animations with reduced-motion support on both clients. Preserve existing enum values, single-user ownership and shared endpoints. Drag-and-drop and admin/member roles remain outside this redesign. Historical dark-theme references below describe earlier decisions.
 

@@ -32,7 +32,7 @@ for completion status. Public Swagger UI is deployed at
 - Create projects directly in the mobile Projects tab, including status and optional start/end dates.
 - Mobile bottom navigation includes native Dashboard, Projects, Tasks and Account icons via Expo Symbols.
 - Jira-inspired web task boards group work into Pending, In Progress and Completed columns; mobile status tabs provide the same workflow with colored badges and completion/reopen/delete actions.
-- Both clients use professional light stone/ivory surfaces, navy actions and muted teal accents. Web cards/dialogs and mobile screen entrances animate gently; reduced-motion preferences disable these animations.
+- Both clients use warm light surfaces, vivid blue actions, a bold dashboard hero and distinct tinted summary cards. Web cards/dialogs and mobile screen entrances animate gently; reduced-motion preferences disable these animations.
 
 JavaScript throughout: Node.js 22+, Express 5, Prisma 5, PostgreSQL, Zod, bcryptjs,
 JWT, Helmet, Pino, Jest/Supertest, Swagger UI and YAML. Web uses Next.js 16,
@@ -271,7 +271,7 @@ See TASK.md rather than assuming every planned feature is finished.
 
 ## Screenshots and submission
 
-![Professional web Kanban board](docs/images/professional-web-kanban.png)
+![Professional web Kanban board](docs/images/expressive-web-kanban.png)
 
 See [screenshots and capture checklist](docs/SCREENSHOTS.md). Android screenshots
 and the five-minute cross-platform recording require the APK and device testing.

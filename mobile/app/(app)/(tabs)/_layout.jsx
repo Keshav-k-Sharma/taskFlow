@@ -28,7 +28,7 @@ export default function TabsLayout() {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
         },
-        tabBarActiveBackgroundColor: "#dfe9e8",
+        tabBarActiveBackgroundColor: "#e3e8ff",
         tabBarLabelStyle: { fontWeight: "600" },
         tabBarIcon: ({ color, size }) => (
           <SymbolView

@@ -2,16 +2,16 @@
   "expo": {
     "name": "TaskFlow",
     "slug": "taskflow",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#f2f1ed",
+    "backgroundColor": "#f3f1ea",
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 4,
+      "versionCode": 5,
       "adaptiveIcon": {
         "backgroundColor": "#09090b",
         "foregroundImage": "./assets/android-icon-foreground.png",
