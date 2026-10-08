@@ -1,5 +1,10 @@
 import client from "./client";
 
+/** Creates an owned project using the shared web/mobile API. */
+export async function createProject(values) {
+  return client.post("/projects", values);
+}
+
 /** Fetches a dashboard, project, or task resource. */
 export async function fetchResource(path, params, signal) {
   return (await client.get(path, { params, signal })).data;

@@ -29,6 +29,7 @@ its deployment requires merging the Phase 8 changes from dev into main.
 - Search names and filter projects by status; filter tasks by project, status, and priority.
 - Five owner-scoped dashboard counts, responsive web UI, mobile pull to refresh,
   loading/empty/error states, and mobile offline/expired-session handling.
+- Create projects directly in the mobile Projects tab, including status and optional start/end dates.
 
 JavaScript throughout: Node.js 22+, Express 5, Prisma 5, PostgreSQL, Zod, bcryptjs,
 JWT, Helmet, Pino, Jest/Supertest, Swagger UI and YAML. Web uses Next.js 16,

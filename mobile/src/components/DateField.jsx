@@ -5,18 +5,30 @@ import { Button, styles } from "./ui";
 import { calendarDate } from "../utils/validators";
 
 /** Selects optional calendar dates using the native date picker. */
-export default function DateField({ value, onChange, error }) {
+export default function DateField({
+  value,
+  onChange,
+  error,
+  label = "Due date",
+  disabled = false,
+}) {
   const [open, setOpen] = useState(false);
   return (
     <View style={styles.field}>
-      <Text style={styles.muted}>Due date (optional)</Text>
+      <Text style={styles.muted}>{label} (optional)</Text>
       <Button
         secondary
-        title={value || "Choose due date"}
+        disabled={disabled}
+        title={value || `Choose ${label.toLowerCase()}`}
         onPress={() => setOpen(true)}
       />
       {!!value && (
-        <Button secondary title="Clear due date" onPress={() => onChange("")} />
+        <Button
+          secondary
+          disabled={disabled}
+          title={`Clear ${label.toLowerCase()}`}
+          onPress={() => onChange("")}
+        />
       )}
       {!!error && <Text style={styles.error}>{error}</Text>}
       {open && (

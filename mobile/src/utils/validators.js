@@ -2,6 +2,37 @@ import { z } from "zod";
 export const PROJECT_STATUSES = ["NOT_STARTED", "IN_PROGRESS", "COMPLETED"];
 export const TASK_STATUSES = ["PENDING", "IN_PROGRESS", "COMPLETED"];
 export const PRIORITIES = ["LOW", "MEDIUM", "HIGH"];
+export const projectSchema = z
+  .object({
+    name: z.string().trim().min(1, "Name is required").max(150),
+    description: z.string().trim(),
+    status: z.enum(PROJECT_STATUSES),
+    startDate: z.union([z.literal(""), z.iso.date()]),
+    endDate: z.union([z.literal(""), z.iso.date()]),
+  })
+  .refine(
+    (values) =>
+      !values.startDate ||
+      !values.endDate ||
+      values.endDate >= values.startDate,
+    { message: "End date must be on or after start date", path: ["endDate"] },
+  );
+/** Whitelists project fields and sends absent calendar dates as null. */
+export function projectPayload({
+  name,
+  description,
+  status,
+  startDate,
+  endDate,
+}) {
+  return {
+    name,
+    description,
+    status,
+    startDate: startDate || null,
+    endDate: endDate || null,
+  };
+}
 export const loginSchema = z.object({
   email: z.email("Enter a valid email"),
   password: z.string().min(1, "Password is required"),

@@ -42,6 +42,10 @@ export default function ProjectsScreen() {
         ListHeaderComponent={
           <View style={styles.field}>
             <Text style={styles.title}>Projects</Text>
+            <Button
+              title="Create project"
+              onPress={() => router.push("/projects/form")}
+            />
             <Field
               label="Search projects"
               value={search}
@@ -71,7 +75,11 @@ export default function ProjectsScreen() {
                 title={
                   search || status ? "No matching projects" : "No projects yet"
                 }
-                message="Create projects on the web, then pull to refresh here."
+                message={
+                  search || status
+                    ? "Try another search or status."
+                    : "Tap Create project to start your first project."
+                }
               />
             )
           )

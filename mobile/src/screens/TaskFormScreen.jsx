@@ -54,7 +54,11 @@ export default function TaskFormScreen({ id, projectId }) {
     return (
       <Screen>
         <View style={styles.content}>
-          <Text style={styles.heading}>Create a project on the web first.</Text>
+          <Text style={styles.heading}>Create a project first.</Text>
+          <Button
+            title="Create project"
+            onPress={() => router.push("/projects/form")}
+          />
           <Button secondary title="Retry" onPress={refresh} />
           <Button
             secondary

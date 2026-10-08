@@ -207,6 +207,10 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
+- [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
+- [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
+
 - [x] D13 — Malformed JSON maps to 400 VALIDATION_ERROR, oversized JSON to 413 PAYLOAD_TOO_LARGE and disallowed origins to 403 CORS_NOT_ALLOWED; tests and contract updated (done 2026-10-08).
 
 - [x] D14 — Repair mobile ajv/@emnapi lockfile mismatch after failed EAS dependency install; full npm 10 clean install succeeds (done 2026-10-08).
