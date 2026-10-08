@@ -36,6 +36,14 @@ Captured from the actual local production build on 2026-10-08 with fictional tes
 
 ## Android capture instructions
 
+## Professional palette correction
+
+The user rejected the peach appearance. The latest web/mobile palette uses warm stone, ivory, navy and muted teal. Actual local production screenshot (2026-10-08); 360px and reduced-motion browser checks pass.
+
+![Professional Kanban board](images/professional-web-kanban.png)
+
+## Native capture checklist
+
 Once the APK installs, capture dashboard, task list and task form on the Android
 phone using the same fictional account. Save those PNGs in docs/images, include
 them here and in README, and mark task 8.9 complete after verifying that they show

@@ -35,7 +35,7 @@ export default function DashboardScreen() {
         <View
           style={[
             styles.card,
-            { borderColor: "#debca4", backgroundColor: "#f8e5d1" },
+            { borderColor: "#bdcecd", backgroundColor: "#e3ece8" },
           ]}
         >
           <Text style={styles.badge}>YOUR WORKSPACE</Text>

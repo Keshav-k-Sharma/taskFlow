@@ -1,23 +1,23 @@
 @import "tailwindcss";
 @theme {
-  --color-canvas: #f6efe5;
-  --color-surface: #fff8ed;
-  --color-sand: #ece0cf;
-  --color-line: #dac8b2;
-  --color-ink: #35291f;
-  --color-muted: #756253;
-  --color-accent: #a94d35;
-  --color-on-accent: #fff8ed;
-  --color-sage: #749474;
-  --color-dusty-blue: #718d8b;
-  --color-honey: #c4964b;
+  --color-canvas: #f2f1ed;
+  --color-surface: #fafaf6;
+  --color-sand: #e6e8e3;
+  --color-line: #cdd3d0;
+  --color-ink: #22313f;
+  --color-muted: #596974;
+  --color-accent: #244b63;
+  --color-on-accent: #fafaf6;
+  --color-sage: #658475;
+  --color-dusty-blue: #54868b;
+  --color-honey: #a48b51;
 }
 @layer base {
   body {
     @apply bg-canvas text-ink antialiased;
     background-image: radial-gradient(
       ellipse at top right,
-      #f2d9bd80,
+      #dce6e380,
       transparent 65%
     );
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
@@ -66,7 +66,7 @@
   article,
   .surface-card {
     animation: arrive 420ms ease-out backwards;
-    box-shadow: 0 5px 20px #63452b0a;
+    box-shadow: 0 5px 20px #22313f0a;
     transition:
       transform 220ms ease,
       box-shadow 220ms ease,
@@ -80,7 +80,7 @@
   }
   dialog[open] {
     animation: dialog-arrive 240ms ease-out both;
-    box-shadow: 0 24px 90px #63452b30;
+    box-shadow: 0 24px 90px #22313f30;
   }
   dialog::backdrop {
     background: #49362966;
@@ -104,13 +104,13 @@
   textarea:focus,
   select:focus {
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px #a94d3514;
+    box-shadow: 0 0 0 3px #244b6314;
   }
   @media (hover: hover) {
     article:hover,
     .surface-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 28px #63452b12;
+      box-shadow: 0 12px 28px #22313f12;
     }
     button:enabled:hover {
       transform: translateY(-1px);

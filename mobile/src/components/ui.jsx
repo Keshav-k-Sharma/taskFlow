@@ -14,12 +14,12 @@ import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
 import MotionView from "./MotionView";
 
 export const colors = {
-  background: "#f6efe5",
-  surface: "#fff8ed",
-  border: "#dac8b2",
-  text: "#35291f",
-  muted: "#756253",
-  accent: "#a94d35",
+  background: "#f2f1ed",
+  surface: "#fafaf6",
+  border: "#cdd3d0",
+  text: "#22313f",
+  muted: "#596974",
+  accent: "#244b63",
   danger: "#963f36",
   success: "#316147",
   warning: "#805619",
@@ -93,7 +93,7 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    backgroundColor: "#ece0cf",
+    backgroundColor: "#e6e8e3",
   },
   disabled: { opacity: 0.5 },
   buttonText: { color: colors.background, fontSize: 15, fontWeight: "700" },

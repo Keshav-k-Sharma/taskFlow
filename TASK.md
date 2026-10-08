@@ -217,6 +217,9 @@ Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (13
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D23a — Replace peach/terracotta appearance with professional stone/ivory/navy/teal palette on both clients; icons, motion and Kanban workflows retained. Web 30/mobile 38 tests, both lint checks, web build and Android export pass; actual Chrome theme/360px/reduced-motion checks pass (done 2026-10-08).
+- [ ] D23b — Verify professional-theme mobile version 1.0.3/versionCode 4 on the phone after its replacement APK finishes (added 2026-10-08).
+
 - [x] D22a — Implement warm cream/terracotta/sage theme on web and mobile, subtle web card/button/dialog animations and native screen fades/press feedback; reduced-motion tests pass. Web 30 tests, mobile 38 tests, both lint checks, web build and Android export pass. Actual local Chrome CRUD/keyboard/360px/offline/expiry/reduced-motion checks pass (done 2026-10-08).
 - [ ] D22b — Build and install warm-theme Android version 1.0.2/versionCode 3; verify motion, contrast, icons and CRUD on the physical phone (added 2026-10-08).
 
