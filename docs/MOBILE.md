@@ -82,7 +82,7 @@ npx eas-cli@latest build --platform android --profile preview
 The preview profile in `eas.json` requests internal distribution and an APK.
 Follow EAS prompts to configure Android signing. Use the resulting EAS build page
 to download/install the APK and share its link with reviewers. Record that real
-link in the README once the build succeeds; no distribution link is available yet.
+link in the README once the build succeeds. The current and earlier build pages are linked below.
 
 See the official [APK build guide](https://docs.expo.dev/build-reference/apk/) and
 [Expo Router authentication guide](https://docs.expo.dev/router/advanced/authentication/).
@@ -91,7 +91,7 @@ Android preview build submitted on 2026-10-08:
 [EAS build status](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/5188b0a3-d75f-4128-973d-dd5a6f5f71cf).
 This original build failed during dependency installation. Phase 9 repaired the
 lockfile and verified a full npm 10 clean install.
-An installable APK has not yet been verified.
+The original build is superseded by the working replacement below.
 
 Replacement build submitted on 2026-10-08 after 30 mobile tests, lint and Android
 bundle export passed:

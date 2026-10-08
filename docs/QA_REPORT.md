@@ -60,8 +60,7 @@ Do not point the test cleanup at the shared reviewer database.
 
 ## Still required
 
-1. Deploy dev's fixes and Swagger documentation to main when authorized; repeat
-   browser checks against deployed web/Render, not only local servers.
+1. Deploy subsequent small follow-up changes from dev when ready; the main Kanban redesign and Swagger docs are already live and browser-verified.
 2. Finish the replacement APK, install on an Android phone and test on an emulator.
 3. On both clients, confirm foreign resource IDs show the safe not-found UI.
 4. On Android, verify loading, empty states, invalid forms, expiry, airplane mode,
@@ -69,7 +68,7 @@ Do not point the test cleanup at the shared reviewer database.
 5. Create/update a task on web and observe it on Android after refresh, then repeat
    in the opposite direction with the same account.
 6. Capture native Android screenshots and record the five-minute demo.
-7. Rerun DB integration suites against a separate test DB before final submission.
+7. Final assembly after device evidence: the full backend suite already passed on separate taskflow_test (70 tests).
 
 See [SUBMISSION.md](SUBMISSION.md) and [DEMO_SCRIPT.md](DEMO_SCRIPT.md). These pending
 items are not marked complete in TASK.md.

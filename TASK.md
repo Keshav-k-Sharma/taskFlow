@@ -215,6 +215,8 @@ Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (13
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D21 — Add matching web sidebar symbols; web tests (30), lint and production build pass. Prepare docs/RELEASE_ACCEPTANCE.md with exact remaining phone/emulator/sync/screenshot/recording steps and reconcile stale release notes (done 2026-10-08).
+
 - [x] D20 — Finish legacy migration cleanup: replace unused MongoDB index.js with current app export and remove unused admin/member authMiddleware; 70 backend tests and lint pass (done 2026-10-08).
 
 - [x] D19 — Validate dedicated Neon taskflow_test database, apply both committed migrations and rerun full backend suite: 70 tests across eight suites and backend lint pass; primary DATABASE_URL preserved (done 2026-10-08).
@@ -227,7 +229,7 @@ Phase 9 backend verification (2026-10-08): full backend suite passes on dedicate
 - [ ] D18 — Redesign both website and mobile with a Jira-inspired Kanban interface while keeping TaskFlow's dark theme and yellow brand accent (requested 2026-10-08).
 - [x] D18a — Web sidebar and Pending, In Progress, Completed Kanban columns implemented; column grouping regression test passes (done 2026-10-08). Visual/live acceptance remains in D18f.
 - [x] D18b — Mobile status tabs, colored status/priority badges and dashboard grid implemented; labelled tab icons retained and filtering test passes (done 2026-10-08). Phone acceptance remains in D18f.
-- [ ] D18c — Both clients: improve task/project cards, rounded corners, spacing, typography, subtle borders and consistent icons; show readable priority badges and due dates (added 2026-10-08).
+- [x] D18c — Both clients: rounded cards, improved spacing, subtle borders, priority badges and due dates implemented; native mobile tab symbols and matching web sidebar symbols added. Device visual acceptance remains in D18f (done 2026-10-08).
 - [x] D18d — Green completion, amber reopen and red delete actions implemented on both clients; labels, disabled states and delete confirmations preserved (done 2026-10-08).
 - [x] D18e — Single-account ownership and shared endpoints preserved; no roles/member assignment introduced (verified 2026-10-08).
 - [ ] D18f — Verify redesigned web/mobile create, edit, delete and status-change flows, responsive layouts and accessibility; run tests/lint/build checks and document actual device checks (added 2026-10-08).

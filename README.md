@@ -270,7 +270,7 @@ See TASK.md rather than assuming every planned feature is finished.
 
 ## Screenshots and submission
 
-![Web dashboard](docs/images/web-dashboard.png)
+![Web Kanban board](docs/images/web-kanban.png)
 
 See [screenshots and capture checklist](docs/SCREENSHOTS.md). Android screenshots
 and the five-minute cross-platform recording require the APK and device testing.
@@ -278,5 +278,6 @@ The submission also needs the repo, deployment URLs, API docs, ER diagram and
 verified APK sharing link. No demo recording is available yet.
 
 See [QA evidence](docs/QA_REPORT.md), [submission checklist](docs/SUBMISSION.md),
-and [five-minute demo script](docs/DEMO_SCRIPT.md). Phase 9 fixes are currently on
-dev; the deployed main branch does not yet include them.
+and [five-minute demo script](docs/DEMO_SCRIPT.md). The Kanban redesign and API
+documentation are deployed; follow-up work and verification records are on dev.
+For exact phone checks and evidence still needed, follow [release acceptance](docs/RELEASE_ACCEPTANCE.md).

@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button, ErrorBanner } from "@/components/ui";
 import { errorMessage } from "@/lib/api";
+import Icon from "@/components/ui/Icon";
 
 /** Provides responsive navigation and revokes the session on logout. */
 export default function Navbar() {
@@ -55,8 +56,9 @@ export default function Navbar() {
               aria-current={
                 pathname.startsWith(`/${route}`) ? "page" : undefined
               }
-              className={`rounded-xl px-4 py-3 text-sm font-medium capitalize ${pathname.startsWith(`/${route}`) ? "bg-yellow-300/10 text-yellow-300" : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"}`}
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium capitalize ${pathname.startsWith(`/${route}`) ? "bg-yellow-300/10 text-yellow-300" : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"}`}
             >
+              <Icon name={route} />
               {route}
             </Link>
           ))}
