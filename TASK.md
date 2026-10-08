@@ -8,6 +8,8 @@
 
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
+Current phase completion audit (2026-10-08): Phases 0–5 are complete, including full test-database verification and deployed web acceptance. Phase 6 implementation/distribution setup is complete; updated APK is building and full phone/emulator acceptance (6.16) remains open. Phase 7 hosting is verified; web registration followed by login on the physical Android app (7.5) remains open. Phase 8 docs/diagrams/web screenshots are complete; native Android screenshots (8.9) remain open. These device-dependent items must be verified before marking Phases 6–8 fully complete. Docker remains last.
+
 ---
 
 ## ✅ Already in repo before this plan (reference only)
@@ -136,7 +138,7 @@
 - [x] 6.17b Link mobile app to @keshavkss-team/taskflow (project df4037fe-88cc-4bb8-a5b9-399b0307991d); verify authenticated EAS access (done 2026-10-08)
 - [x] 6.17a Configure eas.json preview profile for internal Android APK distribution (done 2026-10-08)
 - [x] 6.17 Configure preview profile and build APK; user confirmed the replacement build completed, installed and login works (done 2026-10-08). A new build is required for subsequent project creation, icons and redesign changes.
-- [ ] 6.18 Upload APK / publish Expo link; add to README (added 2026-10-06)
+- [x] 6.18 Publish EAS distribution page in README; previous APK installed/login confirmed by user. Updated design build page is linked; build completion and full device acceptance tracked separately (done 2026-10-08).
 
 Phase 6 checkpoint (2026-10-08): original EAS build failed; replacement `44704206-7eda-4ff1-9173-33cb1638f8b3` completed and the user confirmed installation/login. A new APK is needed for project creation, native tab icons and Kanban styling. All 35 current mobile tests, lint and Android bundle export pass. Full phone acceptance and emulator verification remain pending; no local Android SDK/emulator is installed.
 
@@ -150,7 +152,7 @@ Phase 6 checkpoint (2026-10-08): original EAS build failed; replacement `4470420
 - [ ] 7.5 Smoke test the deployed stack end-to-end (register on web → login on mobile) (added 2026-10-06)
 - [x] 7.6 Create reviewer@taskflow.example demo account, fictional project and task through the deployed API (done 2026-10-08)
 
-Phase 7 API smoke verification (2026-10-08): register/login, authenticated me, projects/tasks, dashboard, logout and revoked-token rejection pass. Task 7.5 still requires actual web-to-mobile device verification after the queued APK is available.
+Phase 7 checkpoint (2026-10-08): deployed API and website browser checks pass, including CRUD, authentication, responsive layout and session handling. Actual registration on web followed by login on the Android app remains pending in 7.5.
 
 ---
 
@@ -166,7 +168,7 @@ Phase 7 API smoke verification (2026-10-08): register/login, authenticated me, p
 - [ ] 8.9 Add architecture diagram + screenshots (web + mobile) to README (added 2026-10-06)
 - [x] 8.10 Add docs/DESIGN_DECISIONS.md covering architecture, security, dates and delivery limits (done 2026-10-08)
 
-Phase 8 checkpoint (2026-10-08): architecture diagram and actual web/Swagger screenshots added. Task 8.9 still needs native Android screenshots after APK installation. Documentation route changes stay on dev until a deployment merge is requested.
+Phase 8 checkpoint (2026-10-08): API/Swagger docs are deployed and verified; architecture, ER diagram and actual web screenshots are documented. Task 8.9 still requires actual Android screenshots.
 
 Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, npm 10 clean-install dry run, and 10 docs/middleware tests pass. Headless Chrome verified reviewer login, dashboard/projects and all 16 Swagger operations. Full database integration tests were not rerun; the docs changes require no schema/data changes.
 
@@ -194,7 +196,7 @@ Latest deployment status (2026-10-08): Render deployment is verified successful.
 - [x] 9.7b Repeat browser acceptance after Kanban/sidebar redesign against separate taskflow_test database: project/task create/edit/complete/delete, dialog Tab/Escape/focus restoration, 360px navigation without overflow, empty search, offline retry and expired-session clearing pass (done 2026-10-08).
 - [x] 9.6a Prepare docs/SUBMISSION.md, docs/QA_REPORT.md and five-minute docs/DEMO_SCRIPT.md; verified APK/device/recording links remain pending (done 2026-10-08).
 
-Phase 9 checkpoint (2026-10-08): all 70 backend tests pass on dedicated Neon taskflow_test; 30 web and 35 mobile tests pass (135 total). All package lint, web production build and Android bundle export pass. Local and deployed browser CRUD/keyboard/360px/offline/session checks pass. Tested code fast-forwarded to main at a35675b and pushed for deployment; work returned to dev. Vercel Kanban redesign is live; Render health/protected responses work, but new Swagger route still returns 404 and latest Render rollout needs verification. Previous APK installed/login confirmed by user; latest version 1.0.1 build 22403d8c-18ca-46af-b769-503ed0a94263 is IN_QUEUE. Android/emulator QA, screenshots, cross-platform sync and recording remain pending.
+Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (135 total); all lint/build checks pass. Local and deployed browser acceptance pass. Vercel redesign and Render Swagger/OpenAPI are verified live. Updated design APK 22403d8c-18ca-46af-b769-503ed0a94263 is IN_PROGRESS. Phone/emulator QA, cross-platform sync, native screenshots and recording remain pending.
 
 ## Bonus 🟢 (in suggested order)
 - [ ] B1 — Docker Compose for backend + Postgres, backend `Dockerfile` *(Assigned to User to learn and do manually)* (added 2026-10-06)
@@ -213,9 +215,11 @@ Phase 9 checkpoint (2026-10-08): all 70 backend tests pass on dedicated Neon tas
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D20 — Finish legacy migration cleanup: replace unused MongoDB index.js with current app export and remove unused admin/member authMiddleware; 70 backend tests and lint pass (done 2026-10-08).
+
 - [x] D19 — Validate dedicated Neon taskflow_test database, apply both committed migrations and rerun full backend suite: 70 tests across eight suites and backend lint pass; primary DATABASE_URL preserved (done 2026-10-08).
 
-Phase 9 backend verification (2026-10-08): full backend integration suite now passes against the separate test database. Combined automated coverage: 70 backend, 30 web and 35 mobile tests (135 total). Latest APK build 22403d8c-18ca-46af-b769-503ed0a94263 is IN_QUEUE. Device/emulator, deployed browser checks, sync, screenshots and recording remain pending.
+Phase 9 backend verification (2026-10-08): full backend suite passes on dedicated Neon taskflow_test; repeated after legacy cleanup with all 70 tests and lint passing.
 
 - [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
@@ -231,7 +235,7 @@ Phase 9 backend verification (2026-10-08): full backend integration suite now pa
 
 Redesign scope note (2026-10-08): Kanban columns and existing status controls are requested. Drag-and-drop was discussed as an optional additional interaction, not yet requested. Work stays on dev; main is used when needed for deployment. Commit completed work, and leave Docker until last.
 
-Phase 9 active checkpoint (2026-10-08): redesign implementation committed on dev as c58b0a1. Web 30 tests, lint and production build pass; mobile 35 tests, lint and Android bundle export pass. Submitted version 1.0.1/versionCode 2 preview APK build: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/22403d8c-18ca-46af-b769-503ed0a94263. Build completion and visual/phone acceptance remain pending. User is preparing a dedicated Neon taskflow_test database for the full backend suite. Web deployment/recheck, native screenshots, cross-platform sync, emulator checks and recording remain open.
+Phase 9 active checkpoint (2026-10-08): redesigned code deployed via main; work continues on dev. Updated preview APK version 1.0.1/versionCode 2 is IN_PROGRESS. Dedicated test database verification and deployed web QA are complete; phone/emulator acceptance, sync, native screenshots and recording remain pending.
 - [ ] D17a — Add Dashboard, Projects, Tasks and Account symbols to the mobile bottom tab bar; check Android rendering in the rebuilt APK (added 2026-10-08).
 - [x] D17b — Implement native tab symbols with per-platform names, labels and active highlighting; mobile tests and lint pass (done 2026-10-08).
 
@@ -251,9 +255,9 @@ Phase 9 active checkpoint (2026-10-08): redesign implementation committed on dev
 - [x] D7 — Phase 4 verified: 53 tests across six suites passed against the current database with explicit user authorization; backend lint passed. Dedicated database guard restored afterward (done 2026-10-07).
 - [x] D8 — Apply strict body/query/param schemas and actual calendar-date validation; test leap dates, invalid dates and mass assignment, and verify web/mobile payload compatibility (done 2026-10-08).
 
-- [ ] D1 — `authMiddleware` returns 500 on JWT verification failure; must be 401 (covered by 2.10) (added 2026-10-06)
-- [ ] D2 — `register` accepts `role` from request body → privilege escalation (covered by 2.7) (added 2026-10-06)
-- [ ] D3 — `GET /projects` and `GET /tasks` return all users' data → authorization hole (covered by 3.2, 3.9) (added 2026-10-06)
+- [x] D1 — Current authenticate middleware maps JWT failures to 401; unused legacy authMiddleware removed (done 2026-10-08).
+- [x] D2 — Strict registration schema rejects role input; no admin/member roles in the current model (verified 2026-10-08).
+- [x] D3 — Project/task queries are ownership-scoped; full authorization suite passes on separate test database (verified 2026-10-08).
 - [x] D4 — Web API URL reconciled with README and tracked .env.example (done 2026-10-07).
 
 ---
@@ -269,4 +273,4 @@ _(empty)_
 
 Phase 5 automated verification (2026-10-07): 22 frontend tests across eight suites, lint, and production build passed. Browser/device checks remain in Phase 9.
 
-Phase 6 implementation verification (2026-10-08): 30 mobile tests across nine suites passed; Android Metro export passed; Expo Doctor passed all 21 checks. Device testing, APK build, and sharing remain pending (6.16–6.18).
+Phase 6 implementation verification (2026-10-08): 35 mobile tests, lint and Android export pass; previous APK installed/login confirmed by user. Updated APK is building. Full device/emulator acceptance remains pending.

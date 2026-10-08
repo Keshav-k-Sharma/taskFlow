@@ -10,7 +10,7 @@ only their own projects and the tasks within them.
 | API                            | https://taskflow-1sh2.onrender.com/api                                                                                   |
 | API reference                  | [docs/API.md](docs/API.md)                                                                                               |
 | OpenAPI contract               | [docs/openapi.yaml](docs/openapi.yaml)                                                                                   |
-| Android build                  | [EAS build page](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/44704206-7eda-4ff1-9173-33cb1638f8b3) |
+| Android build                  | [Updated APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/22403d8c-18ca-46af-b769-503ed0a94263) |
 | Mobile setup and device checks | [docs/MOBILE.md](docs/MOBILE.md)                                                                                         |
 | Database model                 | [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md)                                                                                 |
 | Review notes                   | [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md)                                                                     |
@@ -249,7 +249,8 @@ Vercel hosts frontend: set NEXT_PUBLIC_API_URL to the Render API URL and rebuild
 when it changes. CORS_ORIGINS must contain the full frontend origin; port 3000
 alone does not match an origin. Expo uses the same API through the preview
 environment. The old backend Vercel deployment was retired; backend/vercel.json
-and src/index.js are legacy configuration and are not the current server entry.
+is retained for the retired hosting setup. src/index.js exports the current app
+for compatibility; npm start uses src/server.js.
 
 ## Security and current limits
 
