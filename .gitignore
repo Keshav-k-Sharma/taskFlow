@@ -6,3 +6,13 @@ node_modules/
 mobile/.expo/
 *.apk
 coverage/
+docs/USER_HANDOFF.md
+
+docs/DEMO_SCRIPT.md
+docs/RELEASE_ACCEPTANCE.md
+docs/SUBMISSION.md
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi

@@ -4,9 +4,11 @@
 > Mark tasks `[x]` immediately after finishing and add the completion date.
 > Architecture and decisions: `PLANNING.md`. Rules for agents: `AGENTS.md`.
 > Format: `- [ ] ID — description (added YYYY-MM-DD)` → `- [x] ID — description (done YYYY-MM-DD)`
-> Last updated: 2026-10-08
+> Last updated: 2026-10-09
 
 Current expressive design checkpoint (2026-10-08): both clients now use vivid blue accents, a bold dashboard hero, tinted summary cards and warm light surfaces. Website commit 1ecb075 is live; deployed canvas and reduced-motion behavior verified. Mobile version 1.0.4/versionCode 5 submitted: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/38921ae0-d88b-4831-b761-e7af1eee7b9a; physical-phone acceptance remains pending.
+
+Latest release status (2026-10-09): user confirms phone QA and bidirectional web/app sync pass; web/native screenshots documented; Docker and production security fixes verified (70 backend tests, lint, zero production audit findings). Emulator testing skipped at user request. Recording is provided separately, never committed. Personal guides are local-only. Optional bonuses and development-tool advisories remain open. Historical checkpoints below may describe superseded states.
 
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
@@ -140,7 +142,7 @@ Current phase completion audit (2026-10-08): Phases 0–5 are complete, includin
 - [x] 6.13 Task search + filter by status and priority (done 2026-10-08)
 - [x] 6.14 Logout (server call + clear SecureStore) (done 2026-10-08)
 - [x] 6.15 Phone UX polish: safe areas, keyboard avoidance, touch target sizes, empty/loading states (done 2026-10-08)
-- [ ] 6.16 Test on Android emulator (`10.0.2.2`) **and** a physical device against the deployed backend (added 2026-10-06)
+- 6.16 Physical-phone acceptance confirmed by user; emulator testing skipped at user request (2026-10-09).
 - [x] 6.17b Link mobile app to @keshavkss-team/taskflow (project df4037fe-88cc-4bb8-a5b9-399b0307991d); verify authenticated EAS access (done 2026-10-08)
 - [x] 6.17a Configure eas.json preview profile for internal Android APK distribution (done 2026-10-08)
 - [x] 6.17 Configure preview profile and build APK; user confirmed the replacement build completed, installed and login works (done 2026-10-08). A new build is required for subsequent project creation, icons and redesign changes.
@@ -171,7 +173,7 @@ Phase 7 checkpoint (2026-10-08): deployed API and website browser checks pass, i
 - [x] 8.6 Add generated OpenAPI contract and public Swagger UI at /api/docs/; route tests and browser render pass (done 2026-10-08)
 - [x] 8.7 Add API examples, schemas, response wrappers, filters and actual error codes (done 2026-10-08)
 - [x] 8.8 Update ER diagram and export SVG/PNG matching the Prisma schema (done 2026-10-08)
-- [ ] 8.9 Add architecture diagram + screenshots (web + mobile) to README (added 2026-10-06)
+- [x] 8.9 Add architecture diagram and actual web/mobile screenshots to README and gallery; user phone captures include login, dashboard, projects, project details and task actions (done 2026-10-09).
 - [x] 8.10 Add docs/DESIGN_DECISIONS.md covering architecture, security, dates and delivery limits (done 2026-10-08)
 
 Phase 8 checkpoint (2026-10-08): API/Swagger docs are deployed and verified; architecture, ER diagram and actual web screenshots are documented. Task 8.9 still requires actual Android screenshots.
@@ -188,7 +190,7 @@ Latest deployment status (2026-10-08): Render deployment is verified successful.
 - [x] 9.1a Full backend authorization/input-security suite verified on isolated Neon test database: 70 tests pass. Native not-found UI acceptance remains in 9.1 (done 2026-10-08).
 - [ ] 9.2 Manual UX checklist: validation errors, loading, empty states, expired-session message, airplane-mode message (added 2026-10-06)
 - [x] 9.2a Redesigned local production web tested in actual Chrome: invalid form errors, filtered empty state, offline retry and expired-session redirect/token clearing pass. Phone UX checks remain in 9.2 (done 2026-10-08).
-- [ ] 9.3 Cross-platform sync check: change on one platform appears on the other after refresh / pull-to-refresh (added 2026-10-06)
+- [x] 9.3 Cross-platform sync check: change on one platform appears on the other after refresh / pull-to-refresh (added 2026-10-06) User confirmed phone QA and bidirectional sync pass (done 2026-10-09).
 - [x] 9.4 Verify public GitHub access; targeted history credential-pattern scan of 693 reachable objects finds no matches or committed environment files (done 2026-10-08)
 - [ ] 9.5 Record the **5-minute demo**: same account on web + mobile → create task on one → show on the other (+ brief security/expiry/offline demo if time) (added 2026-10-06)
 - [ ] 9.6 Assemble submission: repo link, ER diagram, API docs, README, deployment URLs, APK/Expo link, recording (added 2026-10-06)
@@ -200,7 +202,7 @@ Latest deployment status (2026-10-08): Render deployment is verified successful.
 
 - [x] 9.7a Local production web/browser QA with actual API/Neon fixtures: CRUD, modal focus/Escape/restoration, 360px navigation, empty states, offline retry and session clearing pass; deployed recheck remains in 9.7 (done 2026-10-08).
 - [x] 9.7b Repeat browser acceptance after Kanban/sidebar redesign against separate taskflow_test database: project/task create/edit/complete/delete, dialog Tab/Escape/focus restoration, 360px navigation without overflow, empty search, offline retry and expired-session clearing pass (done 2026-10-08).
-- [x] 9.6a Prepare docs/SUBMISSION.md, docs/QA_REPORT.md and five-minute docs/DEMO_SCRIPT.md; verified APK/device/recording links remain pending (done 2026-10-08).
+- [x] 9.6a Prepare local submission checklist (excluded from repository), docs/QA_REPORT.md and five-minute local recording instructions (excluded from repository); verified APK/device/recording links remain pending (done 2026-10-08).
 
 Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (135 total); all lint/build checks pass. Local and deployed browser acceptance pass. Vercel redesign and Render Swagger/OpenAPI are verified live. Updated design APK 22403d8c-18ca-46af-b769-503ed0a94263 is IN_PROGRESS. Phone/emulator QA, cross-platform sync, native screenshots and recording remain pending.
 
@@ -224,12 +226,12 @@ Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (13
 - [ ] D24 — Give both light-themed clients a professional but expressive visual hierarchy: vivid blue/indigo accents, richer dashboard cards, stronger typography and depth while preserving motion, accessibility and existing functionality (done 2026-10-08; 68 client tests, lint, web build, Android export and Chrome layout/reduced-motion checks pass).
 
 - [x] D23a — Replace peach/terracotta appearance with professional stone/ivory/navy/teal palette on both clients; icons, motion and Kanban workflows retained. Web 30/mobile 38 tests, both lint checks, web build and Android export pass; actual Chrome theme/360px/reduced-motion checks pass (done 2026-10-08).
-- [ ] D23b ? Install latest expressive-theme version 1.0.4/versionCode 5 and verify phone appearance, motion, icons and CRUD (updated 2026-10-08).
+- [x] D23b ? Install latest expressive-theme version 1.0.4/versionCode 5 and verify phone appearance, motion, icons and CRUD (updated 2026-10-08). User confirmed phone QA and bidirectional sync pass (done 2026-10-09).
 
 - [x] D22a — Implement warm cream/terracotta/sage theme on web and mobile, subtle web card/button/dialog animations and native screen fades/press feedback; reduced-motion tests pass. Web 30 tests, mobile 38 tests, both lint checks, web build and Android export pass. Actual local Chrome CRUD/keyboard/360px/offline/expiry/reduced-motion checks pass (done 2026-10-08).
 - D22b ? Superseded by current version 1.0.4; phone acceptance tracked in D23b.
 
-- [x] D21 — Add matching web sidebar symbols; web tests (30), lint and production build pass. Prepare docs/RELEASE_ACCEPTANCE.md with exact remaining phone/emulator/sync/screenshot/recording steps and reconcile stale release notes (done 2026-10-08).
+- [x] D21 — Add matching web sidebar symbols; web tests (30), lint and production build pass. Prepare local release checklist (excluded from repository) with exact remaining phone/emulator/sync/screenshot/recording steps and reconcile stale release notes (done 2026-10-08).
 
 - [x] D20 — Finish legacy migration cleanup: replace unused MongoDB index.js with current app export and remove unused admin/member authMiddleware; 70 backend tests and lint pass (done 2026-10-08).
 
@@ -239,7 +241,7 @@ Phase 9 backend verification (2026-10-08): full backend suite passes on dedicate
 
 - [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
-- [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
+- [x] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08). User confirmed phone QA and bidirectional sync pass (done 2026-10-09).
 - [ ] D18 — Redesign both website and mobile with a Jira-inspired Kanban interface using the current expressive warm light theme (requested 2026-10-08).
 - [x] D18a — Web sidebar and Pending, In Progress, Completed Kanban columns implemented; column grouping regression test passes (done 2026-10-08). Visual/live acceptance remains in D18f.
 - [x] D18b — Mobile status tabs, colored status/priority badges and dashboard grid implemented; labelled tab icons retained and filtering test passes (done 2026-10-08). Phone acceptance remains in D18f.
@@ -247,12 +249,12 @@ Phase 9 backend verification (2026-10-08): full backend suite passes on dedicate
 - [x] D18d — Green completion, amber reopen and red delete actions implemented on both clients; labels, disabled states and delete confirmations preserved (done 2026-10-08).
 - [x] D18e — Single-account ownership and shared endpoints preserved; no roles/member assignment introduced (verified 2026-10-08).
 - [ ] D18f — Verify redesigned web/mobile create, edit, delete and status-change flows, responsive layouts and accessibility; run tests/lint/build checks and document actual device checks (added 2026-10-08).
-- [ ] D18g — After the mobile redesign, build a replacement APK containing project creation, tab icons and the new design; update the distribution link and verify it on the user's Android phone (added 2026-10-08).
+- [x] D18g — After the mobile redesign, build a replacement APK containing project creation, tab icons and the new design; update the distribution link and verify it on the user's Android phone (added 2026-10-08). User confirmed phone QA and bidirectional sync pass (done 2026-10-09).
 
 Redesign scope note (2026-10-08): Kanban columns and existing status controls are requested. Drag-and-drop was discussed as an optional additional interaction, not yet requested. Work stays on dev; main is used when needed for deployment. Commit completed work, and leave Docker until last.
 
 Phase 9 active checkpoint (2026-10-08): redesigned code deployed via main; work continues on dev. Updated preview APK version 1.0.1/versionCode 2 is IN_PROGRESS. Dedicated test database verification and deployed web QA are complete; phone/emulator acceptance, sync, native screenshots and recording remain pending.
-- [ ] D17a — Add Dashboard, Projects, Tasks and Account symbols to the mobile bottom tab bar; check Android rendering in the rebuilt APK (added 2026-10-08).
+- [x] D17a — Add Dashboard, Projects, Tasks and Account symbols to the mobile bottom tab bar; check Android rendering in the rebuilt APK (added 2026-10-08). User confirmed phone QA and bidirectional sync pass (done 2026-10-09).
 - [x] D17b — Implement native tab symbols with per-platform names, labels and active highlighting; mobile tests and lint pass (done 2026-10-08).
 
 - [x] D13 — Malformed JSON maps to 400 VALIDATION_ERROR, oversized JSON to 413 PAYLOAD_TOO_LARGE and disallowed origins to 403 CORS_NOT_ALLOWED; tests and contract updated (done 2026-10-08).
@@ -291,8 +293,18 @@ Phase 5 automated verification (2026-10-07): 22 frontend tests across eight suit
 
 Phase 6 implementation verification (2026-10-08): 35 mobile tests, lint and Android export pass; previous APK installed/login confirmed by user. Updated APK is building. Full device/emulator acceptance remains pending.
 
-Final Docker checkpoint (2026-10-08): backend Dockerfile, build exclusions, local Compose database/backend health checks and migration startup implemented. Compose YAML/service wiring and backend lint pass; middleware tests pass (5). Full backend rerun cannot complete because current TEST_DATABASE_URL targets unavailable localhost:5433. Previous Neon suite result is historical. Docker runtime checks require installation. Latest APK 1.0.4/versionCode 5 is IN_QUEUE. Exact user steps: docs/USER_HANDOFF.md. Optional bonuses remain outside core release completion.
+Final Docker checkpoint (2026-10-08): backend Dockerfile, build exclusions, local Compose database/backend health checks and migration startup implemented. Compose YAML/service wiring and backend lint pass; middleware tests pass (5). Full backend rerun cannot complete because current TEST_DATABASE_URL targets unavailable localhost:5433. Previous Neon suite result is historical. Docker runtime checks require installation. Latest APK 1.0.4/versionCode 5 is IN_QUEUE. Exact user steps: local personal handoff (excluded from repository). Optional bonuses remain outside core release completion.
 
 Docker runtime verification (2026-10-08): Docker Desktop running; image builds successfully and all three services are healthy. Production migrations are up to date; test migrations applied to isolated localhost:5433/taskflow_test. All 70 backend tests and lint pass. Earlier unavailable-Docker/test-database notes are superseded. Containers left running.
 
-- [ ] D25 ? Review and remediate npm production dependency advisories reported during Docker build: proxy-addr critical, path-to-regexp high, qs moderate and body-parser low; audit reports compatible fixes available (discovered 2026-10-08).
+- [x] D25 ? Fix production proxy-addr, path-to-regexp, qs and body-parser advisories with compatible transitive updates; npm 10 lockfile, zero production audit vulnerabilities, 70 backend tests, lint and rebuilt Docker checks pass (done 2026-10-09).
+
+- [x] D26 ? Replace current web documentation gallery with user-supplied login/dashboard/projects/project-detail/completed-task screenshots; update README, screenshot gallery, submission checklist and QA references (done 2026-10-09). Native screenshots remain pending in 8.9.
+
+- [ ] D27 ? Review remaining development-tool audit findings (23: 19 moderate, 4 high); production audit is clean (discovered 2026-10-09).
+
+- [x] D28 Add five distinct user-supplied native Android screenshots to README, gallery and submission documentation; preserve original JPEGs and omit duplicate dashboard (done 2026-10-09). Screenshots establish visible appearance/icons, not full device or sync acceptance.
+
+User acceptance checkpoint (2026-10-09): user confirms phone CRUD/status/validation/offline-retry/expired-session checks and bidirectional web/app sync work. Recorded as user-reported acceptance, not agent device execution. Emulator checks, separate manual security checks, demo recording and final submission remain pending. Optional dates/failed-save edge cases and web-registration-to-mobile-login are not separately reported.
+
+- [x] D29 Exclude personal handoff, recording script, release and submission checklists plus video files from Git; remove public README links to private guides (done 2026-10-09). Emulator testing skipped at user request; video shared separately. No builds or deployments triggered.

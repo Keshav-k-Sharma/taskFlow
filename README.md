@@ -278,14 +278,32 @@ See TASK.md rather than assuming every planned feature is finished.
 
 ## Screenshots and submission
 
-![Professional web Kanban board](docs/images/expressive-web-kanban.png)
+Current website screenshots supplied on 2026-10-09:
 
-See [screenshots and capture checklist](docs/SCREENSHOTS.md). Android screenshots
-and the five-minute cross-platform recording require the APK and device testing.
+![Web dashboard](docs/images/web-dashboard.png)
+
+![Web projects](docs/images/web-project.png)
+
+![Project details and task board](docs/images/web-project-detail.png)
+
+![Completed task and feedback](docs/images/web-tasks.png)
+
+![Web login](docs/images/web-login.png)
+
+See [web and native Android gallery](docs/SCREENSHOTS.md). Android screenshots are supplied; full device acceptance and the five-minute recording remain pending.
 The submission also needs the repo, deployment URLs, API docs, ER diagram and
 verified APK sharing link. No demo recording is available yet.
 
-See [QA evidence](docs/QA_REPORT.md), [submission checklist](docs/SUBMISSION.md),
-and [five-minute demo script](docs/DEMO_SCRIPT.md). The Kanban redesign and API
-documentation are deployed; follow-up work and verification records are on dev.
-For exact phone checks and evidence still needed, follow [release acceptance](docs/RELEASE_ACCEPTANCE.md).
+See [QA evidence](docs/QA_REPORT.md). Website and API documentation are deployed; current screenshots are included above. The demo recording is shared separately and is not stored in this repository.
+
+### Android screenshots
+
+<img src="docs/images/mobile-login.jpeg" alt="Android Login" width="280" />
+
+<img src="docs/images/mobile-dashboard.jpeg" alt="Android Dashboard and native tab icons" width="280" />
+
+<img src="docs/images/mobile-projects.jpeg" alt="Android Projects" width="280" />
+
+<img src="docs/images/mobile-project-detail.jpeg" alt="Android Project details and status tabs" width="280" />
+
+<img src="docs/images/mobile-tasks.jpeg" alt="Android Completed task and actions" width="280" />

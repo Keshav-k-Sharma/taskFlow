@@ -1,59 +1,56 @@
 # Application screenshots
 
-Captured on 2026-10-08 from the actual local production web build and local API,
-using fictional reviewer data in Neon. These are web screenshots, not Android
-screenshots. No JWTs, backend environment values or passwords are visible.
+Updated 2026-10-09 with the user's supplied screenshots of the deployed website,
+showing the current expressive light design and fictional Demo Reviewer data.
+These images document web appearance; they do not establish native Android or
+cross-platform sync acceptance.
 
 ## Web login
 
 ![Web login](images/web-login.png)
 
-## Web dashboard
+## Dashboard
 
 ![Web dashboard](images/web-dashboard.png)
 
-## Web projects
+## Projects
 
-![Web projects](images/web-projects.png)
+![Web projects](images/web-project.png)
 
-## Jira-inspired Kanban board
+## Project details and task board
 
-Captured from the deployed Vercel website on 2026-10-08 using temporary fictional demo data, removed after verification. Shows the current sidebar and three status columns.
+![Project details and pending task](images/web-project-detail.png)
 
-![Web Kanban board](images/web-kanban.png)
+## Tasks and completion feedback
+
+![Completed task and success message](images/web-tasks.png)
 
 ## Swagger UI
 
+Earlier API documentation capture:
+
 ![Swagger UI](images/swagger-ui.png)
 
-## Android capture pending
+## Native Android screenshots
 
-## Warm theme update
+Supplied by the user on 2026-10-09 from the installed phone app. These show the current light design, tab symbols and fictional reviewer data. Duplicate dashboard capture omitted. Full CRUD, offline, expiry, sync and emulator acceptance remain separate checks.
 
-Captured from the actual local production build on 2026-10-08 with fictional test-database fixtures; shows the newly requested cream/terracotta/sage theme. Reduced-motion and 360px checks pass.
+### Login
 
-![Warm Kanban board](images/warm-web-kanban.png)
+![Android Login](images/mobile-login.jpeg)
 
-## Android capture instructions
+### Dashboard and native tab icons
 
-## Professional palette correction
+![Android Dashboard and native tab icons](images/mobile-dashboard.jpeg)
 
-The user rejected the peach appearance. The latest web/mobile palette uses warm stone, ivory, navy and muted teal. Actual local production screenshot (2026-10-08); 360px and reduced-motion browser checks pass.
+### Projects
 
-![Professional Kanban board](images/professional-web-kanban.png)
+![Android Projects](images/mobile-projects.jpeg)
 
-## Native capture checklist
+### Project details and status tabs
 
-Once the APK installs, capture dashboard, task list and task form on the Android
-phone using the same fictional account. Save those PNGs in docs/images, include
-them here and in README, and mark task 8.9 complete after verifying that they show
-the actual app. Do not substitute web screenshots at a phone viewport for native
-Android screenshots. Hide notifications or personal data before sharing.
+![Android Project details and status tabs](images/mobile-project-detail.jpeg)
 
-## Expressive professional light design (2026-10-08)
+### Completed task and actions
 
-Actual Chrome captures; native phone screenshots remain pending.
-
-![Dashboard](images/expressive-web-dashboard.png)
-
-![Kanban](images/expressive-web-kanban.png)
+![Android Completed task and actions](images/mobile-tasks.jpeg)

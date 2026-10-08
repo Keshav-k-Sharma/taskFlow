@@ -128,3 +128,5 @@ against the deployed backend:
 Record results and any failures in `TASK.md`. Repeat these checks on an Android
 emulator before closing task 6.16. The user has an Android phone; this workspace
 does not currently have Android Studio or an Android SDK (checked 2026-10-08).
+
+Native phone screenshots supplied 2026-10-09 are available in the [application gallery](SCREENSHOTS.md#native-android-screenshots).

@@ -9,7 +9,7 @@ Professional palette correction (2026-10-08): web 30/mobile 38 tests, both lint 
 
 Warm release follow-up: Vercel serves cream canvas rgb(246,239,229); actual Chrome verifies that reduced-motion disables entrance animation. Website theme is deployed at 29596f5. Warm mobile version 1.0.2/versionCode 3 submitted as EAS build 0cbeb6a0-0194-414e-81a7-d738fd6ebcc2; build completion and phone acceptance are not yet verified.
 
-Warm theme update (2026-10-08): 30 web tests and 38 mobile tests pass; both client lint checks, web production build and Android Metro export pass. Three native motion tests cover reduced-motion preference, animation cleanup and safe fallback. Actual Chrome verifies warm canvas color, reduced-motion CSS, 360px layout, CRUD, dialog keyboard behavior, offline retry and expired-session clearing. Screenshot: images/warm-web-kanban.png. Physical Android appearance/animation acceptance requires the new version 1.0.2 APK and remains pending.
+Warm theme update (2026-10-08): 30 web tests and 38 mobile tests pass; both client lint checks, web production build and Android Metro export pass. Three native motion tests cover reduced-motion preference, animation cleanup and safe fallback. Actual Chrome verifies warm canvas color, reduced-motion CSS, 360px layout, CRUD, dialog keyboard behavior, offline retry and expired-session clearing. Historical warm-theme capture superseded by the current web gallery. Physical Android appearance/animation acceptance requires the new version 1.0.2 APK and remains pending.
 
 Latest deployment verification (2026-10-08): Render /api/health, /api/docs/ and /api/docs/openapi.yaml return 200; Swagger HTML is served. Unauthenticated /api/auth/me returns expected 401. This supersedes the earlier rollout observations of Swagger 404 below.
 
@@ -76,7 +76,7 @@ Do not point the test cleanup at the shared reviewer database.
 6. Capture native Android screenshots and record the five-minute demo.
 7. Final assembly after device evidence: the full backend suite already passed on separate taskflow_test (70 tests).
 
-See [SUBMISSION.md](SUBMISSION.md) and [DEMO_SCRIPT.md](DEMO_SCRIPT.md). These pending
+Submission and recording instructions are maintained locally. These pending
 items are not marked complete in TASK.md.
 ## Kanban redesign checkpoint — 2026-10-08
 
@@ -90,6 +90,14 @@ Web sidebar and three status columns, mobile status tabs and dashboard grid, col
 
 Expressive design verification (2026-10-08): web 30/mobile 38 tests, both lint checks, production web build and Android export pass. Actual Chrome checks verify the warm canvas, 360px layout and reduced-motion behavior. Physical Android acceptance remains pending.
 
-Final Docker checkpoint (2026-10-08): backend Dockerfile, build exclusions, local Compose database/backend health checks and migration startup implemented. Compose YAML/service wiring and backend lint pass; middleware tests pass (5). Full backend rerun cannot complete because current TEST_DATABASE_URL targets unavailable localhost:5433. Previous Neon suite result is historical. Docker runtime checks require installation. Latest APK 1.0.4/versionCode 5 is IN_QUEUE. Exact user steps: docs/USER_HANDOFF.md. Optional bonuses remain outside core release completion.
+Final Docker checkpoint (2026-10-08): backend Dockerfile, build exclusions, local Compose database/backend health checks and migration startup implemented. Compose YAML/service wiring and backend lint pass; middleware tests pass (5). Full backend rerun cannot complete because current TEST_DATABASE_URL targets unavailable localhost:5433. Previous Neon suite result is historical. Docker runtime checks require installation. Latest APK 1.0.4/versionCode 5 is IN_QUEUE. Exact user steps: local personal handoff (excluded from repository). Optional bonuses remain outside core release completion.
 
 Docker runtime acceptance (2026-10-08): Linux image builds, backend/db/db_test healthy, backend uid=1000, production migrations current, test migrations applied, health UP and Swagger 200. Full backend suite: 70 tests/8 suites pass on isolated Docker taskflow_test; lint passes. Dependency audit follow-up D25 remains open.
+
+Web screenshot update (2026-10-09): user-supplied deployed screenshots replace earlier website gallery images. See [current screenshots](SCREENSHOTS.md) for login, dashboard, projects, project detail and completed-task feedback. Screenshots alone do not verify sync or Android behavior.
+
+Production dependency remediation (2026-10-09): compatible transitive lockfile updates remove all four production advisories; npm audit --omit=dev reports zero vulnerabilities. All 70 backend tests/8 suites and lint pass; npm 10 Docker clean install succeeds. Development-tool audit findings remain tracked separately in D27. No APK changes required.
+
+Native screenshot evidence (2026-10-09): five user-supplied phone captures added to [gallery](SCREENSHOTS.md#native-android-screenshots). They show login, dashboard, native tab icons, projects, status tabs and completed-task actions. Screenshot documentation item 8.9 is complete. CRUD/offline/expiry/sync/emulator testing remains pending.
+
+User-reported phone acceptance (2026-10-09): project/task create/edit/delete, status changes, validation, offline retry and expired-session behavior pass. Bidirectional web/app sync with the same account passes. Evidence: user confirmation plus supplied phone screenshots. Emulator and separate manual security acceptance remain pending.
