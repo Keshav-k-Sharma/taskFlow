@@ -15,7 +15,7 @@ function ExpiredBanner() {
   return query.get("expired") === "1" ? (
     <p
       role="status"
-      className="rounded-lg border border-yellow-700 bg-yellow-950 p-3 text-sm text-yellow-200"
+      className="rounded-lg border border-amber-200 bg-amber-100 p-3 text-sm text-amber-900"
     >
       Session expired, please log in again.
     </p>
@@ -49,15 +49,15 @@ export default function AuthForm({ registerMode = false }) {
   }
   return (
     <main className="flex min-h-dvh items-center justify-center px-5 py-12">
-      <div className="w-full max-w-md space-y-6 rounded-2xl border border-zinc-800 bg-zinc-900 p-6 sm:p-8">
+      <div className="w-full max-w-md space-y-6 rounded-2xl border border-line bg-surface p-6 sm:p-8">
         <Link href="/" className="text-2xl font-bold">
-          <span className="text-yellow-300">Task</span>Flow
+          <span className="text-accent">Task</span>Flow
         </Link>
         <div>
           <h1 className="mt-6 text-2xl font-semibold">
             {registerMode ? "Create your account" : "Welcome back"}
           </h1>
-          <p className="mt-2 text-sm text-zinc-400">
+          <p className="mt-2 text-sm text-muted">
             Your projects and tasks, in one place.
           </p>
         </div>
@@ -98,11 +98,11 @@ export default function AuthForm({ registerMode = false }) {
             </Button>
           </fieldset>
         </form>
-        <p className="text-center text-sm text-zinc-400">
+        <p className="text-center text-sm text-muted">
           {registerMode ? "Already have an account? " : "New to TaskFlow? "}
           <Link
             href={registerMode ? "/login" : "/register"}
-            className="text-yellow-300 underline"
+            className="text-accent underline"
           >
             {registerMode ? "Log in" : "Create an account"}
           </Link>

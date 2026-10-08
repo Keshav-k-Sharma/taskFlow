@@ -32,7 +32,12 @@ export default function DashboardScreen() {
         }
       >
         <Text style={styles.title}>Dashboard</Text>
-        <View style={[styles.card, { borderColor: "#655b29" }]}>
+        <View
+          style={[
+            styles.card,
+            { borderColor: "#debca4", backgroundColor: "#f8e5d1" },
+          ]}
+        >
           <Text style={styles.badge}>YOUR WORKSPACE</Text>
           <Text style={styles.heading}>Make room for progress.</Text>
           <Text style={styles.muted}>

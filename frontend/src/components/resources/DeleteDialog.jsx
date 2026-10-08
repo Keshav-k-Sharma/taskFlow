@@ -27,7 +27,7 @@ export default function DeleteDialog({ resource, item, onClose, onDeleted }) {
       onClose={onClose}
       busy={busy}
     >
-      <p className="mb-5 text-zinc-300">
+      <p className="mb-5 text-ink">
         Delete “{item.name}”?{" "}
         {resource === "projects" &&
           "All tasks in this project will also be deleted. "}

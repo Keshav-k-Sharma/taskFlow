@@ -50,7 +50,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <AuthProvider>
-        <StatusBar style="light" />
+        <StatusBar style="dark" />
         <Navigator />
       </AuthProvider>
     </SafeAreaProvider>

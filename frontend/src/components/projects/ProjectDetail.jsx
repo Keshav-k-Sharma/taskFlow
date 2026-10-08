@@ -19,7 +19,7 @@ export default function ProjectDetail({ id }) {
   if (error)
     return (
       <>
-        <Link href="/projects" className="text-yellow-300">
+        <Link href="/projects" className="text-accent">
           ← Projects
         </Link>
         <ErrorBanner message={error} retry={refresh} />
@@ -28,17 +28,17 @@ export default function ProjectDetail({ id }) {
   const project = data.project;
   return (
     <>
-      <Link href="/projects" className="text-sm text-yellow-300">
+      <Link href="/projects" className="text-sm text-accent">
         ← Projects
       </Link>
       <Toast message={notice} />
-      <section className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900 p-6">
+      <section className="space-y-4 rounded-xl border border-line bg-surface p-6">
         <Badge value={project.status} />
         <h1 className="break-words text-3xl font-bold">{project.name}</h1>
-        <p className="whitespace-pre-wrap break-words text-zinc-400">
+        <p className="whitespace-pre-wrap break-words text-muted">
           {project.description || "No description"}
         </p>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-muted">
           Start: {project.startDate?.slice(0, 10) || "Not set"} · End:{" "}
           {project.endDate?.slice(0, 10) || "Not set"}
         </p>

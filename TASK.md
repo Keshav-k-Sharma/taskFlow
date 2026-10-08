@@ -215,6 +215,9 @@ Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (13
 ## 🔍 Discovered During Work
 > Add new sub-tasks, bugs and TODOs here as they appear, with a date.
 
+- [x] D22a — Implement warm cream/terracotta/sage theme on web and mobile, subtle web card/button/dialog animations and native screen fades/press feedback; reduced-motion tests pass. Web 30 tests, mobile 38 tests, both lint checks, web build and Android export pass. Actual local Chrome CRUD/keyboard/360px/offline/expiry/reduced-motion checks pass (done 2026-10-08).
+- [ ] D22b — Build and install warm-theme Android version 1.0.2/versionCode 3; verify motion, contrast, icons and CRUD on the physical phone (added 2026-10-08).
+
 - [x] D21 — Add matching web sidebar symbols; web tests (30), lint and production build pass. Prepare docs/RELEASE_ACCEPTANCE.md with exact remaining phone/emulator/sync/screenshot/recording steps and reconcile stale release notes (done 2026-10-08).
 
 - [x] D20 — Finish legacy migration cleanup: replace unused MongoDB index.js with current app export and remove unused admin/member authMiddleware; 70 backend tests and lint pass (done 2026-10-08).

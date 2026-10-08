@@ -15,7 +15,7 @@ const tabSymbols = {
     web: "account_circle",
   },
 };
-/** Provides four mobile sections with consistent dark-theme navigation. */
+/** Provides four mobile sections with consistent warm-theme navigation. */
 export default function TabsLayout() {
   return (
     <Tabs
@@ -28,7 +28,7 @@ export default function TabsLayout() {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
         },
-        tabBarActiveBackgroundColor: "#292719",
+        tabBarActiveBackgroundColor: "#f1dfd0",
         tabBarLabelStyle: { fontWeight: "600" },
         tabBarIcon: ({ color, size }) => (
           <SymbolView

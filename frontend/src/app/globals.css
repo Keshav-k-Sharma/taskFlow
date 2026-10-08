@@ -1,8 +1,27 @@
 @import "tailwindcss";
+@theme {
+  --color-canvas: #f6efe5;
+  --color-surface: #fff8ed;
+  --color-sand: #ece0cf;
+  --color-line: #dac8b2;
+  --color-ink: #35291f;
+  --color-muted: #756253;
+  --color-accent: #a94d35;
+  --color-on-accent: #fff8ed;
+  --color-sage: #749474;
+  --color-dusty-blue: #718d8b;
+  --color-honey: #c4964b;
+}
 @layer base {
   body {
-    @apply bg-zinc-950 text-zinc-100 antialiased;
-    font-family: Arial, Helvetica, sans-serif;
+    @apply bg-canvas text-ink antialiased;
+    background-image: radial-gradient(
+      ellipse at top right,
+      #f2d9bd80,
+      transparent 65%
+    );
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color-scheme: light;
   }
   button,
   input,
@@ -14,6 +33,105 @@
     @apply cursor-pointer disabled:cursor-not-allowed;
   }
   :focus-visible {
-    @apply outline-2 outline-offset-4 outline-yellow-300;
+    @apply outline-2 outline-offset-4 outline-accent;
+  }
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes dialog-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@layer components {
+  main > section,
+  main > div,
+  main > article {
+    animation: arrive 420ms ease-out both;
+  }
+  article,
+  .surface-card {
+    animation: arrive 420ms ease-out backwards;
+    box-shadow: 0 5px 20px #63452b0a;
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease,
+      border-color 220ms ease;
+  }
+  article:nth-child(2) {
+    animation-delay: 60ms;
+  }
+  article:nth-child(3) {
+    animation-delay: 120ms;
+  }
+  dialog[open] {
+    animation: dialog-arrive 240ms ease-out both;
+    box-shadow: 0 24px 90px #63452b30;
+  }
+  dialog::backdrop {
+    background: #49362966;
+    backdrop-filter: blur(5px);
+  }
+  button,
+  nav a {
+    transition:
+      transform 160ms ease,
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+  input,
+  textarea,
+  select {
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px #a94d3514;
+  }
+  @media (hover: hover) {
+    article:hover,
+    .surface-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px #63452b12;
+    }
+    button:enabled:hover {
+      transform: translateY(-1px);
+    }
+  }
+  button:enabled:active {
+    transform: scale(0.97);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  article:hover,
+  .surface-card:hover,
+  button:enabled:hover,
+  button:enabled:active {
+    transform: none;
   }
 }

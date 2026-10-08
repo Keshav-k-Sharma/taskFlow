@@ -37,7 +37,7 @@ export default function ProjectsView() {
     <>
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm text-zinc-400">Your workspace</p>
+          <p className="text-sm text-muted">Your workspace</p>
           <h1 className="mt-1 text-3xl font-bold">Projects</h1>
         </div>
         <Button onClick={() => setEditing({})}>Create project</Button>
@@ -54,19 +54,19 @@ export default function ProjectsView() {
             {data.projects.map((project) => (
               <article
                 key={project.id}
-                className="flex flex-col gap-4 rounded-2xl border border-zinc-700/60 border-t-yellow-300/60 bg-zinc-900 p-6 shadow-lg shadow-black/10"
+                className="flex flex-col gap-4 rounded-2xl border border-line border-t-accent/30 bg-surface p-6"
               >
                 <Badge value={project.status} />
                 <Link
                   href={`/projects/${project.id}`}
-                  className="break-words text-lg font-semibold hover:text-yellow-300"
+                  className="break-words text-lg font-semibold hover:text-accent"
                 >
                   {project.name}
                 </Link>
-                <p className="flex-1 break-words text-sm text-zinc-400">
+                <p className="flex-1 break-words text-sm text-muted">
                   {project.description || "No description"}
                 </p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-muted">
                   {project.startDate?.slice(0, 10) || "No start date"} →{" "}
                   {project.endDate?.slice(0, 10) || "No end date"}
                 </p>

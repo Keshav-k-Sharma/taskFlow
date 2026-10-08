@@ -83,8 +83,8 @@ export default function TasksView({ projectId }) {
       {!projects.loading &&
         !projects.error &&
         !projects.data?.projects.length && (
-          <p className="text-sm text-zinc-400">
-            <Link href="/projects" className="text-yellow-300 underline">
+          <p className="text-sm text-muted">
+            <Link href="/projects" className="text-accent underline">
               Create a project
             </Link>{" "}
             before adding tasks.
@@ -103,7 +103,7 @@ export default function TasksView({ projectId }) {
             renderTask={(task) => (
               <article
                 key={task.id}
-                className="flex flex-col gap-4 rounded-xl border border-zinc-700/60 bg-zinc-900 p-4 shadow-lg shadow-black/10"
+                className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-4"
               >
                 <div className="min-w-0 space-y-3">
                   <div className="flex flex-wrap gap-2">
@@ -113,17 +113,17 @@ export default function TasksView({ projectId }) {
                   <h2 className="break-words text-lg font-semibold">
                     {task.name}
                   </h2>
-                  <p className="break-words text-sm text-zinc-400">
+                  <p className="break-words text-sm text-muted">
                     {task.description || "No description"}
                   </p>
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-muted">
                     Due: {task.dueDate?.slice(0, 10) || "No due date"}
                     {!projectId && (
                       <>
                         {" "}
                         ·{" "}
                         <Link
-                          className="text-yellow-300"
+                          className="text-accent"
                           href={`/projects/${task.projectId}`}
                         >
                           {projects.data?.projects.find(

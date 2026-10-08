@@ -28,6 +28,14 @@ Captured from the deployed Vercel website on 2026-10-08 using temporary fictiona
 
 ## Android capture pending
 
+## Warm theme update
+
+Captured from the actual local production build on 2026-10-08 with fictional test-database fixtures; shows the newly requested cream/terracotta/sage theme. Reduced-motion and 360px checks pass.
+
+![Warm Kanban board](images/warm-web-kanban.png)
+
+## Android capture instructions
+
 Once the APK installs, capture dashboard, task list and task form on the Android
 phone using the same fictional account. Save those PNGs in docs/images, include
 them here and in README, and mark task 8.9 complete after verifying that they show

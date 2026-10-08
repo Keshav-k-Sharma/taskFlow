@@ -29,10 +29,10 @@ export default function Navbar() {
     }
   }
   return (
-    <header className="sticky top-0 z-20 border-b border-zinc-800 bg-zinc-950/95 md:fixed md:bottom-0 md:left-0 md:w-60 md:border-r md:border-b-0">
+    <header className="sticky top-0 z-20 border-b border-line bg-canvas/95 md:fixed md:bottom-0 md:left-0 md:w-60 md:border-r md:border-b-0">
       <div className="flex flex-wrap items-center justify-between gap-4 px-5 py-4 md:h-full md:flex-col md:items-stretch md:justify-start md:gap-8 md:py-8">
         <Link href="/dashboard" className="text-xl font-bold tracking-tight">
-          <span className="text-yellow-300">Task</span>Flow
+          <span className="text-accent">Task</span>Flow
         </Link>
         <Button
           variant="secondary"
@@ -56,7 +56,7 @@ export default function Navbar() {
               aria-current={
                 pathname.startsWith(`/${route}`) ? "page" : undefined
               }
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium capitalize ${pathname.startsWith(`/${route}`) ? "bg-yellow-300/10 text-yellow-300" : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"}`}
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium capitalize ${pathname.startsWith(`/${route}`) ? "bg-accent/10 text-accent" : "text-muted hover:bg-surface hover:text-ink"}`}
             >
               <Icon name={route} />
               {route}
@@ -64,7 +64,7 @@ export default function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-3 md:mt-auto md:flex-col md:items-stretch">
-          <span className="hidden text-sm text-zinc-400 sm:block">
+          <span className="hidden text-sm text-muted sm:block">
             {user?.fullName}
           </span>
           <Button variant="secondary" onClick={logout} disabled={busy}>

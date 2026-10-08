@@ -25,3 +25,6 @@ jest.mock("expo-router", () => ({
   },
 }));
 jest.mock("@react-native-community/datetimepicker", () => "DateTimePicker");
+jest
+  .spyOn(require("react-native").AccessibilityInfo, "isReduceMotionEnabled")
+  .mockResolvedValue(true);

@@ -17,7 +17,7 @@ export default function DashboardView() {
     <>
       <div className="flex justify-between gap-4">
         <div>
-          <p className="text-sm text-zinc-400">Your workspace at a glance</p>
+          <p className="text-sm text-muted">Your workspace at a glance</p>
           <h1 className="mt-1 text-3xl font-bold">Dashboard</h1>
         </div>
         <Button variant="secondary" disabled={loading} onClick={refresh}>
@@ -33,10 +33,10 @@ export default function DashboardView() {
             {stats.map(([key, title]) => (
               <article
                 key={key}
-                className="rounded-xl border border-zinc-800 bg-zinc-900 p-6"
+                className="surface-card rounded-2xl border border-line bg-surface p-6"
               >
-                <h2 className="text-sm text-zinc-400">{title}</h2>
-                <p className="mt-3 text-4xl font-bold text-yellow-300">
+                <h2 className="text-sm text-muted">{title}</h2>
+                <p className="mt-3 text-4xl font-bold text-accent">
                   {data[key]}
                 </p>
               </article>
@@ -44,7 +44,7 @@ export default function DashboardView() {
           </div>
         )
       )}
-      <div className="flex gap-5 text-sm text-yellow-300">
+      <div className="flex gap-5 text-sm text-accent">
         <Link href="/projects">Manage projects →</Link>
         <Link href="/tasks">Manage tasks →</Link>
       </div>

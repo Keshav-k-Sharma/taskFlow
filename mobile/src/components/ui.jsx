@@ -11,18 +11,19 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
+import MotionView from "./MotionView";
 
 export const colors = {
-  background: "#0b1020",
-  surface: "#161e32",
-  border: "#2b3650",
-  text: "#fafafa",
-  muted: "#a1a1aa",
-  accent: "#fde047",
-  danger: "#fca5a5",
-  success: "#86efac",
-  warning: "#fcd34d",
-  info: "#7dd3fc",
+  background: "#f6efe5",
+  surface: "#fff8ed",
+  border: "#dac8b2",
+  text: "#35291f",
+  muted: "#756253",
+  accent: "#a94d35",
+  danger: "#963f36",
+  success: "#316147",
+  warning: "#805619",
+  info: "#35616b",
 };
 export const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
@@ -35,6 +36,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     gap: 12,
     marginBottom: 12,
+    boxShadow: "0px 4px 16px rgba(99, 69, 43, 0.06)",
   },
   title: { color: colors.text, fontSize: 28, fontWeight: "700" },
   heading: { color: colors.text, fontSize: 20, fontWeight: "600" },
@@ -60,7 +62,7 @@ export const styles = StyleSheet.create({
   },
   button: {
     minHeight: 48,
-    borderRadius: 8,
+    borderRadius: 14,
     backgroundColor: colors.accent,
     paddingHorizontal: 16,
     paddingVertical: 12,
@@ -73,31 +75,31 @@ export const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   successButton: {
-    backgroundColor: "#123b32",
-    borderColor: "#27634e",
+    backgroundColor: "#e2efdf",
+    borderColor: "#b4cdb2",
     borderWidth: 1,
   },
   dangerButton: {
-    backgroundColor: "#421f2a",
-    borderColor: "#713344",
+    backgroundColor: "#fae5de",
+    borderColor: "#dfb5a9",
     borderWidth: 1,
   },
   warningButton: {
-    backgroundColor: "#3d321e",
-    borderColor: "#6c562a",
+    backgroundColor: "#f7e8ca",
+    borderColor: "#dfc994",
     borderWidth: 1,
   },
   pill: {
     borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    backgroundColor: "#243047",
+    backgroundColor: "#ece0cf",
   },
   disabled: { opacity: 0.5 },
   buttonText: { color: colors.background, fontSize: 15, fontWeight: "700" },
   secondaryText: { color: colors.text },
   error: { color: colors.danger, fontSize: 14 },
-  banner: { padding: 12, backgroundColor: "#422006", gap: 8 },
+  banner: { padding: 12, backgroundColor: "#f7e8ca", gap: 8 },
   badge: { color: colors.accent, fontSize: 13 },
 });
 
@@ -118,7 +120,7 @@ export function Screen({ children }) {
           />
         </View>
       )}
-      {children}
+      <MotionView style={{ flex: 1 }}>{children}</MotionView>
     </SafeAreaView>
   );
 }
@@ -138,13 +140,14 @@ export function Button({
       accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={[
+      style={({ pressed }) => [
         styles.button,
         secondary && styles.secondary,
         success && styles.successButton,
         warning && styles.warningButton,
         danger && styles.dangerButton,
         disabled && styles.disabled,
+        pressed && !disabled && { opacity: 0.8 },
       ]}
     >
       <Text

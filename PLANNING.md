@@ -4,7 +4,7 @@
 > Read this at the start of every new conversation. Work items live in `TASK.md`. Agent rules live in `AGENTS.md`.
 > Last updated: 2026-10-08
 
-UI decision (2026-10-08): use Jira-inspired web Kanban columns and phone-friendly mobile status tabs. Preserve the dark/yellow identity, existing enum values and single-user ownership. Drag-and-drop and admin/member roles are outside this redesign. Both clients continue using the existing shared API.
+UI decision (2026-10-08, updated by user request): retain Jira-inspired web Kanban columns and phone-friendly mobile status tabs, but replace the dark/yellow presentation with warm light cream surfaces, terracotta accents and sage completion colors. Add restrained entrance/interaction animations with reduced-motion support on both clients. Preserve existing enum values, single-user ownership and shared endpoints. Drag-and-drop and admin/member roles remain outside this redesign. Historical dark-theme references below describe earlier decisions.
 
 Implementation checkpoint (2026-10-08): the PostgreSQL migration, shared API,
 Next.js client and Expo client are implemented. Render serves the current API;

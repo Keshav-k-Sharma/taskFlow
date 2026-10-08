@@ -11,14 +11,14 @@ export function Button({
 }) {
   const colors =
     variant === "danger"
-      ? "border-red-700 bg-red-950 text-red-200"
+      ? "border-red-200 bg-red-100 text-red-900"
       : variant === "success"
-        ? "border-emerald-700 bg-emerald-950 text-emerald-200"
+        ? "border-emerald-200 bg-emerald-100 text-emerald-900"
         : variant === "warning"
-          ? "border-amber-700 bg-amber-950 text-amber-200"
+          ? "border-amber-200 bg-amber-100 text-amber-900"
           : variant === "secondary"
-            ? "border-zinc-700 bg-zinc-900 text-zinc-100"
-            : "border-yellow-300 bg-yellow-300 text-zinc-950";
+            ? "border-line bg-surface text-ink"
+            : "border-accent bg-accent text-on-accent";
   return (
     <button
       className={`min-h-11 rounded-lg border px-4 py-2 text-sm font-semibold transition hover:brightness-110 disabled:opacity-50 ${colors} ${className}`}
@@ -34,18 +34,18 @@ export function Input({ label: title, error, multiline = false, ...props }) {
   const Tag = multiline ? "textarea" : "input";
   return (
     <div className="space-y-2">
-      <label htmlFor={id} className="block text-sm text-zinc-300">
+      <label htmlFor={id} className="block text-sm text-ink">
         {title}
       </label>
       <Tag
         id={id}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="min-h-11 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-zinc-100"
+        className="min-h-11 w-full rounded-lg border border-line bg-canvas px-3 py-2 text-ink"
         {...props}
       />
       {error && (
-        <p id={`${id}-error`} className="text-sm text-red-300">
+        <p id={`${id}-error`} className="text-sm text-red-800">
           {error}
         </p>
       )}
@@ -57,20 +57,20 @@ export function Select({ label: title, error, children, ...props }) {
   const id = useId();
   return (
     <div className="space-y-2">
-      <label htmlFor={id} className="block text-sm text-zinc-300">
+      <label htmlFor={id} className="block text-sm text-ink">
         {title}
       </label>
       <select
         id={id}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : undefined}
-        className="min-h-11 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
+        className="min-h-11 w-full rounded-lg border border-line bg-canvas px-3 py-2"
         {...props}
       >
         {children}
       </select>
       {error && (
-        <p id={`${id}-error`} className="text-sm text-red-300">
+        <p id={`${id}-error`} className="text-sm text-red-800">
           {error}
         </p>
       )}
@@ -81,9 +81,9 @@ export function Select({ label: title, error, children, ...props }) {
 export function Spinner() {
   return (
     <div role="status" className="space-y-4 py-8">
-      <p className="text-zinc-400">Loading…</p>
-      <div className="h-24 animate-pulse rounded-xl bg-zinc-900" />
-      <div className="h-24 animate-pulse rounded-xl bg-zinc-900" />
+      <p className="text-muted">Loading…</p>
+      <div className="h-24 animate-pulse rounded-xl bg-surface" />
+      <div className="h-24 animate-pulse rounded-xl bg-surface" />
     </div>
   );
 }
@@ -91,7 +91,7 @@ export function Spinner() {
 export function Badge({ value }) {
   return (
     <span
-      className={`rounded-full border px-2.5 py-1 text-xs ${value === "COMPLETED" ? "border-green-800 text-green-300" : value === "HIGH" ? "border-red-800 text-red-300" : "border-zinc-700 text-zinc-300"}`}
+      className={`rounded-full border px-2.5 py-1 text-xs ${value === "COMPLETED" ? "border-green-200 text-green-800" : value === "HIGH" ? "border-red-200 text-red-800" : "border-line text-ink"}`}
     >
       {label(value)}
     </span>
@@ -100,9 +100,9 @@ export function Badge({ value }) {
 /** Explains an empty view and its next action. */
 export function EmptyState({ title = "Nothing here yet", children }) {
   return (
-    <div className="rounded-xl border border-dashed border-zinc-700 p-10 text-center">
+    <div className="rounded-xl border border-dashed border-line p-10 text-center">
       <h2 className="font-semibold">{title}</h2>
-      <p className="mt-2 text-sm text-zinc-400">{children}</p>
+      <p className="mt-2 text-sm text-muted">{children}</p>
     </div>
   );
 }
@@ -111,7 +111,7 @@ export function Toast({ message }) {
   return message ? (
     <p
       role="status"
-      className="mb-4 rounded-lg border border-green-800 bg-green-950 p-3 text-sm text-green-200"
+      className="mb-4 rounded-lg border border-green-200 bg-green-100 p-3 text-sm text-green-900"
     >
       {message}
     </p>
@@ -122,7 +122,7 @@ export function ErrorBanner({ message, retry }) {
   return message ? (
     <div
       role="alert"
-      className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-red-800 bg-red-950 p-4 text-sm text-red-200"
+      className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-red-200 bg-red-100 p-4 text-sm text-red-900"
     >
       <p>{message}</p>
       {retry && (
@@ -155,7 +155,7 @@ export function Modal({ title, onClose, children, busy = false }) {
         event.preventDefault();
         if (!busy) onClose();
       }}
-      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-2xl border border-zinc-700 bg-zinc-900 p-6 text-zinc-100 backdrop:bg-black/70"
+      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-2xl border border-line bg-surface p-6 text-ink backdrop:bg-ink/30"
     >
       <div className="mb-5 flex items-center justify-between gap-3">
         <h2 id={titleId} className="text-xl font-semibold">
