@@ -5,6 +5,8 @@ explicitly labeled deployed. Tested code was fast-forwarded to main at a35675b a
 
 ## Observed checks
 
+Latest deployment verification (2026-10-08): Render /api/health, /api/docs/ and /api/docs/openapi.yaml return 200; Swagger HTML is served. Unauthenticated /api/auth/me returns expected 401. This supersedes the earlier rollout observations of Swagger 404 below.
+
 | Area                         | Evidence                                                                    | Result                                                                                       |
 | ---------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | Repository visibility        | Unauthenticated GitHub API request                                          | Public, HTTP 200                                                                             |

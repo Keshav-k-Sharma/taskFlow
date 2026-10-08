@@ -1,7 +1,7 @@
 # Submission checklist
 
 This is a prepared checklist, not a completed submission. Phase 8/9 updates are
-were fast-forwarded to main at a35675b and pushed. The website redesign is verified live; the latest backend docs rollout and Android design build remain pending.
+were fast-forwarded to main at a35675b and pushed. Website redesign and Render API docs are verified live; the Android design build/device acceptance remain pending.
 
 | Deliverable                  | Link/status                                                                                                                                             |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |

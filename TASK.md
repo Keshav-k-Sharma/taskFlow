@@ -173,6 +173,9 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 ---
 
 ## Phase 9 — QA & Submission 🔴
+- [x] 9.9 Verify final backend docs rollout: Render /api/health, /api/docs/ and /api/docs/openapi.yaml return 200; unauthenticated /api/auth/me returns expected 401 (done 2026-10-08).
+
+Latest deployment status (2026-10-08): Render deployment is verified successful. Earlier checkpoints recording Swagger 404 describe the rollout before completion; public docs now return 200. Web/browser checks and dedicated test-database verification also pass. Remaining Phase 9 acceptance requires the updated APK, phone/emulator checks, cross-platform sync, Android screenshots and demo recording.
 - [ ] 9.1 Manual security checklist: other user's IDs → 404 on web **and** mobile; no token → 401; password never in responses; SQLi strings in search; oversized/invalid payloads (added 2026-10-06)
 - [x] 9.1a Full backend authorization/input-security suite verified on isolated Neon test database: 70 tests pass. Native not-found UI acceptance remains in 9.1 (done 2026-10-08).
 - [ ] 9.2 Manual UX checklist: validation errors, loading, empty states, expired-session message, airplane-mode message (added 2026-10-06)

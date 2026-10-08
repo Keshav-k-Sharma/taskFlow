@@ -18,8 +18,8 @@ only their own projects and the tasks within them.
 Deployment checks passed on 2026-10-08. The initial Android build failed dependency
 installation; the replacement APK completed and the user confirmed installation and login.
 The redesign requires another APK; full physical/emulator testing remains pending. See [TASK.md](TASK.md)
-for completion status. Swagger UI is available locally at /api/docs/ after setup;
-its deployment requires merging the Phase 8 changes from dev into main.
+for completion status. Public Swagger UI is deployed at
+[API documentation](https://taskflow-1sh2.onrender.com/api/docs/).
 
 ## Features and stack
 
