@@ -100,6 +100,10 @@ The user confirmed this APK completed, installed, and login works on the Android
 
 ## Device acceptance checklist
 
+Latest warm-theme build submitted on 2026-10-08 (version 1.0.2, Android version code 3):
+[Warm-theme APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/0cbeb6a0-0194-414e-81a7-d738fd6ebcc2).
+Use this build for the current cream/terracotta/sage design, screen animations and native navigation symbols. Installation and physical-device appearance checks are still pending.
+
 Kanban/design update submitted on 2026-10-08 (version 1.0.1, Android version code 2):
 [Updated APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/22403d8c-18ca-46af-b769-503ed0a94263).
 This build includes project creation, bottom tab symbols, status tabs and colored actions.

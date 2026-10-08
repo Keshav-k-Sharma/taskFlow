@@ -5,6 +5,8 @@ explicitly labeled deployed. Tested code was fast-forwarded to main at a35675b a
 
 ## Observed checks
 
+Warm release follow-up: Vercel serves cream canvas rgb(246,239,229); actual Chrome verifies that reduced-motion disables entrance animation. Website theme is deployed at 29596f5. Warm mobile version 1.0.2/versionCode 3 submitted as EAS build 0cbeb6a0-0194-414e-81a7-d738fd6ebcc2; build completion and phone acceptance are not yet verified.
+
 Warm theme update (2026-10-08): 30 web tests and 38 mobile tests pass; both client lint checks, web production build and Android Metro export pass. Three native motion tests cover reduced-motion preference, animation cleanup and safe fallback. Actual Chrome verifies warm canvas color, reduced-motion CSS, 360px layout, CRUD, dialog keyboard behavior, offline retry and expired-session clearing. Screenshot: images/warm-web-kanban.png. Physical Android appearance/animation acceptance requires the new version 1.0.2 APK and remains pending.
 
 Latest deployment verification (2026-10-08): Render /api/health, /api/docs/ and /api/docs/openapi.yaml return 200; Swagger HTML is served. Unauthenticated /api/auth/me returns expected 401. This supersedes the earlier rollout observations of Swagger 404 below.
