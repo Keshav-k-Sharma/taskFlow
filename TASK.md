@@ -200,7 +200,7 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 - [ ] B7 — Offline viewing on mobile (cache last lists in AsyncStorage, show "offline" badge) (added 2026-10-06)
 - [ ] B8 — Push notifications for tasks due tomorrow (`expo-notifications` + scheduled job) (added 2026-10-06)
 - [ ] B9 — Audit logs table + middleware (added 2026-10-06)
-- [ ] B10 — RBAC (re-introduce roles properly) (added 2026-10-06)
+- B10 — RBAC deferred: user confirmed keeping the single-account model with no admin/member roles; excluded from current work (updated 2026-10-08).
 
 ---
 
@@ -210,6 +210,16 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 - [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
 - [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
+- [ ] D18 — Redesign both website and mobile with a Jira-inspired Kanban interface while keeping TaskFlow's dark theme and yellow brand accent (requested 2026-10-08).
+- [ ] D18a — Web: add sidebar navigation and clear project headers; display task boards in Pending, In Progress and Completed columns using the existing task statuses (added 2026-10-08).
+- [ ] D18b — Mobile: use the same visual language with status tabs or swipeable board columns suited to phone screens; retain labelled Dashboard, Projects, Tasks and Account icons (added 2026-10-08).
+- [ ] D18c — Both clients: improve task/project cards, rounded corners, spacing, typography, subtle borders and consistent icons; show readable priority badges and due dates (added 2026-10-08).
+- [ ] D18d — Both clients: distinguish completion actions in green, pending/reopen actions in amber and delete actions in red; preserve clear labels, disabled states and delete confirmation (added 2026-10-08).
+- [ ] D18e — Preserve the current single-account ownership model: each user manages only their own projects/tasks; do not introduce admin/member roles or project member assignment (constraint confirmed 2026-10-08).
+- [ ] D18f — Verify redesigned web/mobile create, edit, delete and status-change flows, responsive layouts and accessibility; run tests/lint/build checks and document actual device checks (added 2026-10-08).
+- [ ] D18g — After the mobile redesign, build a replacement APK containing project creation, tab icons and the new design; update the distribution link and verify it on the user's Android phone (added 2026-10-08).
+
+Redesign scope note (2026-10-08): Kanban columns and existing status controls are requested. Drag-and-drop was discussed as an optional additional interaction, not yet requested. Work stays on dev; main is used when needed for deployment. Commit completed work, and leave Docker until last.
 - [ ] D17a — Add Dashboard, Projects, Tasks and Account symbols to the mobile bottom tab bar; check Android rendering in the rebuilt APK (added 2026-10-08).
 - [x] D17b — Implement native tab symbols with per-platform names, labels and active highlighting; mobile tests and lint pass (done 2026-10-08).
 
