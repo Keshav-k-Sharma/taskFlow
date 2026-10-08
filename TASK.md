@@ -224,10 +224,10 @@ Phase 9 checkpoint (2026-10-08): 70 backend, 30 web and 35 mobile tests pass (13
 - [ ] D24 — Give both light-themed clients a professional but expressive visual hierarchy: vivid blue/indigo accents, richer dashboard cards, stronger typography and depth while preserving motion, accessibility and existing functionality (done 2026-10-08; 68 client tests, lint, web build, Android export and Chrome layout/reduced-motion checks pass).
 
 - [x] D23a — Replace peach/terracotta appearance with professional stone/ivory/navy/teal palette on both clients; icons, motion and Kanban workflows retained. Web 30/mobile 38 tests, both lint checks, web build and Android export pass; actual Chrome theme/360px/reduced-motion checks pass (done 2026-10-08).
-- [ ] D23b — Verify professional-theme mobile version 1.0.3/versionCode 4 on the phone after its replacement APK finishes (added 2026-10-08).
+- [ ] D23b ? Install latest expressive-theme version 1.0.4/versionCode 5 and verify phone appearance, motion, icons and CRUD (updated 2026-10-08).
 
 - [x] D22a — Implement warm cream/terracotta/sage theme on web and mobile, subtle web card/button/dialog animations and native screen fades/press feedback; reduced-motion tests pass. Web 30 tests, mobile 38 tests, both lint checks, web build and Android export pass. Actual local Chrome CRUD/keyboard/360px/offline/expiry/reduced-motion checks pass (done 2026-10-08).
-- [ ] D22b — Build and install warm-theme Android version 1.0.2/versionCode 3; verify motion, contrast, icons and CRUD on the physical phone (added 2026-10-08).
+- D22b ? Superseded by current version 1.0.4; phone acceptance tracked in D23b.
 
 - [x] D21 — Add matching web sidebar symbols; web tests (30), lint and production build pass. Prepare docs/RELEASE_ACCEPTANCE.md with exact remaining phone/emulator/sync/screenshot/recording steps and reconcile stale release notes (done 2026-10-08).
 
@@ -240,7 +240,7 @@ Phase 9 backend verification (2026-10-08): full backend suite passes on dedicate
 - [x] D16 — Add mobile project creation using the shared API; 34 mobile tests, lint and Android bundle export pass (done 2026-10-08).
 - [ ] 9.8 Verify mobile project creation in the rebuilt APK: optional dates, failed-save retry, list refresh and creation of tasks inside the new project (added 2026-10-08).
 - [ ] D17 — Improve mobile styling, navigation icons and completion/delete colors; verify on Android (added 2026-10-08).
-- [ ] D18 — Redesign both website and mobile with a Jira-inspired Kanban interface while keeping TaskFlow's dark theme and yellow brand accent (requested 2026-10-08).
+- [ ] D18 — Redesign both website and mobile with a Jira-inspired Kanban interface using the current expressive warm light theme (requested 2026-10-08).
 - [x] D18a — Web sidebar and Pending, In Progress, Completed Kanban columns implemented; column grouping regression test passes (done 2026-10-08). Visual/live acceptance remains in D18f.
 - [x] D18b — Mobile status tabs, colored status/priority badges and dashboard grid implemented; labelled tab icons retained and filtering test passes (done 2026-10-08). Phone acceptance remains in D18f.
 - [x] D18c — Both clients: rounded cards, improved spacing, subtle borders, priority badges and due dates implemented; native mobile tab symbols and matching web sidebar symbols added. Device visual acceptance remains in D18f (done 2026-10-08).
@@ -290,3 +290,5 @@ _(empty)_
 Phase 5 automated verification (2026-10-07): 22 frontend tests across eight suites, lint, and production build passed. Browser/device checks remain in Phase 9.
 
 Phase 6 implementation verification (2026-10-08): 35 mobile tests, lint and Android export pass; previous APK installed/login confirmed by user. Updated APK is building. Full device/emulator acceptance remains pending.
+
+Final Docker checkpoint (2026-10-08): backend Dockerfile, build exclusions, local Compose database/backend health checks and migration startup implemented. Compose YAML/service wiring and backend lint pass; middleware tests pass (5). Full backend rerun cannot complete because current TEST_DATABASE_URL targets unavailable localhost:5433. Previous Neon suite result is historical. Docker runtime checks require installation. Latest APK 1.0.4/versionCode 5 is IN_QUEUE. Exact user steps: docs/USER_HANDOFF.md. Optional bonuses remain outside core release completion.

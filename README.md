@@ -88,16 +88,23 @@ Edit backend/.env with a real PostgreSQL DATABASE_URL and a random JWT_SECRET
 `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
 Never share or commit the result.
 
-Use an existing local PostgreSQL database, Neon, or the existing DB-only Compose
-services from the repository root:
+Use an existing local PostgreSQL database, Neon, or Docker Desktop. For local database services only:
 
 ```powershell
-docker compose up -d db db_test
+docker compose --env-file backend/.env --profile test up -d db db_test
 ```
 
-Those services expose development taskflow on port 5432 and separate taskflow_test
-on port 5433, with the example user/password. A backend Dockerfile/service is not
-yet provided; do not treat this as completed Docker packaging.
+For the containerized backend and local PostgreSQL, run from the repository root:
+
+```powershell
+docker compose --env-file backend/.env up --build -d
+docker compose --env-file backend/.env ps
+Invoke-RestMethod http://localhost:5000/api/health
+```
+
+Stop any existing backend on port 5000 first. Compose reads JWT_SECRET and CORS_ORIGINS from backend/.env; it explicitly uses its local db service, so your Neon database is unchanged. The backend runs as a non-root user, applies committed migrations on startup and serves Swagger at http://localhost:5000/api/docs/. The database keeps its existing named volume. Example database credentials are for local development only.
+
+The optional test profile exposes a separate taskflow_test database on port 5433. To stop containers while preserving local data, use `docker compose --env-file backend/.env down`. Container execution remains unverified on this machine because Docker Desktop is not installed.
 
 From backend:
 

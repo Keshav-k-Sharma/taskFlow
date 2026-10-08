@@ -1,0 +1,12 @@
+.git
+**/node_modules
+**/.env
+**/.env.*
+**/.expo
+**/.next
+**/coverage
+**/*.apk
+frontend
+mobile
+backend/tests
+docs/images
