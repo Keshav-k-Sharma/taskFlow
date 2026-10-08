@@ -8,6 +8,8 @@
 
 **Legend:** 🔴 core requirement · 🟡 important · 🟢 bonus
 
+Current palette correction (2026-10-08): professional stone/ivory/navy/teal replaces the peach theme on both clients. Deployed website color and reduced-motion behavior verified at b7b4f64. 68 client tests, lint, web build and Android export pass. Mobile version 1.0.3/versionCode 4 submitted: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7. Use this latest build rather than superseded design builds. Phone verification remains pending.
+
 Latest design/release checkpoint (2026-10-08): warm light website and mobile design replaces the earlier dark theme. Commit 29596f5 is deployed; actual Vercel canvas and reduced-motion behavior verified. Current client verification: web 30 tests, mobile 38 tests, lint, production web build and Android export pass. Warm-theme APK version 1.0.2/versionCode 3 submitted at https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/0cbeb6a0-0194-414e-81a7-d738fd6ebcc2; use it instead of older design builds. Phone/emulator/sync/screenshot/recording checks remain pending.
 
 Current phase completion audit (2026-10-08): Phases 0–5 are complete, including full test-database verification and deployed web acceptance. Phase 6 implementation/distribution setup is complete; updated APK is building and full phone/emulator acceptance (6.16) remains open. Phase 7 hosting is verified; web registration followed by login on the physical Android app (7.5) remains open. Phase 8 docs/diagrams/web screenshots are complete; native Android screenshots (8.9) remain open. These device-dependent items must be verified before marking Phases 6–8 fully complete. Docker remains last.

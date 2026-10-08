@@ -100,6 +100,10 @@ The user confirmed this APK completed, installed, and login works on the Android
 
 ## Device acceptance checklist
 
+Current professional-theme build (2026-10-08), version 1.0.3/versionCode 4:
+[Latest Android APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/7dde7951-5887-4011-9e98-46a2e6f870c7).
+This supersedes the peach version below; install this build for the requested stone/navy/teal appearance. Phone verification remains pending.
+
 Latest warm-theme build submitted on 2026-10-08 (version 1.0.2, Android version code 3):
 [Warm-theme APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/0cbeb6a0-0194-414e-81a7-d738fd6ebcc2).
 Use this build for the current cream/terracotta/sage design, screen animations and native navigation symbols. Installation and physical-device appearance checks are still pending.
