@@ -52,9 +52,9 @@ Do not point the test cleanup at the shared reviewer database.
 - Dialog unmount explicitly restores opener focus when that element still exists.
 - The original Android build failed npm ci due to missing/mismatched nested
   ajv/@emnapi entries. The lockfile was regenerated and checked with npm 10;
-  a replacement cloud build is queued (44704206-7eda-4ff1-9173-33cb1638f8b3).
+  replacement build 44704206-7eda-4ff1-9173-33cb1638f8b3 completed and the user confirmed installation and login.
   Full clean install, 30 mobile tests, lint and Android bundle export pass.
-  Do not treat the failed page or a queued build as an APK.
+  This earlier APK does not include the subsequent project creation, tab icons or redesign.
 
 ## Still required
 
@@ -71,7 +71,6 @@ Do not point the test cleanup at the shared reviewer database.
 
 See [SUBMISSION.md](SUBMISSION.md) and [DEMO_SCRIPT.md](DEMO_SCRIPT.md). These pending
 items are not marked complete in TASK.md.
-# Kanban redesign checkpoint — 2026-10-08
+## Kanban redesign checkpoint — 2026-10-08
 
 Web sidebar and three status columns, mobile status tabs and dashboard grid, colored task badges and action colors implemented on dev. Web: 30 tests, lint and production build pass. Mobile: 35 tests, lint and Android bundle export pass. Native tab icons were previously bundle-verified. Automated checks do not establish visual/device acceptance. Live deployment, updated Android APK acceptance, responsive keyboard checks, cross-platform sync, screenshots and recording remain pending. The user confirmed the previous APK installed and login works. Full backend integration rerun requires a dedicated test database.
-

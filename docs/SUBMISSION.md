@@ -17,7 +17,7 @@ currently on dev and are not yet deployed from main.
 | Architecture                 | [PNG](images/architecture.png)                                                                                                                          |
 | Web screenshots              | [SCREENSHOTS.md](SCREENSHOTS.md)                                                                                                                        |
 | Native Android screenshots   | Pending APK/device verification                                                                                                                         |
-| Installable Android APK link | [Replacement build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/44704206-7eda-4ff1-9173-33cb1638f8b3) queued; no verified APK yet |
+| Installable Android APK link | [Earlier working APK](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/44704206-7eda-4ff1-9173-33cb1638f8b3); user confirmed installation/login. Updated design APK and full acceptance pending. |
 | Five-minute recording        | Pending; follow [DEMO_SCRIPT.md](DEMO_SCRIPT.md)                                                                                                        |
 | QA results                   | [QA_REPORT.md](QA_REPORT.md)                                                                                                                            |
 | Review decisions             | [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md)                                                                                                              |

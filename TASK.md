@@ -138,7 +138,7 @@
 - [x] 6.17 Configure preview profile and build APK; user confirmed the replacement build completed, installed and login works (done 2026-10-08). A new build is required for subsequent project creation, icons and redesign changes.
 - [ ] 6.18 Upload APK / publish Expo link; add to README (added 2026-10-06)
 
-Phase 6 checkpoint (2026-10-08): EAS build `5188b0a3-d75f-4128-973d-dd5a6f5f71cf` is queued and linked in README. All 30 mobile tests and lint pass. User has an Android phone; no local Android SDK/emulator is installed. Device acceptance checklist is in docs/MOBILE.md; 6.16–6.18 remain pending until actual verification/build completion.
+Phase 6 checkpoint (2026-10-08): original EAS build failed; replacement `44704206-7eda-4ff1-9173-33cb1638f8b3` completed and the user confirmed installation/login. A new APK is needed for project creation, native tab icons and Kanban styling. All 35 current mobile tests, lint and Android bundle export pass. Full phone acceptance and emulator verification remain pending; no local Android SDK/emulator is installed.
 
 ---
 
@@ -220,6 +220,8 @@ Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mob
 - [ ] D18g — After the mobile redesign, build a replacement APK containing project creation, tab icons and the new design; update the distribution link and verify it on the user's Android phone (added 2026-10-08).
 
 Redesign scope note (2026-10-08): Kanban columns and existing status controls are requested. Drag-and-drop was discussed as an optional additional interaction, not yet requested. Work stays on dev; main is used when needed for deployment. Commit completed work, and leave Docker until last.
+
+Phase 9 active checkpoint (2026-10-08): redesign implementation committed on dev as c58b0a1. Web 30 tests, lint and production build pass; mobile 35 tests, lint and Android bundle export pass. Submitted version 1.0.1/versionCode 2 preview APK build: https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/22403d8c-18ca-46af-b769-503ed0a94263. Build completion and visual/phone acceptance remain pending. User is preparing a dedicated Neon taskflow_test database for the full backend suite. Web deployment/recheck, native screenshots, cross-platform sync, emulator checks and recording remain open.
 - [ ] D17a — Add Dashboard, Projects, Tasks and Account symbols to the mobile bottom tab bar; check Android rendering in the rebuilt APK (added 2026-10-08).
 - [x] D17b — Implement native tab symbols with per-platform names, labels and active highlighting; mobile tests and lint pass (done 2026-10-08).
 

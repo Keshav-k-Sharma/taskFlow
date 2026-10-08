@@ -16,8 +16,8 @@ only their own projects and the tasks within them.
 | Review notes                   | [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md)                                                                     |
 
 Deployment checks passed on 2026-10-08. The initial Android build failed dependency
-installation; the lockfile is repaired and a replacement build is queued.
-An APK and physical/emulator testing have not yet been verified. See [TASK.md](TASK.md)
+installation; the replacement APK completed and the user confirmed installation and login.
+The redesign requires another APK; full physical/emulator testing remains pending. See [TASK.md](TASK.md)
 for completion status. Swagger UI is available locally at /api/docs/ after setup;
 its deployment requires merging the Phase 8 changes from dev into main.
 

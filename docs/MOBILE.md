@@ -100,6 +100,11 @@ The user confirmed this APK completed, installed, and login works on the Android
 
 ## Device acceptance checklist
 
+Kanban/design update submitted on 2026-10-08 (version 1.0.1, Android version code 2):
+[Updated APK build](https://expo.dev/accounts/keshavkss-team/projects/taskflow/builds/22403d8c-18ca-46af-b769-503ed0a94263).
+This build includes project creation, bottom tab symbols, status tabs and colored actions.
+Submission does not imply build completion or device verification.
+
 Once the build finishes, open its EAS page on an Android phone, download the APK,
 and allow installation from that browser when Android prompts. Run these checks
 against the deployed backend:
