@@ -174,7 +174,9 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 
 ## Phase 9 — QA & Submission 🔴
 - [ ] 9.1 Manual security checklist: other user's IDs → 404 on web **and** mobile; no token → 401; password never in responses; SQLi strings in search; oversized/invalid payloads (added 2026-10-06)
+- [x] 9.1a Full backend authorization/input-security suite verified on isolated Neon test database: 70 tests pass. Native not-found UI acceptance remains in 9.1 (done 2026-10-08).
 - [ ] 9.2 Manual UX checklist: validation errors, loading, empty states, expired-session message, airplane-mode message (added 2026-10-06)
+- [x] 9.2a Redesigned local production web tested in actual Chrome: invalid form errors, filtered empty state, offline retry and expired-session redirect/token clearing pass. Phone UX checks remain in 9.2 (done 2026-10-08).
 - [ ] 9.3 Cross-platform sync check: change on one platform appears on the other after refresh / pull-to-refresh (added 2026-10-06)
 - [x] 9.4 Verify public GitHub access; targeted history credential-pattern scan of 693 reachable objects finds no matches or committed environment files (done 2026-10-08)
 - [ ] 9.5 Record the **5-minute demo**: same account on web + mobile → create task on one → show on the other (+ brief security/expiry/offline demo if time) (added 2026-10-06)
@@ -186,6 +188,7 @@ Phase 8 verification (2026-10-08): OpenAPI standards validation, backend lint, n
 - [ ] 9.7 Verify keyboard focus/Escape in dialogs, mobile navigation at 360px, responsive card grids, and create/edit/delete flows against the live API (added 2026-10-07).
 
 - [x] 9.7a Local production web/browser QA with actual API/Neon fixtures: CRUD, modal focus/Escape/restoration, 360px navigation, empty states, offline retry and session clearing pass; deployed recheck remains in 9.7 (done 2026-10-08).
+- [x] 9.7b Repeat browser acceptance after Kanban/sidebar redesign against separate taskflow_test database: project/task create/edit/complete/delete, dialog Tab/Escape/focus restoration, 360px navigation without overflow, empty search, offline retry and expired-session clearing pass (done 2026-10-08).
 - [x] 9.6a Prepare docs/SUBMISSION.md, docs/QA_REPORT.md and five-minute docs/DEMO_SCRIPT.md; verified APK/device/recording links remain pending (done 2026-10-08).
 
 Phase 9 checkpoint (2026-10-08): 22 selected backend tests, 29 web tests, 30 mobile tests and all package lint checks pass; web production build, Android bundle export and OpenAPI validation pass. Actual local API/Neon ownership checks and browser CRUD/keyboard/360px/offline/session checks pass. Full backend DB suite still needs a dedicated test database. Fixes remain on dev and await deployment. Original APK failed dependency installation; repaired mobile lockfile passes full npm 10 clean install, and replacement EAS build 44704206-7eda-4ff1-9173-33cb1638f8b3 is queued. Android/emulator QA, screenshots, cross-platform sync and recording remain pending.

@@ -73,6 +73,8 @@ See [SUBMISSION.md](SUBMISSION.md) and [DEMO_SCRIPT.md](DEMO_SCRIPT.md). These p
 items are not marked complete in TASK.md.
 ## Kanban redesign checkpoint — 2026-10-08
 
+Repeated actual headless Chrome acceptance against the redesigned local production web build and a local API connected to `taskflow_test`: project/task create/edit/complete/delete, dialog Tab/Escape/focus restoration, 360px navigation without overflow, empty search, network retry and invalid-session clearing all pass. Test resources were removed by the QA flow. This verifies the local redesign, not the deployed website or physical Android UI.
+
 Backend follow-up: the user configured a dedicated Neon `taskflow_test` database. Validated that it differs from the primary database, applied both committed Prisma migrations, and ran the complete Jest suite with `TEST_DATABASE_URL`: all 70 tests across eight suites pass. Backend lint also passes. No primary database setting was changed. Total current automated coverage is 135 tests across the three packages. Latest design APK build `22403d8c-18ca-46af-b769-503ed0a94263` remains `IN_QUEUE`.
 
 Web sidebar and three status columns, mobile status tabs and dashboard grid, colored task badges and action colors implemented on dev. Web: 30 tests, lint and production build pass. Mobile: 35 tests, lint and Android bundle export pass. Native tab icons were previously bundle-verified. Automated checks do not establish visual/device acceptance. Live deployment, updated Android APK acceptance, responsive keyboard checks, cross-platform sync, screenshots and recording remain pending. The user confirmed the previous APK installed and login works. Full backend integration rerun requires a dedicated test database.
